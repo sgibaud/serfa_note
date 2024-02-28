@@ -73,9 +73,12 @@ public class Login extends javax.swing.JPanel {
         Jlogin.setMinimumSize(new java.awt.Dimension(250, 23));
         Jlogin.setPreferredSize(new java.awt.Dimension(300, 23));
 
-        jTextField2.setBackground(new Color(255,255,255,0));
+        jTextField2.setBackground(new java.awt.Color(155, 181, 191));
         jTextField2.setFont(new java.awt.Font("URW Gothic", 0, 10)); // NOI18N
         jTextField2.setText("Pas encore inscrit ?");
+        jTextField2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 0));
+        jTextField2.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        jTextField2.setEnabled(false);
         jTextField2.setMaximumSize(new java.awt.Dimension(110, 19));
         jTextField2.setMinimumSize(new java.awt.Dimension(110, 19));
         jTextField2.setPreferredSize(new java.awt.Dimension(110, 19));

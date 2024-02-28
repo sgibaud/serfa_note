@@ -129,6 +129,11 @@ public class Home extends javax.swing.JFrame {
                 JbtnHomeMouseClicked(evt);
             }
         });
+        JbtnHome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JbtnHomeActionPerformed(evt);
+            }
+        });
         Jmenu.add(JbtnHome);
 
         JRoot.add(Jmenu, java.awt.BorderLayout.WEST);
@@ -301,6 +306,10 @@ public class Home extends javax.swing.JFrame {
     private void JbtnHomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JbtnHomeMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_JbtnHomeMouseClicked
+
+    private void JbtnHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JbtnHomeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JbtnHomeActionPerformed
 
     /**
      * @param args the command line arguments
