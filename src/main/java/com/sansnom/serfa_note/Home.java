@@ -21,7 +21,7 @@ public class Home extends javax.swing.JFrame {
      */
     public Home() {
         initComponents();
-        JButton [] btns = {JbtnHome};
+        JButton [] btns = {JbtnExit};
         for (JButton btn : btns) {
             btn.setForeground(new Color(21,25,28));
             btn.setUI(new BasicButtonUI());
@@ -65,7 +65,10 @@ public class Home extends javax.swing.JFrame {
         Jmenu = new javax.swing.JPanel();
         LlogoLayout = new javax.swing.JPanel();
         Jlogo = new javax.swing.JLabel();
-        JbtnHome = new javax.swing.JButton();
+        JlabUser = new javax.swing.JLabel();
+        JtextUser = new javax.swing.JTextField();
+        JbtnExit = new javax.swing.JButton();
+        JbtnUser = new javax.swing.JButton();
         Jcenterpanel = new javax.swing.JPanel();
         Jtop = new javax.swing.JPanel();
         JbtnSearch = new javax.swing.JButton();
@@ -89,16 +92,28 @@ public class Home extends javax.swing.JFrame {
         JRoot.setLayout(new java.awt.BorderLayout());
 
         Jmenu.setBackground(new java.awt.Color(23, 106, 115));
+        Jmenu.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(32, 46, 64), 5, true));
         Jmenu.setMaximumSize(new java.awt.Dimension(100, 720));
         Jmenu.setMinimumSize(new java.awt.Dimension(100, 720));
         Jmenu.setPreferredSize(new java.awt.Dimension(100, 720));
         Jmenu.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 15, 40));
 
         LlogoLayout.setBackground(new java.awt.Color(23, 106, 115));
-        LlogoLayout.setPreferredSize(new java.awt.Dimension(80, 100));
+        LlogoLayout.setPreferredSize(new java.awt.Dimension(80, 200));
 
         Jlogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/logo@4x.png"))); // NOI18N
         Jlogo.setPreferredSize(new java.awt.Dimension(84, 84));
+
+        JlabUser.setFont(new java.awt.Font("URW Gothic", 0, 14)); // NOI18N
+        JlabUser.setForeground(new java.awt.Color(255, 255, 255));
+        JlabUser.setText("Utilisateur :");
+
+        JtextUser.setEditable(false);
+        JtextUser.setBackground(new java.awt.Color(23, 106, 115));
+        JtextUser.setFont(new java.awt.Font("URW Gothic", 1, 14)); // NOI18N
+        JtextUser.setForeground(new java.awt.Color(255, 255, 255));
+        JtextUser.setText("Sandrine");
+        JtextUser.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 0));
 
         javax.swing.GroupLayout LlogoLayoutLayout = new javax.swing.GroupLayout(LlogoLayout);
         LlogoLayout.setLayout(LlogoLayoutLayout);
@@ -107,34 +122,68 @@ public class Home extends javax.swing.JFrame {
             .addGroup(LlogoLayoutLayout.createSequentialGroup()
                 .addComponent(Jlogo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(LlogoLayoutLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(JlabUser)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(LlogoLayoutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(LlogoLayoutLayout.createSequentialGroup()
+                    .addGap(1, 10, Short.MAX_VALUE)
+                    .addComponent(JtextUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 11, Short.MAX_VALUE)))
         );
         LlogoLayoutLayout.setVerticalGroup(
             LlogoLayoutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(LlogoLayoutLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(Jlogo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(10, Short.MAX_VALUE))
+                .addGap(36, 36, 36)
+                .addComponent(JlabUser)
+                .addContainerGap(56, Short.MAX_VALUE))
+            .addGroup(LlogoLayoutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(LlogoLayoutLayout.createSequentialGroup()
+                    .addGap(0, 150, Short.MAX_VALUE)
+                    .addComponent(JtextUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 32, Short.MAX_VALUE)))
         );
 
         Jmenu.add(LlogoLayout);
 
-        JbtnHome.setBackground(new Color(255,255,255,0));
-        JbtnHome.setForeground(new java.awt.Color(60, 60, 60));
-        JbtnHome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/home@4x.png"))); // NOI18N
-        JbtnHome.setPreferredSize(new java.awt.Dimension(80, 80));
-        JbtnHome.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/home_roll@4x.png"))); // NOI18N
-        JbtnHome.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/home_neg_1@4x.png"))); // NOI18N
-        JbtnHome.addMouseListener(new java.awt.event.MouseAdapter() {
+        JbtnExit.setBackground(new Color(255,255,255,0));
+        JbtnExit.setForeground(new java.awt.Color(60, 60, 60));
+        JbtnExit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/exit@4x.png"))); // NOI18N
+        JbtnExit.setPreferredSize(new java.awt.Dimension(80, 80));
+        JbtnExit.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/exit_roll@4x.png"))); // NOI18N
+        JbtnExit.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/exit_neg@4x.png"))); // NOI18N
+        JbtnExit.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                JbtnHomeMouseClicked(evt);
+                JbtnExitMouseClicked(evt);
             }
         });
-        JbtnHome.addActionListener(new java.awt.event.ActionListener() {
+        JbtnExit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JbtnHomeActionPerformed(evt);
+                JbtnExitActionPerformed(evt);
             }
         });
-        Jmenu.add(JbtnHome);
+        Jmenu.add(JbtnExit);
+
+        JbtnUser.setBackground(new Color(255,255,255,0));
+        JbtnUser.setForeground(new java.awt.Color(60, 60, 60));
+        JbtnUser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/people@4x.png"))); // NOI18N
+        JbtnUser.setPreferredSize(new java.awt.Dimension(80, 80));
+        JbtnUser.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/people_roll@4x.png"))); // NOI18N
+        JbtnUser.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/people_neg_1@4x.png"))); // NOI18N
+        JbtnUser.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                JbtnUserMouseClicked(evt);
+            }
+        });
+        JbtnUser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JbtnUserActionPerformed(evt);
+            }
+        });
+        Jmenu.add(JbtnUser);
 
         JRoot.add(Jmenu, java.awt.BorderLayout.WEST);
 
@@ -303,13 +352,21 @@ public class Home extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void JbtnHomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JbtnHomeMouseClicked
+    private void JbtnExitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JbtnExitMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_JbtnHomeMouseClicked
+    }//GEN-LAST:event_JbtnExitMouseClicked
 
-    private void JbtnHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JbtnHomeActionPerformed
+    private void JbtnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JbtnExitActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_JbtnHomeActionPerformed
+    }//GEN-LAST:event_JbtnExitActionPerformed
+
+    private void JbtnUserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JbtnUserMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JbtnUserMouseClicked
+
+    private void JbtnUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JbtnUserActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JbtnUserActionPerformed
 
     /**
      * @param args the command line arguments
@@ -352,17 +409,20 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JButton JaddClasseur;
     private javax.swing.JButton JaddIntercalaire;
     private javax.swing.JButton JaddNote;
-    private javax.swing.JButton JbtnHome;
+    private javax.swing.JButton JbtnExit;
     private javax.swing.JButton JbtnSearch;
+    private javax.swing.JButton JbtnUser;
     private javax.swing.JPanel Jcenter;
     private javax.swing.JPanel Jcenterpanel;
     private javax.swing.JPanel Jclasseur;
     private javax.swing.JPanel Jintercalaire;
+    private javax.swing.JLabel JlabUser;
     private javax.swing.JLabel JlabelClasseur;
     private javax.swing.JLabel JlabelNote;
     private javax.swing.JLabel Jlogo;
     private javax.swing.JPanel Jmenu;
     private javax.swing.JPanel Jnote;
+    private javax.swing.JTextField JtextUser;
     private javax.swing.JPanel Jtop;
     private javax.swing.JPanel LlogoLayout;
     // End of variables declaration//GEN-END:variables
