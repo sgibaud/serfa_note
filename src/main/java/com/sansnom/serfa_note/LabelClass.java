@@ -22,18 +22,19 @@ public class LabelClass extends JPanel{
     
     JPanel labelPane;
     JPanel addButtonPane;
+   
     
-    JButton editButton;
-    JButton saveLabelButton;
-    JButton deleteButton;
     JButton addButton;
     JButton saveNewLabel;
+    
+    JComboBox labelBox;
     
     ArrayList<String> listLabels;
     
     String labelText;
     String newLabel;
     String contentAdded;
+    String[] labelName;
 
     
     public LabelClass(){
@@ -46,8 +47,38 @@ public class LabelClass extends JPanel{
         listLabels.add("Tests");
         listLabels.add("Editeur de texte");
         listLabels.add("Fais chier");
+        listLabels.add("Test sur la longueur");
         
+        initLabels();
+        
+    }
+    
+    private void initLabels(){
+        
+        labelBox = createLabelBox();
+        labelBox.addActionListener(new ActionListener() {     
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    System.out.println("Valeur: " + labelBox.getSelectedItem().toString());
+    }
+});
+        
+    }
+    
+     public JComboBox createLabelBox(){
+         JComboBox box = new JComboBox();
+         box.addItem("Choisir un label :");
+         labelName = new String[listLabels.size()];
         for (int i = 0; i < listLabels.size(); i++) {
+            labelName[i] = listLabels.get(i);
+            box.addItem(labelName[i]);
+        }    
+         return box;        
+    }
+     
+    
+    public void initTest(){
+        /*for (int i = 0; i < listLabels.size(); i++) {
           
             labelText = listLabels.get(i);
             int indexLabel = i;
@@ -132,7 +163,6 @@ public class LabelClass extends JPanel{
         addButtonPane.add(labelAdded);
         addButtonPane.add(addButton);
         addButtonPane.add(saveNewLabel);
-        this.add(addButtonPane);
-          
+        this.add(addButtonPane);*/
     }
 }

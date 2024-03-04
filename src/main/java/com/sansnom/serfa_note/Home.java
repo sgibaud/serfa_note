@@ -4,19 +4,10 @@
  */
 package com.sansnom.serfa_note;
 
-<<<<<<< HEAD
-import javax.swing.JButton;
-import java.awt.Color;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import javax.swing.SwingUtilities;
-import javax.swing.plaf.basic.BasicButtonUI;
-=======
 import java.awt.Component;
 import javax.swing.SwingUtilities;
 
 // import composant
->>>>>>> 32826bce780ecac3475f3ad7b9b12b7a14476d8b
 
 /**
  *
@@ -27,6 +18,7 @@ public class Home extends javax.swing.JFrame {
     private static Home app;
     private final Login login;
     private final Application_Background home;
+    private final EditorPane editor;
     /**
      * Creates new form Home
      */
@@ -34,6 +26,7 @@ public class Home extends javax.swing.JFrame {
         initComponents();
         login = new Login();
         home = new Application_Background();
+        editor = new EditorPane();
         setContentPane(login);
     }
     
@@ -51,6 +44,16 @@ public class Home extends javax.swing.JFrame {
         SwingUtilities.updateComponentTreeUI(app.home);
         //FlatAnimatedLafChange.hideSnapshotWithAnimation();
     }
+    
+    public static void editor() {
+        // FlatAnimatedLafChange.showSnapshot();
+        app.setContentPane(app.editor);
+        //app.editor.applyComponentOrientation(app.getComponentOrientation());
+        // setSelectedMenu(0, 0);
+        //app.home.hideMenu();
+        SwingUtilities.updateComponentTreeUI(app.editor);
+        //FlatAnimatedLafChange.hideSnapshotWithAnimation();
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -61,32 +64,6 @@ public class Home extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-<<<<<<< HEAD
-        JRoot = new javax.swing.JPanel();
-        Jmenu = new javax.swing.JPanel();
-        LlogoLayout = new javax.swing.JPanel();
-        Jlogo = new javax.swing.JLabel();
-        JlabUser = new javax.swing.JLabel();
-        JtextUser = new javax.swing.JTextField();
-        JbtnExit = new javax.swing.JButton();
-        JbtnUser = new javax.swing.JButton();
-        Jcenterpanel = new javax.swing.JPanel();
-        Jtop = new javax.swing.JPanel();
-        JbtnSearch = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        Jcenter = new javax.swing.JPanel();
-        Jclasseur = new javax.swing.JPanel();
-        JaddClasseur = new javax.swing.JButton();
-        JlabelClasseur = new javax.swing.JLabel();
-        Jintercalaire = new javax.swing.JPanel();
-        JaddIntercalaire = new javax.swing.JButton();
-        JLabelIntercalaire = new javax.swing.JLabel();
-        Jnote = new javax.swing.JPanel();
-        JaddNote = new javax.swing.JButton();
-        JlabelNote = new javax.swing.JLabel();
-
-=======
->>>>>>> 32826bce780ecac3475f3ad7b9b12b7a14476d8b
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Bloc Note");
         setBackground(new java.awt.Color(242, 240, 235));
@@ -99,71 +76,6 @@ public class Home extends javax.swing.JFrame {
             }
         });
 
-<<<<<<< HEAD
-        JbtnUser.setBackground(new Color(255,255,255,0));
-        JbtnUser.setForeground(new java.awt.Color(60, 60, 60));
-        JbtnUser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/people@4x.png"))); // NOI18N
-        JbtnUser.setPreferredSize(new java.awt.Dimension(80, 80));
-        JbtnUser.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/people_roll@4x.png"))); // NOI18N
-        JbtnUser.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/people_neg_1@4x.png"))); // NOI18N
-        JbtnUser.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                JbtnUserMouseClicked(evt);
-            }
-        });
-        JbtnUser.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JbtnUserActionPerformed(evt);
-            }
-        });
-        Jmenu.add(JbtnUser);
-
-        JRoot.add(Jmenu, java.awt.BorderLayout.WEST);
-
-        Jcenterpanel.setPreferredSize(new java.awt.Dimension(980, 720));
-        Jcenterpanel.setLayout(new java.awt.BorderLayout());
-
-        Jtop.setBackground(new java.awt.Color(32, 46, 64));
-        Jtop.setPreferredSize(new java.awt.Dimension(980, 100));
-
-        JbtnSearch.setBackground(new Color(255,255,255,0));
-        JbtnSearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/loupe@2x.png"))); // NOI18N
-        JbtnSearch.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/loupe_neg@2x.png"))); // NOI18N
-
-        jButton1.setText("Editeur de texte");
-        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton1MouseClicked(evt);
-            }
-        });
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout JtopLayout = new javax.swing.GroupLayout(Jtop);
-        Jtop.setLayout(JtopLayout);
-        JtopLayout.setHorizontalGroup(
-            JtopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(JtopLayout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addComponent(JbtnSearch)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 409, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(401, 401, 401))
-        );
-        JtopLayout.setVerticalGroup(
-            JtopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JtopLayout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addComponent(JbtnSearch)
-                .addGap(14, 14, 14))
-            .addGroup(JtopLayout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addComponent(jButton1)
-                .addContainerGap())
-=======
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -173,7 +85,6 @@ public class Home extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 720, Short.MAX_VALUE)
->>>>>>> 32826bce780ecac3475f3ad7b9b12b7a14476d8b
         );
 
         pack();
@@ -184,19 +95,6 @@ public class Home extends javax.swing.JFrame {
             // TODO add your handling code here:
             dispose();
     }//GEN-LAST:event_formWindowClosing
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-                   // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-        /*SwingUtilities.invokeLater(() -> {
-                        new EditorPane().setVisible(true);
-                        });    */
-        EditorPane textEditor = new EditorPane();
-        Jcenterpanel.add(textEditor);
-        textEditor.setVisible(true);
-    }//GEN-LAST:event_jButton1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -234,30 +132,5 @@ public class Home extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-<<<<<<< HEAD
-    private javax.swing.JLabel JLabelIntercalaire;
-    private javax.swing.JPanel JRoot;
-    private javax.swing.JButton JaddClasseur;
-    private javax.swing.JButton JaddIntercalaire;
-    private javax.swing.JButton JaddNote;
-    private javax.swing.JButton JbtnExit;
-    private javax.swing.JButton JbtnSearch;
-    private javax.swing.JButton JbtnUser;
-    private javax.swing.JPanel Jcenter;
-    private javax.swing.JPanel Jcenterpanel;
-    private javax.swing.JPanel Jclasseur;
-    private javax.swing.JPanel Jintercalaire;
-    private javax.swing.JLabel JlabUser;
-    private javax.swing.JLabel JlabelClasseur;
-    private javax.swing.JLabel JlabelNote;
-    private javax.swing.JLabel Jlogo;
-    private javax.swing.JPanel Jmenu;
-    private javax.swing.JPanel Jnote;
-    private javax.swing.JTextField JtextUser;
-    private javax.swing.JPanel Jtop;
-    private javax.swing.JPanel LlogoLayout;
-    private javax.swing.JButton jButton1;
-=======
->>>>>>> 32826bce780ecac3475f3ad7b9b12b7a14476d8b
     // End of variables declaration//GEN-END:variables
 }

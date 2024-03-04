@@ -310,6 +310,11 @@ public class Application_Background extends javax.swing.JPanel {
         JaddNote.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/add.png"))); // NOI18N
         JaddNote.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/add_neg.png"))); // NOI18N
         JaddNote.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/add_roll.png"))); // NOI18N
+        JaddNote.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JaddNoteActionPerformed(evt);
+            }
+        });
 
         JlabelNote.setFont(new java.awt.Font("URW Gothic", 0, 20)); // NOI18N
         JlabelNote.setForeground(new java.awt.Color(255, 255, 255));
@@ -360,6 +365,11 @@ public class Application_Background extends javax.swing.JPanel {
     private void JbtnUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JbtnUserActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_JbtnUserActionPerformed
+
+    private void JaddNoteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JaddNoteActionPerformed
+        // TODO add your handling code here:
+        Home.editor();
+    }//GEN-LAST:event_JaddNoteActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -16,8 +16,8 @@ import java.io.OutputStreamWriter;
 import java.io.UnsupportedEncodingException;
 import java.io.Writer;
 import javax.swing.*;
-import javax.swing.border.LineBorder;
 import javax.swing.text.*;
+import javax.swing.text.JTextComponent;
 
 
 /**
@@ -46,35 +46,23 @@ public class EditorPane extends JPanel{
     JButton colorButton;
     JButton saveEditor;
     JComboBox fontBox;
+    JComboBox labelBox;
     
     ImageIcon editTitle;
     ImageIcon edit_Title;
     ImageIcon saveTitle;
     ImageIcon save_Title;
     
-    LabelClass labelDisplayed;
-    
+    LabelClass labelClass;
     String[] fontName;
    
     String charset = "UTF-8";
     String cheminDeFichier = "C:/Users/psylo/Downloads/Demo.txt"; //pour les sauvegardes dans un fichier
+    String itemLabel;
     
     public EditorPane(){
-        //super("Mon application");
-
-        /*WindowListener listener = new WindowAdapter()
-        {
-            @Override
-            public void windowClosing(WindowEvent e)
-            {
-                System.exit(0);
-            }
-        };
-        addWindowListener(listener);*/
-        initBlocNotes();
-        //pack();
-        setSize(800,900);
         
+        initBlocNotes();
         
     }
     
@@ -90,22 +78,29 @@ public class EditorPane extends JPanel{
          titleLb = new JTextField();
          labelPane = new JPanel();
          labelField = new JTextField();
-         labelDisplayed = new LabelClass();
+         labelClass = new LabelClass();
          
+         
+         //Je créé les icônes pour les mettre dans les boutons
          edit_Title = new ImageIcon(getClass().getResource("/resources/doc.png"));
-         save_Title = new ImageIcon(getClass().getResource("/resources/save_roll4x.png"));
+         save_Title = new ImageIcon(getClass().getResource("/resources/save_roll@4x.png"));
          
+         //Je les retaille
         ImageIcon editTitle = new ImageIcon(edit_Title.getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT)); // retaille l'image
         ImageIcon saveTitle = new ImageIcon(save_Title.getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT)); // 
         
+        //Je créé les marges pour le texte tapé
         Insets insets = new Insets(5, 5, 5, 5);
         
+        // mise en couleur des backgrounds des panels
          titleLb.setBackground(new Color(230,233,240));
          titlePanel.setBackground(new Color(230,233,240));
          textPane.setBackground(new Color(230,233,240));
          savePanel.setBackground(new Color(230,233,240));
          titleButtonPanel.setBackground(new Color(230,233,240));
          
+         //mise en place des layout principaux
+        this.setLayout(new BorderLayout());
          savePanel.setLayout(new FlowLayout(FlowLayout.RIGHT));
          titlePanel.setLayout(new FlowLayout(FlowLayout.LEFT));
          labelPane.setLayout(new BorderLayout());
@@ -180,6 +175,7 @@ public class EditorPane extends JPanel{
         titlePanel.add(titleLb, BorderLayout.CENTER);
         titlePanel.add(titleButtonPanel, BorderLayout.EAST);
         
+        
         contentText.setLayout(new BorderLayout());
         contentText.add(textPane, BorderLayout.CENTER);
         
@@ -188,39 +184,14 @@ public class EditorPane extends JPanel{
         notePane.add(contentText, BorderLayout.CENTER);
         notePane.add(savePanel, BorderLayout.SOUTH);
         
-       
-        labelPane.add(labelDisplayed, BorderLayout.CENTER);
+        labelPane.add(labelField);
        
         
         //J'ajoute la possibilité de scroller la fenêtre et je place le texte et le panel des boutons
-        //getContentPane().add(new JScrollPane(createToolBar()), BorderLayout.NORTH);
-        //getContentPane().add(new JScrollPane(notePane), BorderLayout.CENTER);
-        //getContentPane().add(new JScrollPane(labelPane), BorderLayout.SOUTH);
-        
-        this.add(new JScrollPane(createToolBar()), BorderLayout.NORTH);
+        this.add(createToolBar(), BorderLayout.NORTH);
         this.add(new JScrollPane(notePane), BorderLayout.CENTER);
-        this.add(new JScrollPane(labelPane), BorderLayout.SOUTH);
+        this.add(labelPane, BorderLayout.SOUTH);
      
-    }
-     
-      //Création du menu déroulant pour la typographie
-    public JComboBox createFontBox(){ 
-        Font[] fonts= GraphicsEnvironment.getLocalGraphicsEnvironment().getAllFonts();
-        fontName = new String[fonts.length];
-        for(int i=0;i<fonts.length;i++){
-            fontName[i]=String.valueOf(fonts[i].getName()); //Je récupère le nom de chaque font contenue dans le tableaux fonts, pour l'intégrer à la comboBox
-        }
-        JComboBox box = new JComboBox(fontName);
-        return box ;
-    }
-    
-    //Création du menu déroulant pour la fontSize
-    public JComboBox createSizeBox(){
-        JComboBox box = new JComboBox();
-        for(int i = 6 ; i<= 100; i++){
-            box.addItem(Integer.toString(i));    //Je transforme l'int i en string pour pouvoir l'injecter dans la comboBox
-        }       
-         return box;        
     }
     
     private JToolBar createToolBar(){
@@ -297,7 +268,7 @@ public class EditorPane extends JPanel{
         });
             
         fontBox = createFontBox();
-        fontBox.setFont(new Font("Arial", Font.BOLD, 18));
+        fontBox.setFont(new Font("Arial", Font.BOLD, 16));
         fontBox.setBackground(new Color(255,255,255));
         fontBox.setPreferredSize(new Dimension(150,30));
         fontBox.addActionListener(new ActionListener() {
@@ -308,13 +279,52 @@ public class EditorPane extends JPanel{
             }
         });
         
+        
+        labelBox = createLabelBox();
+        labelBox.setFont(new Font("Arial", Font.BOLD, 16));
+        labelBox.setBackground(new Color(255,255,255));
+        labelBox.setPreferredSize(new Dimension(200,30));
+        labelBox.addActionListener(new ActionListener() {     
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    itemLabel = labelBox.getSelectedItem().toString();
+                    labelField.setText(itemLabel);
+    }
+});
+        
+        
         toolBar.add(ReadButton);
         toolBar.add(fontBox);
         toolBar.add(sizeBox);
         toolBar.add(boldButton);
         toolBar.add(italicButton);
         toolBar.add(colorButton);
+        toolBar.add(labelBox);
         return toolBar;
+    }
+    
+    
+    public JComboBox createLabelBox(){
+       return labelClass.createLabelBox();      
+    }
+       //Création du menu déroulant pour la typographie
+    public JComboBox createFontBox(){ 
+        Font[] fonts= GraphicsEnvironment.getLocalGraphicsEnvironment().getAllFonts();
+        fontName = new String[fonts.length];
+        for(int i=0;i<fonts.length;i++){
+            fontName[i]=String.valueOf(fonts[i].getName()); //Je récupère le nom de chaque font contenue dans le tableaux fonts, pour l'intégrer à la comboBox
+        }
+        JComboBox box = new JComboBox(fontName);
+        return box ;
+    }
+    
+    //Création du menu déroulant pour la fontSize
+    public JComboBox createSizeBox(){
+        JComboBox box = new JComboBox();
+        for(int i = 6 ; i<= 100; i++){
+            box.addItem(Integer.toString(i));    //Je transforme l'int i en string pour pouvoir l'injecter dans la comboBox
+        }       
+         return box;        
     }
     
      
@@ -406,8 +416,7 @@ public class EditorPane extends JPanel{
             JOptionPane.showMessageDialog(null,"Opération annulée !!!", "Information", JOptionPane.INFORMATION_MESSAGE);
 
         }
-       this.setVisible(true);  
+         
     }
-    
 
 }

@@ -534,6 +534,9 @@
                           <Image iconType="3" name="/resources/add_roll.png"/>
                         </Property>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JaddNoteActionPerformed"/>
+                      </Events>
                     </Component>
                     <Component class="javax.swing.JLabel" name="JlabelNote">
                       <Properties>
