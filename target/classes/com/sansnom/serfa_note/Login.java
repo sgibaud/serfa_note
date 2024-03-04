@@ -5,6 +5,12 @@
 package com.sansnom.serfa_note;
 
 import java.awt.Color;
+import java.awt.Component;
+import java.awt.Container;
+import java.awt.Dimension;
+import java.awt.Insets;
+import java.awt.LayoutManager;
+import com.sansnom.serfa_note.Home;
 
 /**
  *
@@ -93,6 +99,11 @@ public class Login extends javax.swing.JPanel {
         Jlogin.setMaximumSize(new java.awt.Dimension(75, 23));
         Jlogin.setMinimumSize(new java.awt.Dimension(75, 23));
         Jlogin.setPreferredSize(new java.awt.Dimension(75, 23));
+        Jlogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JloginActionPerformed(evt);
+            }
+        });
 
         jTextField2.setBackground(new java.awt.Color(42, 70, 105));
         jTextField2.setFont(new java.awt.Font("URW Gothic", 1, 10)); // NOI18N
@@ -185,6 +196,11 @@ public class Login extends javax.swing.JPanel {
                 .addContainerGap(174, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void JloginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JloginActionPerformed
+        // TODO add your handling code here:
+           Home.login();
+    }//GEN-LAST:event_JloginActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
