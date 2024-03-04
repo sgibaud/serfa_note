@@ -22,10 +22,8 @@ public class LabelClass extends JPanel{
     
     JPanel labelPane;
     JPanel addButtonPane;
+   
     
-    JButton editButton;
-    JButton saveLabelButton;
-    JButton deleteButton;
     JButton addButton;
     JButton saveNewLabel;
     
@@ -76,8 +74,50 @@ public class LabelClass extends JPanel{
             box.addItem(labelName[i]);
         }    
          return box;        
-    }
+    } 
+   
+     public void editLabel(String itemLabel){
+         for (int i = 0; i < listLabels.size(); i++) {
+             if(labelName[i].equals(itemLabel)){
+                 listLabels.set(i, itemLabel);
+                 break;
+             } 
+        } 
+        refreshComboBox();     
+    
+     }
      
+     //Rafraîchisssement de la combobox
+      public void refreshComboBox(){
+        DefaultComboBoxModel<String> model = (DefaultComboBoxModel<String>)labelBox.getModel();
+        model.removeAllElements();
+        model.addElement("Choisir un label :");
+        for(String label : listLabels){
+            model.addElement(label);
+        }
+        labelBox.revalidate();
+        labelBox.repaint(); 
+    }
+    
+     final JComboBox finalLabelBox = labelBox;
+     
+     public void deleteLabel(String itemLabel){
+        listLabels.remove(itemLabel);
+        finalLabelBox.removeAll();
+        finalLabelBox.revalidate(); // J'actualise le layout après suppression
+        finalLabelBox.repaint(); // Je redessine le JPanel après suppression
+     }
+             
+      
+    public void newLabel(final String newItem) {
+        final ComboBoxModel labels = labelBox.getModel();
+        for (int i=labels.getSize(); --i>=0;) {
+          if (newItem.equals(labels.getElementAt(i))) {
+            return;
+          }
+        }
+        labelBox.addItem(newItem);
+      }
     
     public void initTest(){
         /*for (int i = 0; i < listLabels.size(); i++) {

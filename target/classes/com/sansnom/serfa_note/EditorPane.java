@@ -36,8 +36,13 @@ public class EditorPane extends JPanel{
     JTextField labelField;
     JTextPane textPane;
     JTextField titleLb;
+    JTextField newLabelField;
     JButton modifTitle;
     JButton sauvTitleButton;
+    JButton editLabelButton;
+    JButton saveLabelButton;
+    JButton deleteLabelButton;
+    JButton saveNewLabel;
     
     JButton ReadButton;
     JComboBox sizeBox;
@@ -45,6 +50,7 @@ public class EditorPane extends JPanel{
     JButton italicButton;
     JButton colorButton;
     JButton saveEditor;
+    JButton addNewLabel;
     JComboBox fontBox;
     JComboBox labelBox;
     
@@ -103,7 +109,7 @@ public class EditorPane extends JPanel{
         this.setLayout(new BorderLayout());
          savePanel.setLayout(new FlowLayout(FlowLayout.RIGHT));
          titlePanel.setLayout(new FlowLayout(FlowLayout.LEFT));
-         labelPane.setLayout(new BorderLayout());
+         labelPane.setLayout(new FlowLayout(FlowLayout.LEFT));
     
         textPane.setEditable(true);
         textPane.setContentType("text/html");
@@ -184,7 +190,21 @@ public class EditorPane extends JPanel{
         notePane.add(contentText, BorderLayout.CENTER);
         notePane.add(savePanel, BorderLayout.SOUTH);
         
+        editLabelButton = new JButton("Modifier");
+        saveLabelButton = new JButton("Sauvegarder");
+        deleteLabelButton = new JButton("Supprimer");
+        editLabelButton.setVisible(false);
+        saveLabelButton.setVisible(false);
+        deleteLabelButton.setVisible(false);
+        
+   
+        labelField.setColumns(20);
+        labelField.setBorder(null);
+        labelField.setEditable(false);
         labelPane.add(labelField);
+        labelPane.add(editLabelButton);
+        labelPane.add(saveLabelButton);
+        labelPane.add(deleteLabelButton);
        
         
         //J'ajoute la possibilité de scroller la fenêtre et je place le texte et le panel des boutons
@@ -289,9 +309,70 @@ public class EditorPane extends JPanel{
                 public void actionPerformed(ActionEvent e) {
                     itemLabel = labelBox.getSelectedItem().toString();
                     labelField.setText(itemLabel);
+                    editLabelButton.setVisible(true);
+                    deleteLabelButton.setVisible(true);
+                    
+                    //bouton d'édition
+                    editLabelButton.addActionListener(new ActionListener(){
+                        @Override
+                        public void actionPerformed(ActionEvent arg0){
+                            labelField.setEditable(true);
+                            saveLabelButton.setVisible(true);
+                            editLabelButton.setVisible(false);
+                        }
+                    });
+                    
+                    saveLabelButton.addActionListener(new ActionListener(){
+                        @Override
+                        public void actionPerformed(ActionEvent arg0){
+                            saveLabelButton.setVisible(false);
+                            editLabelButton.setVisible(true);
+                            labelField.setEditable(false);
+                            labelClass.editLabel(itemLabel);   
+                        }
+                    });
+                    
+                    
+                    deleteLabelButton.addActionListener(evt -> {
+                    int option = JOptionPane.showConfirmDialog(null, "Êtes-vous sûr de vouloir supprimer le label \""  + itemLabel + "\" ?", "Confirmation de suppression", JOptionPane.YES_NO_OPTION);
+                        if (option == JOptionPane.YES_OPTION) {
+                            labelClass.deleteLabel(itemLabel);       
+                    }
+            });
     }
 });
+        newLabelField = new JTextField();
+        newLabelField.setVisible(false);
+        newLabelField.setColumns(20);
         
+        saveNewLabel = new JButton("Save Label");
+        saveNewLabel.setFont(new Font("Arial", Font.BOLD, 18));
+        saveNewLabel.setBackground(new Color(206,222,242));
+        saveNewLabel.setPreferredSize(new Dimension(150,30));
+        saveNewLabel.setVisible(false);
+        saveNewLabel.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) { //ouvre la boîte à couleur
+              newLabelField.setVisible(false);
+              addNewLabel.setVisible(true);
+              saveNewLabel.setVisible(false);
+              String newItem = newLabelField.getText();
+              labelClass.newLabel(newItem);
+            }
+        });
+        
+        addNewLabel = new JButton("New Label");
+        addNewLabel.setFont(new Font("Arial", Font.BOLD, 18));
+        addNewLabel.setBackground(new Color(206,222,242));
+        addNewLabel.setPreferredSize(new Dimension(150,30));
+        addNewLabel.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) { //ouvre la boîte à couleur
+              newLabelField.setVisible(true);
+              saveNewLabel.setVisible(true);
+              addNewLabel.setVisible(false);    
+            }
+        });
         
         toolBar.add(ReadButton);
         toolBar.add(fontBox);
@@ -300,6 +381,10 @@ public class EditorPane extends JPanel{
         toolBar.add(italicButton);
         toolBar.add(colorButton);
         toolBar.add(labelBox);
+         toolBar.add(addNewLabel);
+         toolBar.add(saveNewLabel);
+         toolBar.add(newLabelField);
+         
         return toolBar;
     }
     
