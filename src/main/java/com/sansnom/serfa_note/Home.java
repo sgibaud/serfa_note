@@ -8,6 +8,7 @@ import javax.swing.JButton;
 import java.awt.Color;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import javax.swing.SwingUtilities;
 import javax.swing.plaf.basic.BasicButtonUI;
 
 /**
@@ -72,6 +73,7 @@ public class Home extends javax.swing.JFrame {
         Jcenterpanel = new javax.swing.JPanel();
         Jtop = new javax.swing.JPanel();
         JbtnSearch = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         Jcenter = new javax.swing.JPanel();
         Jclasseur = new javax.swing.JPanel();
         JaddClasseur = new javax.swing.JButton();
@@ -197,6 +199,18 @@ public class Home extends javax.swing.JFrame {
         JbtnSearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/loupe@2x.png"))); // NOI18N
         JbtnSearch.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/loupe_neg@2x.png"))); // NOI18N
 
+        jButton1.setText("Editeur de texte");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout JtopLayout = new javax.swing.GroupLayout(Jtop);
         Jtop.setLayout(JtopLayout);
         JtopLayout.setHorizontalGroup(
@@ -204,7 +218,9 @@ public class Home extends javax.swing.JFrame {
             .addGroup(JtopLayout.createSequentialGroup()
                 .addGap(10, 10, 10)
                 .addComponent(JbtnSearch)
-                .addGap(911, 911, 911))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 409, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(401, 401, 401))
         );
         JtopLayout.setVerticalGroup(
             JtopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -212,6 +228,10 @@ public class Home extends javax.swing.JFrame {
                 .addGap(40, 40, 40)
                 .addComponent(JbtnSearch)
                 .addGap(14, 14, 14))
+            .addGroup(JtopLayout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addComponent(jButton1)
+                .addContainerGap())
         );
 
         Jcenterpanel.add(Jtop, java.awt.BorderLayout.NORTH);
@@ -368,6 +388,19 @@ public class Home extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_JbtnUserActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+                   // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        /*SwingUtilities.invokeLater(() -> {
+                        new EditorPane().setVisible(true);
+                        });    */
+        EditorPane textEditor = new EditorPane();
+        Jcenterpanel.add(textEditor);
+        textEditor.setVisible(true);
+    }//GEN-LAST:event_jButton1MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -425,5 +458,6 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JTextField JtextUser;
     private javax.swing.JPanel Jtop;
     private javax.swing.JPanel LlogoLayout;
+    private javax.swing.JButton jButton1;
     // End of variables declaration//GEN-END:variables
 }
