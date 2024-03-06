@@ -27,8 +27,8 @@ public class BDDO{
 			    Class.forName("org.mariadb.jdbc.Driver");
                           //Establish the connection to the database 
 			  this.connection = DriverManager.getConnection("jdbc:mariadb://localhost:3306/applinotes",
-									"root",
-									"");  
+									"Dev",
+									"DevInfo");  
 			}
 		catch (ClassNotFoundException | SQLException e)
 			{
@@ -93,7 +93,7 @@ public class BDDO{
         
         String[] values = {username,password};
             
-        ResultSet key = this.ExecuteQuery("INSERT INTO utilisateur (identifiant,motDePasse) VALUES (?,?);",values);
+        ResultSet key = this.ExecuteQuery("INSERT INTO Utilisateur (identifiant,motDePasse) VALUES (?,?);",values);
         
 
         return this.KeyRead(key);
@@ -103,7 +103,7 @@ public class BDDO{
             
         String[] values = {username,password};
         
-        ResultSet data = this.ExecuteQuery("SELECT * FROM utilisateur WHERE identifiant= ? AND motDePasse = ? ;",values);
+        ResultSet data = this.ExecuteQuery("SELECT * FROM Utilisateur WHERE identifiant= ? AND motDePasse = ? ;",values);
         
             try { //Pas besoin du contenu, on vérifie juste si l'on a une réponse.
                 return data.next();
