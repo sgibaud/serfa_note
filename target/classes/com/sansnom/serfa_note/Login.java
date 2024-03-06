@@ -3,14 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package com.sansnom.serfa_note;
-
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.Container;
-import java.awt.Dimension;
-import java.awt.Insets;
-import java.awt.LayoutManager;
-import com.sansnom.serfa_note.Home;
+import java.awt.event.*;
 
 /**
  *
@@ -199,9 +192,13 @@ public class Login extends javax.swing.JPanel {
 
     private void JloginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JloginActionPerformed
         // TODO add your handling code here:
-           Home.login(JuserNameInput.getText(),jPasswordField.getText());
+        Home homeConnexion = new Home();
+           homeConnexion.login(JuserNameInput.getText(),jPasswordField.getText());
     }//GEN-LAST:event_JloginActionPerformed
-
+    
+   
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel JcardLogin;

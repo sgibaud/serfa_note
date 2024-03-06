@@ -27,8 +27,8 @@ public class BDDO{
 			    Class.forName("org.mariadb.jdbc.Driver");
                           //Establish the connection to the database 
 			  this.connection = DriverManager.getConnection("jdbc:mariadb://localhost:3306/applinotes",
-									"Dev",
-									"DevInfo");  
+									"mariadb",
+									"mariadb*1");  
 			}
 		catch (ClassNotFoundException | SQLException e)
 			{

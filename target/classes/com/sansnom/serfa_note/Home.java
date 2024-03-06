@@ -17,9 +17,9 @@ import javax.swing.SwingUtilities;
 public class Home extends javax.swing.JFrame {
 
     private static Home app;
-    private final Login login;
-    private final Application_Background home;
-    private static BDDO db;
+    private Login login;
+    private Application_Background home;
+    private BDDO db;
     /**
      * Creates new form Home
      */
@@ -31,12 +31,12 @@ public class Home extends javax.swing.JFrame {
         setContentPane(login);
     }
     
-    public static void showForm(Component component) {
+    /*public static void showForm(Component component) {
         component.applyComponentOrientation(app.getComponentOrientation());
         // app.home.showForm(component);
-    }
+    }*/
     
-    public static void login(String id,String pswd) {
+    public void login(String id,String pswd) {
         if (db.ConnectUser(id,pswd)){
             // FlatAnimatedLafChange.showSnapshot();
             app.setContentPane(app.home);
@@ -48,6 +48,7 @@ public class Home extends javax.swing.JFrame {
             }
         else {}
     }
+   
 
     /**
      * This method is called from within the constructor to initialize the form.
