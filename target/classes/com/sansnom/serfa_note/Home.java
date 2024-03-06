@@ -4,6 +4,7 @@
  */
 package com.sansnom.serfa_note;
 
+import com.sansnom.serfa_note.Data.BDDO;
 import java.awt.Component;
 import javax.swing.SwingUtilities;
 
@@ -18,10 +19,12 @@ public class Home extends javax.swing.JFrame {
     private static Home app;
     private final Login login;
     private final Application_Background home;
+    private static BDDO db;
     /**
      * Creates new form Home
      */
     public Home() {
+        db = new BDDO();
         initComponents();
         login = new Login();
         home = new Application_Background();
@@ -33,14 +36,17 @@ public class Home extends javax.swing.JFrame {
         // app.home.showForm(component);
     }
     
-    public static void login() {
-        // FlatAnimatedLafChange.showSnapshot();
-        app.setContentPane(app.home);
-        app.home.applyComponentOrientation(app.getComponentOrientation());
-        // setSelectedMenu(0, 0);
-        //app.home.hideMenu();
-        SwingUtilities.updateComponentTreeUI(app.home);
-        //FlatAnimatedLafChange.hideSnapshotWithAnimation();
+    public static void login(String id,String pswd) {
+        if (db.ConnectUser(id,pswd)){
+            // FlatAnimatedLafChange.showSnapshot();
+            app.setContentPane(app.home);
+            app.home.applyComponentOrientation(app.getComponentOrientation());
+            // setSelectedMenu(0, 0);
+            //app.home.hideMenu();
+            SwingUtilities.updateComponentTreeUI(app.home);
+            //FlatAnimatedLafChange.hideSnapshotWithAnimation();
+            }
+        else {}
     }
 
     /**

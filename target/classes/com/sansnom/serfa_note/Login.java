@@ -199,7 +199,7 @@ public class Login extends javax.swing.JPanel {
 
     private void JloginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JloginActionPerformed
         // TODO add your handling code here:
-           Home.login();
+           Home.login(JuserNameInput.getText(),jPasswordField.getText());
     }//GEN-LAST:event_JloginActionPerformed
 
 
