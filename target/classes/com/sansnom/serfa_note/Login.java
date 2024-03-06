@@ -17,7 +17,9 @@ import com.sansnom.serfa_note.Home;
  * @author draconic
  */
 public class Login extends javax.swing.JPanel {
-
+    
+    
+  
     /**
      * Creates new form Login
      */

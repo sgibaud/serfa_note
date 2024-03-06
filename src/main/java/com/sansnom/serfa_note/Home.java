@@ -16,9 +16,9 @@ import javax.swing.SwingUtilities;
 public class Home extends javax.swing.JFrame {
 
     private static Home app;
-    private final Login login;
-    private final Application_Background home;
-    private final EditorPane editor;
+    private Login login;
+    private Application_Background home;
+    private EditorPane editor;
     /**
      * Creates new form Home
      */
@@ -30,10 +30,10 @@ public class Home extends javax.swing.JFrame {
         setContentPane(login);
     }
     
-    public static void showForm(Component component) {
+    /*public static void showForm(Component component) {
         component.applyComponentOrientation(app.getComponentOrientation());
         // app.home.showForm(component);
-    }
+    }*/
     
     public static void login() {
         // FlatAnimatedLafChange.showSnapshot();

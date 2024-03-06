@@ -5,7 +5,6 @@
 package com.sansnom.serfa_note;
 
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import javax.swing.JButton;
@@ -16,7 +15,8 @@ import javax.swing.plaf.basic.BasicButtonUI;
  * @author draconic
  */
 public class Application_Background extends javax.swing.JPanel {
-
+    
+   String activityUser;
     /**
      * Creates new form Application_Background
      */
@@ -110,7 +110,7 @@ public class Application_Background extends javax.swing.JPanel {
         JtextUser.setBackground(new java.awt.Color(23, 106, 115));
         JtextUser.setFont(new java.awt.Font("URW Gothic", 1, 14)); // NOI18N
         JtextUser.setForeground(new java.awt.Color(255, 255, 255));
-        JtextUser.setText("Sandrine");
+        JtextUser.setText(this.activityUser);
         JtextUser.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 0));
 
         javax.swing.GroupLayout LlogoLayoutLayout = new javax.swing.GroupLayout(LlogoLayout);
@@ -126,9 +126,9 @@ public class Application_Background extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(LlogoLayoutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(LlogoLayoutLayout.createSequentialGroup()
-                    .addGap(1, 10, Short.MAX_VALUE)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(JtextUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 11, Short.MAX_VALUE)))
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         LlogoLayoutLayout.setVerticalGroup(
             LlogoLayoutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -350,6 +350,7 @@ public class Application_Background extends javax.swing.JPanel {
         add(JRoot, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
+  
     private void JbtnExitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JbtnExitMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_JbtnExitMouseClicked
