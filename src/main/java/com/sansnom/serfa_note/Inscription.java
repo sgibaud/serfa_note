@@ -9,15 +9,13 @@ import java.awt.event.*;
  *
  * @author draconic
  */
-public class Login extends javax.swing.JPanel {
+public class Inscription extends javax.swing.JPanel {
 
-    private Home origin;
     /**
      * Creates new form Login
      */
-    public Login(Home home) {
+    public Inscription() {
         initComponents();
-        this.origin = home;
     }
 
     /**
@@ -35,9 +33,7 @@ public class Login extends javax.swing.JPanel {
         JuserNameInput = new javax.swing.JTextField();
         jPasswordL = new javax.swing.JLabel();
         jPasswordField = new javax.swing.JPasswordField();
-        Jlogin = new javax.swing.JButton();
-        Jlogin1 = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
+        JInscrire = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(32, 46, 64));
@@ -54,7 +50,7 @@ public class Login extends javax.swing.JPanel {
         JlabelLogin.setFont(new java.awt.Font("URW Gothic", 0, 36)); // NOI18N
         JlabelLogin.setForeground(new java.awt.Color(255, 255, 255));
         JlabelLogin.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        JlabelLogin.setText("Login");
+        JlabelLogin.setText("Inscription");
         JlabelLogin.setPreferredSize(new java.awt.Dimension(130, 60));
 
         jUserNameL.setFont(new java.awt.Font("URW Gothic", 1, 14)); // NOI18N
@@ -81,65 +77,39 @@ public class Login extends javax.swing.JPanel {
         jPasswordL.setPreferredSize(new java.awt.Dimension(51, 10));
 
         jPasswordField.setBackground(new java.awt.Color(32, 46, 64));
-        jPasswordField.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
+        jPasswordField.setFont(new java.awt.Font("URW Gothic", 0, 18)); // NOI18N
         jPasswordField.setForeground(new java.awt.Color(255, 255, 255));
         jPasswordField.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 0));
         jPasswordField.setMaximumSize(new java.awt.Dimension(200, 36));
         jPasswordField.setMinimumSize(new java.awt.Dimension(200, 36));
         jPasswordField.setPreferredSize(new java.awt.Dimension(200, 30));
 
-        Jlogin.setBackground(new java.awt.Color(32, 46, 64));
-        Jlogin.setForeground(new java.awt.Color(255, 255, 255));
-        Jlogin.setText("CONNECTION");
-        Jlogin.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 0));
-        Jlogin.setMaximumSize(new java.awt.Dimension(125, 23));
-        Jlogin.setMinimumSize(new java.awt.Dimension(125, 23));
-        Jlogin.setPreferredSize(new java.awt.Dimension(125, 23));
-        Jlogin.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JloginActionPerformed(evt);
-            }
-        });
-
-        Jlogin1.setBackground(new java.awt.Color(32, 46, 64));
-        Jlogin1.setFont(new java.awt.Font("sansserif", 1, 10)); // NOI18N
-        Jlogin1.setForeground(new java.awt.Color(255, 255, 255));
-        Jlogin1.setText("Inscription");
-        Jlogin1.setAutoscrolls(true);
-        Jlogin1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 0));
-        Jlogin1.setMaximumSize(new java.awt.Dimension(80, 18));
-        Jlogin1.setMinimumSize(new java.awt.Dimension(80, 18));
-        Jlogin1.setPreferredSize(new java.awt.Dimension(80, 18));
-        Jlogin1.addActionListener(new java.awt.event.ActionListener() {
+        JInscrire.setBackground(new java.awt.Color(32, 46, 64));
+        JInscrire.setForeground(new java.awt.Color(255, 255, 255));
+        JInscrire.setText("Inscription");
+        JInscrire.setBorder(null);
+        JInscrire.setMaximumSize(new java.awt.Dimension(75, 23));
+        JInscrire.setMinimumSize(new java.awt.Dimension(75, 23));
+        JInscrire.setPreferredSize(new java.awt.Dimension(75, 23));
+        JInscrire.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JInscrireActionPerformed(evt);
             }
         });
-
-        jLabel2.setFont(new java.awt.Font("URW Gothic", 0, 10)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Pas encore inscrit ?");
 
         javax.swing.GroupLayout JcardLoginLayout = new javax.swing.GroupLayout(JcardLogin);
         JcardLogin.setLayout(JcardLoginLayout);
         JcardLoginLayout.setHorizontalGroup(
             JcardLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JcardLoginLayout.createSequentialGroup()
-                .addGroup(JcardLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(JcardLoginLayout.createSequentialGroup()
-                        .addContainerGap(170, Short.MAX_VALUE)
-                        .addGroup(JcardLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                            .addComponent(jPasswordL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jUserNameL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(JuserNameInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Jlogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(JlabelLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(JcardLoginLayout.createSequentialGroup()
-                        .addGap(169, 169, 169)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Jlogin1, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(170, Short.MAX_VALUE)
+                .addGroup(JcardLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(JInscrire, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPasswordL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(JuserNameInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jUserNameL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(JlabelLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(170, 170, 170))
         );
 
@@ -151,7 +121,7 @@ public class Login extends javax.swing.JPanel {
                 .addGap(30, 30, 30)
                 .addComponent(JlabelLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(80, 80, 80)
-                .addComponent(jUserNameL, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jUserNameL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(JuserNameInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -159,12 +129,8 @@ public class Login extends javax.swing.JPanel {
                 .addGap(5, 5, 5)
                 .addComponent(jPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(Jlogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20)
-                .addGroup(JcardLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Jlogin1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addGap(25, 25, 25))
+                .addComponent(JInscrire, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(64, 64, 64))
         );
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/logo@4x.png"))); // NOI18N
@@ -191,29 +157,22 @@ public class Login extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void JloginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JloginActionPerformed
-        // TODO add your handling code here:
-        origin.login(JuserNameInput.getText(),jPasswordField.getText());
-    }//GEN-LAST:event_JloginActionPerformed
-
     private void JInscrireActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JInscrireActionPerformed
         // TODO add your handling code here:
         Home homeInscription = new Home();
-        homeInscription.InscriptionTo();
+        homeInscription.inscription(JuserNameInput.getText(),jPasswordField.getText());
+        homeInscription.login(JuserNameInput.getText(),jPasswordField.getText());  
     }//GEN-LAST:event_JInscrireActionPerformed
-    
    
     
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton JInscrire;
     private javax.swing.JPanel JcardLogin;
     private javax.swing.JLabel JlabelLogin;
-    private javax.swing.JButton Jlogin;
-    private javax.swing.JButton Jlogin1;
     private javax.swing.JTextField JuserNameInput;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JPasswordField jPasswordField;
     private javax.swing.JLabel jPasswordL;
     private javax.swing.JLabel jUserNameL;

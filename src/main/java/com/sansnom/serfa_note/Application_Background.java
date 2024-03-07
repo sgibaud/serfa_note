@@ -10,6 +10,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import javax.swing.JButton;
 import javax.swing.plaf.basic.BasicButtonUI;
+import com.sansnom.serfa_note.Home;
 
 /**
  *
@@ -73,7 +74,6 @@ public class Application_Background extends javax.swing.JPanel {
         JlabUser = new javax.swing.JLabel();
         JtextUser = new javax.swing.JTextField();
         JbtnExit = new javax.swing.JButton();
-        JbtnUser = new javax.swing.JButton();
         Jcenterpanel = new javax.swing.JPanel();
         Jtop = new javax.swing.JPanel();
         JbtnSearch = new javax.swing.JButton();
@@ -81,6 +81,9 @@ public class Application_Background extends javax.swing.JPanel {
         Jclasseur = new javax.swing.JPanel();
         JaddClasseur = new javax.swing.JButton();
         JlabelClasseur = new javax.swing.JLabel();
+        JClasseurBloc = new javax.swing.JPanel();
+        JClasseurColor = new javax.swing.JPanel();
+        JClasseurText = new javax.swing.JTextField();
         Jintercalaire = new javax.swing.JPanel();
         JaddIntercalaire = new javax.swing.JButton();
         JLabelIntercalaire = new javax.swing.JLabel();
@@ -170,24 +173,6 @@ public class Application_Background extends javax.swing.JPanel {
         });
         Jmenu.add(JbtnExit);
 
-        JbtnUser.setBackground(new Color(255,255,255,0));
-        JbtnUser.setForeground(new java.awt.Color(60, 60, 60));
-        JbtnUser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/people@4x.png"))); // NOI18N
-        JbtnUser.setPreferredSize(new java.awt.Dimension(80, 80));
-        JbtnUser.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/people_roll@4x.png"))); // NOI18N
-        JbtnUser.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/people_neg_1@4x.png"))); // NOI18N
-        JbtnUser.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                JbtnUserMouseClicked(evt);
-            }
-        });
-        JbtnUser.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JbtnUserActionPerformed(evt);
-            }
-        });
-        Jmenu.add(JbtnUser);
-
         JRoot.add(Jmenu, java.awt.BorderLayout.WEST);
 
         Jcenterpanel.setLayout(new java.awt.BorderLayout());
@@ -241,16 +226,49 @@ public class Application_Background extends javax.swing.JPanel {
         JlabelClasseur.setMinimumSize(new java.awt.Dimension(263, 30));
         JlabelClasseur.setPreferredSize(new java.awt.Dimension(330, 25));
 
+        JClasseurBloc.setBackground(new java.awt.Color(42, 70, 105));
+        JClasseurBloc.setAutoscrolls(true);
+        JClasseurBloc.setMaximumSize(new java.awt.Dimension(240, 540));
+        JClasseurBloc.setMinimumSize(new java.awt.Dimension(240, 540));
+        JClasseurBloc.setPreferredSize(new java.awt.Dimension(240, 540));
+
+        JClasseurColor.setBackground(new java.awt.Color(102, 102, 255));
+        JClasseurColor.setPreferredSize(new java.awt.Dimension(30, 30));
+
+        javax.swing.GroupLayout JClasseurColorLayout = new javax.swing.GroupLayout(JClasseurColor);
+        JClasseurColor.setLayout(JClasseurColorLayout);
+        JClasseurColorLayout.setHorizontalGroup(
+            JClasseurColorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 30, Short.MAX_VALUE)
+        );
+        JClasseurColorLayout.setVerticalGroup(
+            JClasseurColorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 30, Short.MAX_VALUE)
+        );
+
+        JClasseurBloc.add(JClasseurColor);
+
+        JClasseurText.setEditable(false);
+        JClasseurText.setFont(new java.awt.Font("URW Gothic", 0, 18)); // NOI18N
+        JClasseurText.setText("jTextField1");
+        JClasseurText.setMaximumSize(new java.awt.Dimension(190, 30));
+        JClasseurText.setMinimumSize(new java.awt.Dimension(190, 30));
+        JClasseurText.setPreferredSize(new java.awt.Dimension(190, 30));
+        JClasseurBloc.add(JClasseurText);
+
         javax.swing.GroupLayout JclasseurLayout = new javax.swing.GroupLayout(Jclasseur);
         Jclasseur.setLayout(JclasseurLayout);
         JclasseurLayout.setHorizontalGroup(
             JclasseurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JclasseurLayout.createSequentialGroup()
                 .addGap(10, 10, 10)
-                .addComponent(JaddClasseur)
-                .addGap(5, 5, 5)
-                .addComponent(JlabelClasseur, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20))
+                .addGroup(JclasseurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(JClasseurBloc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JclasseurLayout.createSequentialGroup()
+                        .addComponent(JaddClasseur)
+                        .addGap(5, 5, 5)
+                        .addComponent(JlabelClasseur, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         JclasseurLayout.setVerticalGroup(
             JclasseurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -259,7 +277,9 @@ public class Application_Background extends javax.swing.JPanel {
                 .addGroup(JclasseurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(JlabelClasseur, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(JaddClasseur))
-                .addGap(574, 574, 574))
+                .addGap(18, 18, 18)
+                .addComponent(JClasseurBloc, javax.swing.GroupLayout.DEFAULT_SIZE, 542, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         Jcenter.add(Jclasseur);
@@ -356,18 +376,14 @@ public class Application_Background extends javax.swing.JPanel {
 
     private void JbtnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JbtnExitActionPerformed
         // TODO add your handling code here:
+        Home.logout();
     }//GEN-LAST:event_JbtnExitActionPerformed
-
-    private void JbtnUserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JbtnUserMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_JbtnUserMouseClicked
-
-    private void JbtnUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JbtnUserActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_JbtnUserActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel JClasseurBloc;
+    private javax.swing.JPanel JClasseurColor;
+    private javax.swing.JTextField JClasseurText;
     private javax.swing.JLabel JLabelIntercalaire;
     private javax.swing.JPanel JRoot;
     private javax.swing.JButton JaddClasseur;
@@ -375,7 +391,6 @@ public class Application_Background extends javax.swing.JPanel {
     private javax.swing.JButton JaddNote;
     private javax.swing.JButton JbtnExit;
     private javax.swing.JButton JbtnSearch;
-    private javax.swing.JButton JbtnUser;
     private javax.swing.JPanel Jcenter;
     private javax.swing.JPanel Jcenterpanel;
     private javax.swing.JPanel Jclasseur;

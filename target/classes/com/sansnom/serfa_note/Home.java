@@ -19,6 +19,7 @@ public class Home extends javax.swing.JFrame {
     private static Home app;
     private Login login;
     private Application_Background home;
+    private Inscription inscription;
     private BDDO db;
     /**
      * Creates new form Home
@@ -27,6 +28,7 @@ public class Home extends javax.swing.JFrame {
         db = new BDDO();
         initComponents();
         login = new Login(this);
+        inscription = new Inscription();
         home = new Application_Background();
         home.setUser("vuh");
         setContentPane(login);
@@ -53,6 +55,25 @@ public class Home extends javax.swing.JFrame {
         else {}
     }
    
+    
+       // insertion d'un nouveau compte
+    public void inscription(String id, String pswd) {
+       db.InsertUser(id, pswd);
+    }
+   
+   // connecte page inscription
+    public void InscriptionTo () {
+        app.setContentPane(app.inscription);
+        app.inscription.applyComponentOrientation(app.getComponentOrientation());
+        SwingUtilities.updateComponentTreeUI(app.inscription);
+    }
+    
+    
+    public static void logout() {
+        app.setContentPane(app.login);
+        app.login.applyComponentOrientation(app.getComponentOrientation());
+        SwingUtilities.updateComponentTreeUI(app.login);
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
