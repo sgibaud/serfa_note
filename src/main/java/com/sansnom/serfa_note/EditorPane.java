@@ -26,45 +26,43 @@ import javax.swing.text.JTextComponent;
  */
 public class EditorPane extends JPanel {
 
-    JPanel buttonPanel;
-    JPanel savePanel;
-    JPanel titlePanel;
-    JPanel notePane;
-    JPanel contentText;
-    JPanel titleButtonPanel;
-    JPanel labelPane;
-    JTextField labelField;
-    JTextPane textPane;
-    JTextField titleLb;
-    JTextField newLabelField;
-    JButton modifTitle;
-    JButton sauvTitleButton;
-    JButton editLabelButton;
-    JButton saveLabelButton;
-    JButton deleteLabelButton;
-    JButton saveNewLabel;
+    private JPanel savePanel; // contient le bouton enregistrer la note
+    private JPanel titlePanel; // contient le titre de la note
+    private JPanel notePane; // container principal contenant le titre, la note et le bouton enregistrer
+    private JPanel contentText; // container pour le JTextPane de la note (textPane)
+    private JPanel titleButtonPanel; // panel avec les boutons pour modifier le title
+    private JPanel labelPane; // container ou les labels s'affichent
+    
+    private JTextPane textPane; //texte principal de la note
+    private JTextField titleLb; // label qui affiche le titre
+    private JButton modifTitle; // bouton pour modifier le titre
+    private JButton sauvTitleButton; //bouton pour sauvegarder le texte modifier
+    
+    private JTextField labelField;// affiche les labels liés à la liste
+    private JButton editLabel; // bouton qui ouvre la modal de modification de label
+    
+    private JButton ReadButton; // bouton qui ouvre le fichier
+    private JComboBox sizeBox; // taille de la police
+    private JButton boldButton; // met le texte en gras
+    private JButton italicButton; //met le texte en italique
+    private JButton colorButton; // colorPicker et mise en couleur du texte
+    private JButton saveEditor; // bouton qui sauvegarde le contenu de la note
+    private JButton addNewLabel;// bouton qui ajoute un nouveau label
+    private JComboBox fontBox; //change la typographie
 
-    JButton ReadButton;
-    JComboBox sizeBox;
-    JButton boldButton;
-    JButton italicButton;
-    JButton colorButton;
-    JButton saveEditor;
-    JButton addNewLabel;
-    JComboBox fontBox;
-    JComboBox labelBox;
-
-    ImageIcon editTitle;
-    ImageIcon edit_Title;
-    ImageIcon saveTitle;
-    ImageIcon save_Title;
-
-    LabelClass labelClass;
-    String[] fontName;
-
-    String charset = "UTF-8";
-    String cheminDeFichier = "C:/Users/psylo/Downloads/Demo.txt"; // pour les sauvegardes dans un fichier
-    String itemLabel;
+    private ImageIcon edit_Icon = new ImageIcon(getClass().getResource("/resources/doc.png")); //icône de modifications
+    private ImageIcon editIcon = new ImageIcon(edit_Icon.getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT)); //icône de modifications redimensionnée
+    private ImageIcon save_Icon = new ImageIcon(getClass().getResource("/resources/save_roll@4x.png")); //icône de sauvegarde
+    private ImageIcon saveIcon = new ImageIcon(save_Icon.getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT));; //icône de sauvegarde redimensionnée 
+    private ImageIcon add_Icon = new ImageIcon(getClass().getResource("/resources/add@2x.png"));
+    private ImageIcon addIcon = new ImageIcon(add_Icon.getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT));
+   
+    
+    private LabelClass labelClass; //classe label
+    
+    private String[] fontName;
+    private String charset = "UTF-8";
+    private String cheminDeFichier = "C:/Users/psylo/Downloads/Demo.txt"; // pour les sauvegardes dans un fichier
 
     public EditorPane() {
 
@@ -81,18 +79,10 @@ public class EditorPane extends JPanel {
         titlePanel = new JPanel();
         titleButtonPanel = new JPanel();
         titleLb = new JTextField();
-        labelPane = new JPanel();
-        labelField = new JTextField();
+        
         labelClass = new LabelClass();
 
-        // Je créé les icônes pour les mettre dans les boutons
-        edit_Title = new ImageIcon(getClass().getResource("/resources/doc.png"));
-        save_Title = new ImageIcon(getClass().getResource("/resources/save_roll@4x.png"));
-
-        // Je les retaille
-        ImageIcon editTitle = new ImageIcon(edit_Title.getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT)); // retaille
-                                                                                                                   // l'image
-        ImageIcon saveTitle = new ImageIcon(save_Title.getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT)); //
+        
 
         // Je créé les marges pour le texte tapé
         Insets insets = new Insets(5, 5, 5, 5);
@@ -108,7 +98,7 @@ public class EditorPane extends JPanel {
         this.setLayout(new BorderLayout());
         savePanel.setLayout(new FlowLayout(FlowLayout.RIGHT));
         titlePanel.setLayout(new FlowLayout(FlowLayout.LEFT));
-        labelPane.setLayout(new FlowLayout(FlowLayout.LEFT));
+        
 
         textPane.setEditable(true);
         textPane.setContentType("text/html");
@@ -144,7 +134,7 @@ public class EditorPane extends JPanel {
         titleLb.setBorder(null);
 
         modifTitle = new JButton();
-        modifTitle.setIcon(editTitle);
+        modifTitle.setIcon(editIcon);
         modifTitle.setBackground(new Color(230, 233, 240));
         modifTitle.setBorderPainted(false);
         modifTitle.setPreferredSize(new Dimension(50, 30));
@@ -158,7 +148,7 @@ public class EditorPane extends JPanel {
         });
 
         sauvTitleButton = new JButton();
-        sauvTitleButton.setIcon(saveTitle);
+        sauvTitleButton.setIcon(saveIcon);
         sauvTitleButton.setBackground(new Color(230, 233, 240));
         sauvTitleButton.setBorderPainted(false);
         sauvTitleButton.setVisible(false);
@@ -188,26 +178,12 @@ public class EditorPane extends JPanel {
         notePane.add(contentText, BorderLayout.CENTER);
         notePane.add(savePanel, BorderLayout.SOUTH);
 
-        editLabelButton = new JButton("Modifier");
-        saveLabelButton = new JButton("Sauvegarder");
-        deleteLabelButton = new JButton("Supprimer");
-        editLabelButton.setVisible(false);
-        saveLabelButton.setVisible(false);
-        deleteLabelButton.setVisible(false);
+        
 
-        labelField.setColumns(20);
-        labelField.setBorder(null);
-        labelField.setEditable(false);
-        labelPane.add(labelField);
-        labelPane.add(editLabelButton);
-        labelPane.add(saveLabelButton);
-        labelPane.add(deleteLabelButton);
-
-        // J'ajoute la possibilité de scroller la fenêtre et je place le texte et le
-        // panel des boutons
+        // J'ajoute la possibilité de scroller la fenêtre et je place le texte et le panel des boutons
         this.add(createToolBar(), BorderLayout.NORTH);
         this.add(new JScrollPane(notePane), BorderLayout.CENTER);
-        this.add(labelPane, BorderLayout.SOUTH);
+        this.add(createLabelPane(), BorderLayout.SOUTH);
 
     }
 
@@ -299,98 +275,37 @@ public class EditorPane extends JPanel {
             }
         });
 
-        labelBox = createLabelBox();
-        labelBox.setFont(new Font("Arial", Font.BOLD, 16));
-        labelBox.setBackground(new Color(255, 255, 255));
-        labelBox.setPreferredSize(new Dimension(200, 30));
-        labelBox.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                itemLabel = labelBox.getSelectedItem().toString();
-                labelField.setText(itemLabel);
-                editLabelButton.setVisible(true);
-                deleteLabelButton.setVisible(true);
-
-                // bouton d'édition
-                editLabelButton.addActionListener(new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent arg0) {
-                        labelField.setEditable(true);
-                        saveLabelButton.setVisible(true);
-                        editLabelButton.setVisible(false);
-                    }
-                });
-
-                saveLabelButton.addActionListener(new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent arg0) {
-                        saveLabelButton.setVisible(false);
-                        editLabelButton.setVisible(true);
-                        labelField.setEditable(false);
-                        labelClass.editLabel(itemLabel);
-                    }
-                });
-
-                deleteLabelButton.addActionListener(evt -> {
-                    int option = JOptionPane.showConfirmDialog(null,
-                            "Êtes-vous sûr de vouloir supprimer le label \"" + itemLabel + "\" ?",
-                            "Confirmation de suppression", JOptionPane.YES_NO_OPTION);
-                    if (option == JOptionPane.YES_OPTION) {
-                        labelClass.deleteLabel(itemLabel);
-                    }
-                });
-            }
-        });
-        newLabelField = new JTextField();
-        newLabelField.setVisible(false);
-        newLabelField.setColumns(20);
-
-        saveNewLabel = new JButton("Save Label");
-        saveNewLabel.setFont(new Font("Arial", Font.BOLD, 18));
-        saveNewLabel.setBackground(new Color(206, 222, 242));
-        saveNewLabel.setPreferredSize(new Dimension(150, 30));
-        saveNewLabel.setVisible(false);
-        saveNewLabel.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) { // ouvre la boîte à couleur
-                newLabelField.setVisible(false);
-                addNewLabel.setVisible(true);
-                saveNewLabel.setVisible(false);
-                String newItem = newLabelField.getText();
-                labelClass.newLabel(newItem);
-            }
-        });
-
-        addNewLabel = new JButton("New Label");
-        addNewLabel.setFont(new Font("Arial", Font.BOLD, 18));
-        addNewLabel.setBackground(new Color(206, 222, 242));
-        addNewLabel.setPreferredSize(new Dimension(150, 30));
-        addNewLabel.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) { // ouvre la boîte à couleur
-                newLabelField.setVisible(true);
-                saveNewLabel.setVisible(true);
-                addNewLabel.setVisible(false);
-            }
-        });
-
         toolBar.add(ReadButton);
         toolBar.add(fontBox);
         toolBar.add(sizeBox);
         toolBar.add(boldButton);
         toolBar.add(italicButton);
         toolBar.add(colorButton);
-        toolBar.add(labelBox);
-        toolBar.add(addNewLabel);
-        toolBar.add(saveNewLabel);
-        toolBar.add(newLabelField);
 
         return toolBar;
     }
 
-    public JComboBox createLabelBox() {
-        return labelClass.createLabelBox();
-    }
+    private JPanel createLabelPane(){
+        labelPane = new JPanel();
+        labelField = new JTextField();
+        addNewLabel = new JButton();
+        editLabel = new JButton();
+        
+        addNewLabel.setIcon(addIcon);
+        addNewLabel.setPreferredSize(new Dimension(50, 30));
+        editLabel.setIcon(editIcon);
+        editLabel.setPreferredSize(new Dimension(50, 30));
+        
+        labelField.setColumns(50);
+        labelField.setBorder(null);
+        labelField.setBackground(new Color(230, 233, 240));
+        labelField.setEditable(false);
+        labelPane.setLayout(new FlowLayout(FlowLayout.LEFT));
+        labelPane.add(editLabel);
+        labelPane.add(labelField);
+        labelPane.add(addNewLabel);
+        return labelPane;  
+    } 
 
     // Création du menu déroulant pour la typographie
     public JComboBox createFontBox() {
@@ -413,7 +328,9 @@ public class EditorPane extends JPanel {
         }
         return box;
     }
-
+    
+    
+    //Change le style du contenu de la note
     private void changeStyle(String typeStyle, String font) {
 
         StyledDocument doc = textPane.getStyledDocument();
