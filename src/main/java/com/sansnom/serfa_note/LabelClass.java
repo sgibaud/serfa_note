@@ -4,10 +4,7 @@
  */
 package com.sansnom.serfa_note;
 
-import java.awt.Dimension;
-import java.awt.FlowLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.BorderLayout;
 import java.util.ArrayList;
 import javax.swing.*;
 
@@ -17,10 +14,10 @@ import javax.swing.*;
  */
 public class LabelClass extends JPanel {
 
-    JTextField labelField;
+    JLabel labelField;
     JTextField labelAdded;
 
-    JPanel labelPane;
+    JPanel labelPanel;
     JPanel addButtonPane;
 
     JButton addButton;
@@ -50,18 +47,30 @@ public class LabelClass extends JPanel {
     }
 
     private void initLabels() {
-
-        labelBox = createLabelBox();
+        labelText = new String();
+        labelPanel = new JPanel();
+        
+        for (int i = 0; i < listLabels.size(); i++) {
+            labelText = listLabels.get(i);
+            labelField = new JLabel(" - " + labelText + " - ");
+            labelPanel.add(labelField);
+        }
+        
+        this.add(labelPanel);
+        
+        /*labelBox = createLabelBox();
         labelBox.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 System.out.println("Valeur: " + labelBox.getSelectedItem().toString());
             }
-        });
+        });*/
 
     }
+    
+    
 
-//Afficher les labels dans la comboBox -> SELECT ///////////////////////////////////////////////////////////////////////////////////////////
+//Afficher les labels dans la comboBox -> SELECT All Labels ///////////////////////////////////////////////////////////////////////////////////////////
     public JComboBox createLabelBox() {
         JComboBox box = new JComboBox();
         box.addItem("Choisir un label :");

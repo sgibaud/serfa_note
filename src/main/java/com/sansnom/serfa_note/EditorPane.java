@@ -35,19 +35,20 @@ public class EditorPane extends JPanel {
     
     private JTextPane textPane; //texte principal de la note
     private JTextField titleLb; // label qui affiche le titre
-    private JButton modifTitle; // bouton pour modifier le titre
-    private JButton sauvTitleButton; //bouton pour sauvegarder le texte modifier
+    private JButton editTitleButton; // bouton pour modifier le titre
+    private JButton saveTitleButton; //bouton pour sauvegarder le texte modifier
     
-    private JTextField labelField;// affiche les labels liés à la liste
-    private JButton editLabel; // bouton qui ouvre la modal de modification de label
+    private JPanel labelField;// affiche les labels liés à la liste
+    private JButton editLabelButton; // bouton qui ouvre la modal de modification de label
+    private JLabel labelTitle; // annonce des labels
     
     private JButton ReadButton; // bouton qui ouvre le fichier
     private JComboBox sizeBox; // taille de la police
     private JButton boldButton; // met le texte en gras
     private JButton italicButton; //met le texte en italique
     private JButton colorButton; // colorPicker et mise en couleur du texte
-    private JButton saveEditor; // bouton qui sauvegarde le contenu de la note
-    private JButton addNewLabel;// bouton qui ajoute un nouveau label
+    private JButton saveNoteButton; // bouton qui sauvegarde le contenu de la note
+    private JButton addNewLabelButton;// bouton qui ajoute un nouveau label
     private JComboBox fontBox; //change la typographie
 
     private ImageIcon edit_Icon = new ImageIcon(getClass().getResource("/resources/doc.png")); //icône de modifications
@@ -79,11 +80,7 @@ public class EditorPane extends JPanel {
         titlePanel = new JPanel();
         titleButtonPanel = new JPanel();
         titleLb = new JTextField();
-        
-        labelClass = new LabelClass();
-
-        
-
+    
         // Je créé les marges pour le texte tapé
         Insets insets = new Insets(5, 5, 5, 5);
 
@@ -114,57 +111,57 @@ public class EditorPane extends JPanel {
         });
 
         // Je mets mon bouton sauvegarder dans un panel pour pouvoir l'afficher à droite
-        saveEditor = new JButton("Enregistrer");
-        saveEditor.setBackground(new Color(206, 222, 242));
-        saveEditor.setFont(new Font("Arial", Font.BOLD, 18));
-        saveEditor.setPreferredSize(new Dimension(150, 40));
-        saveEditor.setBorder(BorderFactory.createLineBorder(new Color(149, 145, 242), 2));
-        saveEditor.addActionListener(new ActionListener() {
+        saveNoteButton = new JButton("Enregistrer");
+        saveNoteButton.setBackground(new Color(206, 222, 242));
+        saveNoteButton.setFont(new Font("Arial", Font.BOLD, 18));
+        saveNoteButton.setPreferredSize(new Dimension(150, 40));
+        saveNoteButton.setBorder(BorderFactory.createLineBorder(new Color(149, 145, 242), 2));
+        saveNoteButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent arg0) {
                 sauvegarder();
             }
         });
-        savePanel.add(saveEditor);
+        savePanel.add(saveNoteButton);
 
         titleLb.setText("Title");
         titleLb.setFont(new Font("Arial", Font.BOLD, 20));
         titleLb.setEditable(false);
         titleLb.setMargin(insets);
-        titleLb.setBorder(null);
+        titleLb.setBorder(BorderFactory.createLineBorder(new Color(230, 233, 240), 0));
 
-        modifTitle = new JButton();
-        modifTitle.setIcon(editIcon);
-        modifTitle.setBackground(new Color(230, 233, 240));
-        modifTitle.setBorderPainted(false);
-        modifTitle.setPreferredSize(new Dimension(50, 30));
-        modifTitle.addActionListener(new ActionListener() {
+        editTitleButton = new JButton();
+        editTitleButton.setIcon(editIcon);
+        editTitleButton.setBackground(new Color(230, 233, 240));
+        editTitleButton.setBorderPainted(false);
+        editTitleButton.setPreferredSize(new Dimension(50, 30));
+        editTitleButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent arg0) {
-                modifTitle.setVisible(false);
-                sauvTitleButton.setVisible(true);
+                editTitleButton.setVisible(false);
+                saveTitleButton.setVisible(true);
                 titleLb.setEditable(true);
             }
         });
 
-        sauvTitleButton = new JButton();
-        sauvTitleButton.setIcon(saveIcon);
-        sauvTitleButton.setBackground(new Color(230, 233, 240));
-        sauvTitleButton.setBorderPainted(false);
-        sauvTitleButton.setVisible(false);
-        sauvTitleButton.setPreferredSize(new Dimension(50, 30));
-        sauvTitleButton.addActionListener(new ActionListener() {
+        saveTitleButton = new JButton();
+        saveTitleButton.setIcon(saveIcon);
+        saveTitleButton.setBackground(new Color(230, 233, 240));
+        saveTitleButton.setBorderPainted(false);
+        saveTitleButton.setVisible(false);
+        saveTitleButton.setPreferredSize(new Dimension(50, 30));
+        saveTitleButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent arg0) {
-                modifTitle.setVisible(true);
-                sauvTitleButton.setVisible(false);
+                editTitleButton.setVisible(true);
+                saveTitleButton.setVisible(false);
                 titleLb.setEditable(false);
 // enregistrer le Title en BDD /////////////////////////////////////////////////////////////////////////////////////////////////
             }
         });
 
-        titleButtonPanel.add(modifTitle);
-        titleButtonPanel.add(sauvTitleButton);
+        titleButtonPanel.add(editTitleButton);
+        titleButtonPanel.add(saveTitleButton);
 
         titlePanel.setLayout(new BorderLayout());
         titlePanel.add(titleLb, BorderLayout.CENTER);
@@ -287,23 +284,32 @@ public class EditorPane extends JPanel {
 
     private JPanel createLabelPane(){
         labelPane = new JPanel();
-        labelField = new JTextField();
-        addNewLabel = new JButton();
-        editLabel = new JButton();
+        labelField = new JPanel();
+        addNewLabelButton = new JButton();
+        editLabelButton = new JButton();
+        labelTitle = new JLabel();
+        labelClass = new LabelClass();
         
-        addNewLabel.setIcon(addIcon);
-        addNewLabel.setPreferredSize(new Dimension(50, 30));
-        editLabel.setIcon(editIcon);
-        editLabel.setPreferredSize(new Dimension(50, 30));
+        addNewLabelButton.setIcon(addIcon);
+        addNewLabelButton.setPreferredSize(new Dimension(50, 40));
+        editLabelButton.setIcon(editIcon);
+        editLabelButton.setPreferredSize(new Dimension(50, 40));
         
-        labelField.setColumns(50);
-        labelField.setBorder(null);
+        labelTitle.setText("Labels : ");
+        labelTitle.setLayout(new FlowLayout(FlowLayout.CENTER));
+        
+        labelField.setBorder(BorderFactory.createLineBorder(new Color(230, 233, 240), 0));
         labelField.setBackground(new Color(230, 233, 240));
-        labelField.setEditable(false);
+        labelField.setFont(new Font("Arial", Font.BOLD, 16));
+        labelField.setPreferredSize(new Dimension(500, 40));
+        labelField.setLayout(new FlowLayout(FlowLayout.LEFT));
+        labelPane.setBackground(new Color(230, 233, 240));
         labelPane.setLayout(new FlowLayout(FlowLayout.LEFT));
-        labelPane.add(editLabel);
+        labelField.add(labelClass);
+        labelPane.add(editLabelButton);
+        labelPane.add(labelTitle);
         labelPane.add(labelField);
-        labelPane.add(addNewLabel);
+        labelPane.add(addNewLabelButton);
         return labelPane;  
     } 
 
