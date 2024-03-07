@@ -68,7 +68,6 @@ public class Application_Background extends javax.swing.JPanel {
         JlabUser = new javax.swing.JLabel();
         JtextUser = new javax.swing.JTextField();
         JbtnExit = new javax.swing.JButton();
-        JbtnUser = new javax.swing.JButton();
         Jcenterpanel = new javax.swing.JPanel();
         Jtop = new javax.swing.JPanel();
         JbtnSearch = new javax.swing.JButton();
@@ -164,24 +163,6 @@ public class Application_Background extends javax.swing.JPanel {
             }
         });
         Jmenu.add(JbtnExit);
-
-        JbtnUser.setBackground(new Color(255,255,255,0));
-        JbtnUser.setForeground(new java.awt.Color(60, 60, 60));
-        JbtnUser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/people@4x.png"))); // NOI18N
-        JbtnUser.setPreferredSize(new java.awt.Dimension(80, 80));
-        JbtnUser.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/people_roll@4x.png"))); // NOI18N
-        JbtnUser.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/people_neg_1@4x.png"))); // NOI18N
-        JbtnUser.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                JbtnUserMouseClicked(evt);
-            }
-        });
-        JbtnUser.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JbtnUserActionPerformed(evt);
-            }
-        });
-        Jmenu.add(JbtnUser);
 
         JRoot.add(Jmenu, java.awt.BorderLayout.WEST);
 
@@ -353,14 +334,6 @@ public class Application_Background extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_JbtnExitActionPerformed
 
-    private void JbtnUserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JbtnUserMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_JbtnUserMouseClicked
-
-    private void JbtnUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JbtnUserActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_JbtnUserActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel JLabelIntercalaire;
@@ -370,7 +343,6 @@ public class Application_Background extends javax.swing.JPanel {
     private javax.swing.JButton JaddNote;
     private javax.swing.JButton JbtnExit;
     private javax.swing.JButton JbtnSearch;
-    private javax.swing.JButton JbtnUser;
     private javax.swing.JPanel Jcenter;
     private javax.swing.JPanel Jcenterpanel;
     private javax.swing.JPanel Jclasseur;
