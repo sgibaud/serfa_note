@@ -17,6 +17,7 @@ import javax.swing.plaf.basic.BasicButtonUI;
  */
 public class Application_Background extends javax.swing.JPanel {
 
+    public int idActiveUser;
     /**
      * Creates new form Application_Background
      */
@@ -52,6 +53,10 @@ public class Application_Background extends javax.swing.JPanel {
         }
     }
 
+    public void setUser(String user){
+        JtextUser.setText(user);
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -110,7 +115,7 @@ public class Application_Background extends javax.swing.JPanel {
         JtextUser.setBackground(new java.awt.Color(23, 106, 115));
         JtextUser.setFont(new java.awt.Font("URW Gothic", 1, 14)); // NOI18N
         JtextUser.setForeground(new java.awt.Color(255, 255, 255));
-        JtextUser.setText("Sandrine");
+        JtextUser.setText("N/A");
         JtextUser.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 0));
 
         javax.swing.GroupLayout LlogoLayoutLayout = new javax.swing.GroupLayout(LlogoLayout);

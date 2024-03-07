@@ -26,9 +26,10 @@ public class BDDO{
 			  //Load Driver
 			    Class.forName("org.mariadb.jdbc.Driver");
                           //Establish the connection to the database 
+                          Identifiants ids = new Identifiants();
 			  this.connection = DriverManager.getConnection("jdbc:mariadb://localhost:3306/applinotes",
-									"mariadb",
-									"mariadb*1");  
+									ids.getId(),
+									ids.getPswd());  
 			}
 		catch (ClassNotFoundException | SQLException e)
 			{
@@ -99,17 +100,18 @@ public class BDDO{
         return this.KeyRead(key);
         }
 	
-	public boolean ConnectUser(String username,String password){ //Vérifie si une combinaison username/password est dans la table Utilisateurs
+	public int ConnectUser(String username,String password){ //Vérifie si une combinaison username/password est dans la table Utilisateurs
             
         String[] values = {username,password};
         
         ResultSet data = this.ExecuteQuery("SELECT * FROM Utilisateur WHERE identifiant= ? AND motDePasse = ? ;",values);
         
             try { //Pas besoin du contenu, on vérifie juste si l'on a une réponse.
-                return data.next();
+                if(data.next()){return data.getInt("idUtilisateur");}
+                else{return -1;}
             } catch (SQLException ex) {
                 System.err.println("Couldn't acces results from query");
-                return false;
+                return -1;
             }
         
         }

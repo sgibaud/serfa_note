@@ -11,11 +11,13 @@ import java.awt.event.*;
  */
 public class Login extends javax.swing.JPanel {
 
+    private Home origin;
     /**
      * Creates new form Login
      */
-    public Login() {
+    public Login(Home home) {
         initComponents();
+        this.origin = home;
     }
 
     /**
@@ -192,8 +194,7 @@ public class Login extends javax.swing.JPanel {
 
     private void JloginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JloginActionPerformed
         // TODO add your handling code here:
-        Home homeConnexion = new Home();
-        homeConnexion.login(JuserNameInput.getText(),jPasswordField.getText());
+        origin.login(JuserNameInput.getText(),jPasswordField.getText());
     }//GEN-LAST:event_JloginActionPerformed
     
    

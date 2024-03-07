@@ -26,8 +26,9 @@ public class Home extends javax.swing.JFrame {
     public Home() {
         db = new BDDO();
         initComponents();
-        login = new Login();
+        login = new Login(this);
         home = new Application_Background();
+        home.setUser("vuh");
         setContentPane(login);
     }
     
@@ -37,7 +38,10 @@ public class Home extends javax.swing.JFrame {
     }*/
     
     public void login(String id,String pswd) {
-        if (db.ConnectUser(id,pswd)){
+        int valid = db.ConnectUser(id,pswd);
+        if (valid != -1){
+            home.setUser(id);
+            home.idActiveUser = valid;
             // FlatAnimatedLafChange.showSnapshot();
             app.setContentPane(app.home);
             app.home.applyComponentOrientation(app.getComponentOrientation());
