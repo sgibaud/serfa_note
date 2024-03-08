@@ -5,6 +5,12 @@
 package com.sansnom.serfa_note;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.*;
 
@@ -14,23 +20,25 @@ import javax.swing.*;
  */
 public class LabelClass extends JPanel {
 
-    JLabel labelField;
-    JTextField labelAdded;
+    private JLabel labelField;
+    private JTextField labelAdded;
 
-    JPanel labelPanel;
-    JPanel addButtonPane;
+    private JPanel labelPanel;
+    private JPanel labelBoxPanel;
+    private JButton saveAddLabelButton;
+    private JPanel addButtonPane;
 
-    JButton addButton;
-    JButton saveNewLabel;
+    private JButton addButton;
+    private JButton saveNewLabel;
 
-    JComboBox labelBox;
+    private JComboBox labelBox;
 
-    ArrayList<String> listLabels;
+    private ArrayList<String> listLabels;
 
-    String labelText;
-    String newLabel;
-    String contentAdded;
-    String[] labelName;
+    private String labelText;
+    private String newLabel;
+    private String contentAdded;
+    private String[] labelName;
 
     public LabelClass() {
 
@@ -49,12 +57,19 @@ public class LabelClass extends JPanel {
     private void initLabels() {
         labelText = new String();
         labelPanel = new JPanel();
+        labelPanel.setPreferredSize(new Dimension(600, 40));
+        labelPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
+        labelPanel.setBackground(new Color(23, 106, 115));
         
         for (int i = 0; i < listLabels.size(); i++) {
             labelText = listLabels.get(i);
             labelField = new JLabel(" - " + labelText + " - ");
+            labelField.setForeground(Color.WHITE);
+            labelField.setFont(new Font("Arial", Font.BOLD, 16));
+
             labelPanel.add(labelField);
         }
+        
         
         this.add(labelPanel);
         
@@ -71,15 +86,37 @@ public class LabelClass extends JPanel {
     
 
 //Afficher les labels dans la comboBox -> SELECT All Labels ///////////////////////////////////////////////////////////////////////////////////////////
-    public JComboBox createLabelBox() {
+    public JPanel createLabelBox() {
+        labelBoxPanel = new JPanel();
+        saveAddLabelButton = new JButton("Enregistrer");
         JComboBox box = new JComboBox();
-        box.addItem("Choisir un label :");
+        box.setBackground(Color.WHITE);
+        labelBoxPanel.setBackground(new Color(23, 106, 115));
+
+        saveAddLabelButton.setBackground(Color.WHITE);
+        saveAddLabelButton.setForeground(new Color(23, 106, 115));
+        saveAddLabelButton.setFont(new Font("Arial", Font.BOLD, 16));
+        saveAddLabelButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) { 
+//Sauvegarder le label choisi //////////////////////////////////////////////////////////////////////////////////////////////////////////                
+            System.out.println("Valeur: " + box.getSelectedItem().toString());
+            }
+        });
+        
+        labelBoxPanel.setBackground(new Color(23, 106, 115));
+        //box.addItem("Choisir un label :");
         labelName = new String[listLabels.size()];
         for (int i = 0; i < listLabels.size(); i++) {
             labelName[i] = listLabels.get(i);
             box.addItem(labelName[i]);
         }
-        return box;
+        box.setFont(new Font("Arial", Font.BOLD, 16));
+        box.setForeground(new Color(23, 106, 115));
+        labelBoxPanel.add(box, BorderLayout.CENTER);
+        labelBoxPanel.add(saveAddLabelButton, BorderLayout.SOUTH);
+        
+        return labelBoxPanel;
     }
 
     
