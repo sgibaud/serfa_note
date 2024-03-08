@@ -50,7 +50,6 @@ public class EditorPane extends JPanel {
     private JButton italicButton; //met le texte en italique
     private JButton colorButton; // colorPicker et mise en couleur du texte
     private JButton saveNoteButton; // bouton qui sauvegarde le contenu de la note
-    private JButton addNewLabelButton;// bouton qui ajoute un nouveau label
     private JComboBox fontBox; //change la typographie
 
     private ImageIcon edit_Icon = new ImageIcon(getClass().getResource("/resources/doc.png")); //icône de modifications
@@ -294,7 +293,6 @@ public class EditorPane extends JPanel {
     private JPanel createLabelPane(){
         labelPane = new JPanel();
         labelField = new JPanel();
-        addNewLabelButton = new JButton();
         editLabelButton = new JButton();
         labelTitle = new JLabel();
         labelClass = new LabelClass();
@@ -307,13 +305,11 @@ public class EditorPane extends JPanel {
         editLabelButton.setIcon(editIcon);
         editLabelButton.setPreferredSize(new Dimension(50, 40));
         
-        addNewLabelButton.setIcon(addIcon);
-        addNewLabelButton.setPreferredSize(new Dimension(50, 40));
-        addNewLabelButton.addActionListener(new ActionListener() {
+        editLabelButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) { // ouvre la modale
                 JModalLabel modal = new JModalLabel(origin, "Labels : ", true);
-                modal.displayLabelBox();
+                modal.displayLabelBox("noteLabel");
                 modal.setVisible(true);
             }
         });
@@ -331,7 +327,6 @@ public class EditorPane extends JPanel {
    
         labelField.add(labelClass);
         labelPane.add(editLabelButton);
-        labelPane.add(addNewLabelButton);
         labelPane.add(labelTitle);
         labelPane.add(labelField);
         return labelPane;  

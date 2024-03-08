@@ -20,23 +20,35 @@ import javax.swing.*;
  */
 public class LabelClass extends JPanel {
 
-    private JLabel labelField;
-    private JTextField labelAdded;
+    private JPanel labelPanel;//panel ou le labelField est ajouté -> initLabels()
+    private JLabel labelField; //champs ou les labels sont affichés dans la note -> initLabels()
 
-    private JPanel labelPanel;
-    private JPanel labelBoxPanel;
-    private JButton saveAddLabelButton;
-    private JPanel addButtonPane;
+    //méthode create label -> déclaration des composants
+    private JPanel labelBoxPanel; //panel principal dans la modal
+    private JPanel listPanel; //panel supérieur contenant la box des labels, les boutons pour tous les labels et le labelTextField
+    private JPanel allLabelPanel; //panel contenant les 3 boutons NEW MOD SUPP
+    private JPanel labelEditPanel;//panel contenant le labelTextField + les boutons Ajouter et Modifier + noteButtonPanel
+    private JPanel displayLabelPanel;//panel contenant le labelTextField + les boutons Ajouter et Modifier
+    private JPanel noteButtonPanel; //panel contenant les boutons ADD NOTE et SUPP NOTE
+    private JLabelButton newLabelButton; //bouton NEW
+    private JLabelButton suppLabelButton; //bouton SUPP
+    private JLabelButton modifLabelButton; //bouton MOD
+    private JLabelButton addNewLabelButton; //bouton ajouter
+    private JLabelButton updateLabelButton; //bouton modifier
+    private JLabelButton addLabelNoteButton; // bouton ADD NOTE
+    private JLabelButton suppLabelNoteButton; // bouton SUPP NOTE
+    private JTextField labelTextField; 
+    private String oldLabel;
 
     private JButton addButton;
-    private JButton saveNewLabel;
+    
 
     private JComboBox labelBox;
 
     private ArrayList<String> listLabels;
 
     private String labelText;
-    private String newLabel;
+    
     private String contentAdded;
     private String[] labelName;
 
@@ -86,26 +98,53 @@ public class LabelClass extends JPanel {
     
 
 //Afficher les labels dans la comboBox -> SELECT All Labels ///////////////////////////////////////////////////////////////////////////////////////////
-    public JPanel createLabelBox() {
+    public JPanel createAllLabelsModal(String labelType) {
         labelBoxPanel = new JPanel();
-        saveAddLabelButton = new JButton("Enregistrer");
+        listPanel = new JPanel();
+        allLabelPanel = new JPanel();
+        labelEditPanel = new JPanel();
+        noteButtonPanel = new JPanel();
+        displayLabelPanel = new JPanel();
+        newLabelButton = new JLabelButton("NEW");
+        suppLabelButton = new JLabelButton("SUPP");
+        modifLabelButton = new JLabelButton("MOD");
+        labelTextField = new JTextField("Choisissez, modifier ou supprimer un label");
+        addNewLabelButton = new JLabelButton("Ajouter");
+        updateLabelButton  = new JLabelButton("Modifier");
+        addLabelNoteButton  = new JLabelButton("ADD NOTE");
+        suppLabelNoteButton  = new JLabelButton("SUPP NOTE");
+        oldLabel = new String();
+        
+        addNewLabelButton.setVisible(false);
+        updateLabelButton.setVisible(false);
+        labelTextField.setEditable(false);
+        labelTextField.setPreferredSize(new Dimension(270, 40));
+        
+        listPanel.setLayout(new BorderLayout());
+        labelEditPanel.setLayout(new BorderLayout());
+        labelBoxPanel.setBackground(new Color(23, 106, 115));
+        listPanel.setBackground(new Color(23, 106, 115));
+        allLabelPanel.setBackground(new Color(23, 106, 115));
+        labelEditPanel.setBackground(new Color(23, 106, 115));
+        noteButtonPanel.setBackground(new Color(23, 106, 115));
+        displayLabelPanel.setBackground(new Color(23, 106, 115));
+        
+        addNewLabelButton.setPreferredSize(new Dimension(120, 40)); 
+        updateLabelButton.setPreferredSize(new Dimension(120, 40)); 
+        addLabelNoteButton.setPreferredSize(new Dimension(120, 40)); 
+        suppLabelNoteButton.setPreferredSize(new Dimension(120, 40)); 
+        
+        if(labelType.equals("noteLabel")){
+            noteButtonPanel.setVisible(true);
+        }else {
+            noteButtonPanel.setVisible(false);
+        }
+        
         JComboBox box = new JComboBox();
         box.setBackground(Color.WHITE);
-        labelBoxPanel.setBackground(new Color(23, 106, 115));
+        box.setPreferredSize(new Dimension(300, 40));
 
-        saveAddLabelButton.setBackground(Color.WHITE);
-        saveAddLabelButton.setForeground(new Color(23, 106, 115));
-        saveAddLabelButton.setFont(new Font("Arial", Font.BOLD, 16));
-        saveAddLabelButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) { 
-//Sauvegarder le label choisi //////////////////////////////////////////////////////////////////////////////////////////////////////////                
-            System.out.println("Valeur: " + box.getSelectedItem().toString());
-            }
-        });
-        
-        labelBoxPanel.setBackground(new Color(23, 106, 115));
-        //box.addItem("Choisir un label :");
+        labelBoxPanel.setLayout(new FlowLayout());
         labelName = new String[listLabels.size()];
         for (int i = 0; i < listLabels.size(); i++) {
             labelName[i] = listLabels.get(i);
@@ -113,153 +152,109 @@ public class LabelClass extends JPanel {
         }
         box.setFont(new Font("Arial", Font.BOLD, 16));
         box.setForeground(new Color(23, 106, 115));
-        labelBoxPanel.add(box, BorderLayout.CENTER);
-        labelBoxPanel.add(saveAddLabelButton, BorderLayout.SOUTH);
+        box.addActionListener(new ActionListener() {     
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    labelTextField.setText(box.getSelectedItem().toString());
+                }
+        });
+      
         
+        newLabelButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent arg0) {
+                labelTextField.setEditable(true);
+                labelTextField.setText("Saisir le nouveau label ici");
+                addNewLabelButton.setVisible(true);
+            }
+        });
+        
+        addNewLabelButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent arg0) {
+                labelTextField.setEditable(false);
+                labelTextField.getText();
+                addNewLabelButton.setVisible(false);
+                labelTextField.setText("Le label \"" + labelTextField.getText() + "\" est enregistré.");
+//Enregistrer le nouveau label labelTextField.getText(); -> INSERT //////////////////////////////////////////////////////////////////                 
+            }
+        });
+        
+        modifLabelButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent arg0) {
+                labelTextField.setEditable(true);
+                labelTextField.getText();
+                updateLabelButton.setVisible(true);
+                oldLabel = box.getSelectedItem().toString();
+            }
+        });
+        
+        updateLabelButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent arg0) {
+                labelTextField.setEditable(false);
+                labelTextField.getText();
+                updateLabelButton.setVisible(false);
+                labelTextField.setText("Le label \"" + oldLabel + "\" a été modifié.");
+//Enregistrer le nouveau label labelTextField.getText(); -> UPDATE //////////////////////////////////////////////////////////////////                 
+            }
+        });
+        
+        suppLabelButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent arg0) {
+                int option = JOptionPane.showConfirmDialog(null, "Êtes-vous sûr de vouloir supprimer le label \""  + box.getSelectedItem().toString() + "\" ?", "Confirmation de suppression", JOptionPane.YES_NO_OPTION);
+                    if (option == JOptionPane.YES_OPTION) {
+                        listLabels.remove(box.getSelectedItem().toString());
+                        labelTextField.setText("Le label \"" + box.getSelectedItem().toString() + "\" vient d'être supprimé.");
+                    }
+//Enregistrer le label choisi : box.getSelectedItem().toString(); -> DELETE //////////////////////////////////////////////////////////////////                 
+            }
+        });
+        
+        addLabelNoteButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent arg0) {
+                labelTextField.getText();
+                labelTextField.setText("Le label \"" + labelTextField.getText() + "\" est lié à la note.");
+//Lier le label et la note labelTextField.getText(); -> INSERT idNote avec idLabel //////////////////////////////////////////////////////////////////                 
+            }
+        });
+        
+        suppLabelNoteButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent arg0) {
+                labelTextField.getText();
+                labelTextField.setText("Le label \"" + labelTextField.getText() + "\" a été supprimé de la note.");
+//Supprimer le lien entre label et note labelTextField.getText(); -> DELETE idNote avec idLabel //////////////////////////////////////////////////////////////////                 
+            }
+        });
+        
+        noteButtonPanel.add(addLabelNoteButton);
+        noteButtonPanel.add(suppLabelNoteButton);
+        
+        displayLabelPanel.add(labelTextField);
+        displayLabelPanel.add(addNewLabelButton);
+        displayLabelPanel.add(updateLabelButton);
+        
+        labelEditPanel.add(displayLabelPanel, BorderLayout.CENTER);
+        labelEditPanel.add(noteButtonPanel, BorderLayout.SOUTH);
+        
+        listPanel.add(box, BorderLayout.NORTH);
+        listPanel.add(allLabelPanel, BorderLayout.CENTER);
+        listPanel.add(labelEditPanel, BorderLayout.SOUTH);
+        
+        allLabelPanel.add(newLabelButton);
+        allLabelPanel.add(modifLabelButton);
+        allLabelPanel.add(suppLabelButton);
+        
+        labelBoxPanel.add(listPanel);
+
         return labelBoxPanel;
     }
 
     
-//Modification du label -> UPDATE /////////////////////////////////////////////////////////////////////////////////////    
-    public void editLabel(String itemLabel) {
-        for (int i = 0; i < listLabels.size(); i++) {
-            if (labelName[i].equals(itemLabel)) {
-                listLabels.set(i, itemLabel);
-                break;
-            }
-        }
-        refreshComboBox();
-
-    }
-
-    // Rafraîchisssement de la combobox - ne fonctionne pas en array, à voir avec la BDD
-    public void refreshComboBox() {
-        DefaultComboBoxModel<String> model = (DefaultComboBoxModel<String>) labelBox.getModel();
-        model.removeAllElements();
-        model.addElement("Choisir un label :");
-        for (String label : listLabels) {
-            model.addElement(label);
-        }
-        labelBox.revalidate();
-        labelBox.repaint();
-    }
-
     
-//Effacer le label sélectionné -> DELETE /////////////////////////////////////////////////////////////////////
-    final JComboBox finalLabelBox = labelBox;
 
-    public void deleteLabel(String itemLabel) {
-        listLabels.remove(itemLabel);
-        finalLabelBox.removeAll();
-        finalLabelBox.revalidate(); // J'actualise le layout après suppression
-        finalLabelBox.repaint(); // Je redessine le JPanel après suppression
-    }
-    
-    //Ajouter un label -> INSERT /////////////////////////////////////////////////////////////////////////////////
-    public void newLabel(final String newItem) {
-        final ComboBoxModel labels = labelBox.getModel();
-        for (int i = labels.getSize(); --i >= 0;) {
-            if (newItem.equals(labels.getElementAt(i))) {
-                return;
-            }
-        }
-        labelBox.addItem(newItem);
-    }
-
-    
-    //Brouillon
-    public void initTest() {
-        /*
-         * for (int i = 0; i < listLabels.size(); i++) {
-         * 
-         * labelText = listLabels.get(i);
-         * int indexLabel = i;
-         * 
-         * labelField = new JTextField(labelText);
-         * labelField.setEditable(false);
-         * editButton = new JButton("Modifier");
-         * editButton.addActionListener(new ActionListener(){
-         * 
-         * @Override
-         * public void actionPerformed(ActionEvent arg0){
-         * labelField.setEditable(true);
-         * saveLabelButton.setVisible(true);
-         * editButton.setVisible(false);
-         * }
-         * });
-         * saveLabelButton = new JButton("Enregistrer");
-         * saveLabelButton.setVisible(false);
-         * saveLabelButton.addActionListener(new ActionListener(){
-         * 
-         * @Override
-         * public void actionPerformed(ActionEvent arg0){
-         * labelField.setEditable(false);
-         * newLabel = labelField.getText();
-         * listLabels.set(indexLabel, newLabel);
-         * saveLabelButton.setVisible(false);
-         * editButton.setVisible(true);
-         * System.out.println(listLabels.get(indexLabel));
-         * }
-         * });
-         * deleteButton = new JButton("Supprimer");
-         * 
-         * 
-         * labelPane = new JPanel(new FlowLayout(FlowLayout.LEFT));
-         * labelField.setColumns(20);
-         * labelField.setBorder(null);
-         * labelPane.add(labelField);
-         * labelPane.add(editButton);
-         * labelPane.add(saveLabelButton);
-         * labelPane.add(deleteButton);
-         * labelPane.add(Box.createRigidArea(new Dimension(0, 5)));
-         * this.add(labelPane);
-         * 
-         * 
-         * final JPanel finalLabelPane = labelPane;
-         * deleteButton.addActionListener(e -> {
-         * int option = JOptionPane.showConfirmDialog(null,
-         * "Êtes-vous sûr de vouloir supprimer le label \"" + listLabels.get(indexLabel)
-         * + "\" ?", "Confirmation de suppression", JOptionPane.YES_NO_OPTION);
-         * if (option == JOptionPane.YES_OPTION) {
-         * listLabels.remove(indexLabel);
-         * finalLabelPane.removeAll();
-         * finalLabelPane.revalidate(); // J'actualise le layout après suppression
-         * finalLabelPane.repaint(); // Je redessine le JPanel après suppression
-         * }
-         * });
-         * 
-         * 
-         * }
-         * 
-         * addButtonPane = new JPanel(new FlowLayout(FlowLayout.RIGHT));
-         * labelAdded = new JTextField();
-         * labelAdded.setVisible(false);
-         * labelAdded.setColumns(50);
-         * addButton = new JButton("Ajouter");
-         * saveNewLabel = new JButton("Sauvegarder");
-         * saveNewLabel.setVisible(false);
-         * 
-         * addButton.addActionListener(e -> {
-         * labelAdded.setVisible(true);
-         * saveNewLabel.setVisible(true);
-         * addButton.setVisible(false);
-         * });
-         * 
-         * saveNewLabel.addActionListener(e -> {
-         * labelAdded.setVisible(false);
-         * addButton.setVisible(true);
-         * saveNewLabel.setVisible(false);
-         * contentAdded = labelAdded.getText();
-         * listLabels.add(contentAdded);
-         * saveLabelButton.setVisible(false);
-         * //Je retire tous les composants du JPanel finalLabelPane
-         * 
-         * });
-         * 
-         * addButtonPane.add(labelAdded);
-         * addButtonPane.add(addButton);
-         * addButtonPane.add(saveNewLabel);
-         * this.add(addButtonPane);
-         */
-    }
 }

@@ -19,8 +19,9 @@ public class JModalLabel extends JDialog {
 
     private LabelClass labels;
     private JPanel labelBoxPanel;
+    private JPanel allLabelPanel;
+    private JPanel labelNotePanel;
     private JPanel labelPanel;
-    
     
     private JLabel test;
     private JPanel modalPanel;
@@ -43,15 +44,23 @@ public class JModalLabel extends JDialog {
         this.setLocationRelativeTo(null);
         this.setResizable(false);
         this.setVisible(false);
-
     }
     
-    public void displayLabelBox(){
+    
+    public void displayLabelBox(String labelType){
         labels = new LabelClass();
         labelBoxPanel = new JPanel();
   
-        labelBoxPanel = labels.createLabelBox();
-        this.setTitle("Ajouter un label à ajouter :");
+        labelBoxPanel = labels.createAllLabelsModal(labelType);
+        
+        labelBoxPanel.setBackground(new Color(23, 106, 115));
+        if(labelType.equals("noteLabel")){
+            this.setTitle("Possibilité de tag 1 ou 2 fois la note :");
+        }else {
+            this.setTitle("Nouveau Tag :");
+        }
+
+        
         this.setContentPane(labelBoxPanel);
         
     }
