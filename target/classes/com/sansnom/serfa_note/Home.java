@@ -6,6 +6,7 @@ package com.sansnom.serfa_note;
 
 import com.sansnom.serfa_note.Data.BDDO;
 import java.awt.Component;
+import javax.swing.JDialog;
 import javax.swing.SwingUtilities;
 
 // import composant
@@ -74,6 +75,7 @@ public class Home extends javax.swing.JFrame {
         app.login.applyComponentOrientation(app.getComponentOrientation());
         SwingUtilities.updateComponentTreeUI(app.login);
     }
+   
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -90,6 +92,7 @@ public class Home extends javax.swing.JFrame {
         setMaximumSize(new java.awt.Dimension(1080, 720));
         setMinimumSize(new java.awt.Dimension(540, 360));
         setName("Jback"); // NOI18N
+        setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 formWindowClosing(evt);

@@ -14,6 +14,7 @@
       <Dimension value="[540, 360]"/>
     </Property>
     <Property name="name" type="java.lang.String" value="Jback" noResource="true"/>
+    <Property name="resizable" type="boolean" value="false"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
