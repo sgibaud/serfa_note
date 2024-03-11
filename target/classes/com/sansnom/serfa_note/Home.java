@@ -22,6 +22,7 @@ public class Home extends javax.swing.JFrame {
     private Application_Background home;
     private Inscription inscription;
     private BDDO db;
+    private EditorPane editor;
     /**
      * Creates new form Home
      */
@@ -31,27 +32,19 @@ public class Home extends javax.swing.JFrame {
         login = new Login(this);
         inscription = new Inscription();
         home = new Application_Background();
-        home.setUser("vuh");
+        editor = new EditorPane();
         setContentPane(login);
     }
     
-    /*public static void showForm(Component component) {
-        component.applyComponentOrientation(app.getComponentOrientation());
-        // app.home.showForm(component);
-    }*/
     
     public void login(String id,String pswd) {
         int valid = db.ConnectUser(id,pswd);
         if (valid != -1){
             home.setUser(id);
             home.idActiveUser = valid;
-            // FlatAnimatedLafChange.showSnapshot();
             app.setContentPane(app.home);
             app.home.applyComponentOrientation(app.getComponentOrientation());
-            // setSelectedMenu(0, 0);
-            //app.home.hideMenu();
             SwingUtilities.updateComponentTreeUI(app.home);
-            //FlatAnimatedLafChange.hideSnapshotWithAnimation();
             }
         else {}
     }
@@ -68,14 +61,23 @@ public class Home extends javax.swing.JFrame {
         app.inscription.applyComponentOrientation(app.getComponentOrientation());
         SwingUtilities.updateComponentTreeUI(app.inscription);
     }
-    
+
     
     public static void logout() {
         app.setContentPane(app.login);
         app.login.applyComponentOrientation(app.getComponentOrientation());
         SwingUtilities.updateComponentTreeUI(app.login);
     }
-   
+    
+    public static void editor() {
+        // FlatAnimatedLafChange.showSnapshot();
+        app.setContentPane(app.editor);
+        //app.editor.applyComponentOrientation(app.getComponentOrientation());
+        // setSelectedMenu(0, 0);
+        //app.home.hideMenu();
+        SwingUtilities.updateComponentTreeUI(app.editor);
+        //FlatAnimatedLafChange.hideSnapshotWithAnimation();
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
