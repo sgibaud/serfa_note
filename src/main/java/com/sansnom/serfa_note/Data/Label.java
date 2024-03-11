@@ -17,4 +17,8 @@ public class Label {
         this.libelle = libelle;
     }
     
+    public String getLabel(){
+     return this.libelle;
+    }
+    
 }

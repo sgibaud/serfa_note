@@ -4,6 +4,7 @@
  */
 package com.sansnom.serfa_note;
 
+import com.sansnom.serfa_note.Data.Label;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -45,7 +46,7 @@ public class LabelClass extends JPanel {
 
     private JComboBox labelBox;
 
-    private ArrayList<String> listLabels;
+    private ArrayList<Label> listLabels;
 
     private String labelText;
     
@@ -57,13 +58,13 @@ public class LabelClass extends JPanel {
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
         listLabels = new ArrayList<>();
-        listLabels.add("Tests");
-        listLabels.add("Editeur de texte");
-        listLabels.add("Fais chier");
-        listLabels.add("Test sur la longueur");
 
         initLabels();
 
+    }
+    
+    public void setlistLabel(ArrayList<Label> newlist){
+     this.listLabels = newlist;   
     }
 
     private void initLabels() {
@@ -74,7 +75,7 @@ public class LabelClass extends JPanel {
         labelPanel.setBackground(new Color(23, 106, 115));
         
         for (int i = 0; i < listLabels.size(); i++) {
-            labelText = listLabels.get(i);
+            labelText = listLabels.get(i).getLabel();
             labelField = new JLabel(" - " + labelText + " - ");
             labelField.setForeground(Color.WHITE);
             labelField.setFont(new Font("Arial", Font.BOLD, 16));
@@ -148,7 +149,7 @@ public class LabelClass extends JPanel {
         labelBoxPanel.setLayout(new FlowLayout());
         labelName = new String[listLabels.size()];
         for (int i = 0; i < listLabels.size(); i++) {
-            labelName[i] = listLabels.get(i);
+            labelName[i] = listLabels.get(i).getLabel();
             box.addItem(labelName[i]);
         }
         box.setFont(new Font("Arial", Font.BOLD, 16));

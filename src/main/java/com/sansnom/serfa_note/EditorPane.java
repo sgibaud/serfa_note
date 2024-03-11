@@ -4,6 +4,7 @@
  */
 package com.sansnom.serfa_note;
 
+import com.sansnom.serfa_note.Data.Feuille;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.BufferedReader;
@@ -27,6 +28,7 @@ import javax.swing.text.JTextComponent;
 public class EditorPane extends JPanel {
 
     private Home origin;
+    private int idF = 0;
     
     private JPanel savePanel; // contient le bouton enregistrer la note
     private JPanel titlePanel; // contient le titre de la note
@@ -66,12 +68,15 @@ public class EditorPane extends JPanel {
     private String charset = "UTF-8";
     private String cheminDeFichier = "C:/Users/psylo/Downloads/Demo.txt"; // pour les sauvegardes dans un fichier
 
-    public EditorPane() {
-
+    public EditorPane(Home home) {
+        this.origin = home;
         initBlocNotes();
-
     }
 
+    public void setIdF(int id){
+        this.idF = id;
+    }
+    
     private void initBlocNotes() {
         // j'initie la barre avec les boutons de style
         savePanel = new JPanel();
@@ -163,6 +168,7 @@ public class EditorPane extends JPanel {
                 saveTitleButton.setVisible(false);
                 titleLb.setEditable(false);
 // enregistrer le Title en BDD /////////////////////////////////////////////////////////////////////////////////////////////////
+                origin.db.UpdateFeuille(titleLb.getText(), textPane.getText(), idF);
             }
         });
 
@@ -296,6 +302,7 @@ public class EditorPane extends JPanel {
         editLabelButton = new JButton();
         labelTitle = new JLabel();
         labelClass = new LabelClass();
+        labelClass.setlistLabel(origin.db.GetLabels(idF));
         
         labelPane.setBackground(new Color(23, 106, 115));
         labelPane.setLayout(new FlowLayout(FlowLayout.LEFT));
@@ -417,7 +424,7 @@ public class EditorPane extends JPanel {
     
     //sauvegarde le document/la note ////////////////////////////////////////////////////////////////////////////////////////////////////
     public void sauvegarder() {
-        try {
+        /*try {
             Writer save = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(cheminDeFichier), charset)); // OutputStreamWriter
                                                                                                                       // permet
                                                                                                                       // d'utiliser
@@ -432,12 +439,13 @@ public class EditorPane extends JPanel {
             JOptionPane.showMessageDialog(null, e);
         } catch (IOException e) {
             JOptionPane.showMessageDialog(null, e);
-        }
+        }*/
+        origin.db.UpdateFeuille(titleLb.getText(), textPane.getText(), idF);
     };
 
 //charger la note ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     private void lecture() {
-        try {
+        /*try {
             JFileChooser chooser = new JFileChooser(); // ouvre la fenêtre dialogue pour parcourir répertoire et
                                                        // fichiers
             chooser.showOpenDialog(null);
@@ -457,7 +465,10 @@ public class EditorPane extends JPanel {
             JOptionPane.showMessageDialog(null, "Opération annulée !!!", "Information",
                     JOptionPane.INFORMATION_MESSAGE);
 
-        }
+        }*/
+        Feuille f = origin.db.GetFeuille(idF).getFirst();
+        titleLb.setText(f.getTitre());
+        textPane.setText(f.getTexte());
 
     }
 

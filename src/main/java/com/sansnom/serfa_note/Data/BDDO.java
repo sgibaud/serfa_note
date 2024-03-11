@@ -264,7 +264,7 @@ public class BDDO{
         public int UpdateFeuille(String titre, String contenu,int idFeuille){
         String[] values = {titre,contenu,String.valueOf(idFeuille)};
             
-        ResultSet key = this.ExecuteQuery("UPDATE Intercalaire SET titre = ?, contenu = ? WHERE idFeuille = ?;",values);
+        ResultSet key = this.ExecuteQuery("UPDATE Feuille SET titre = ?, contenu = ? WHERE idFeuille = ?;",values);
         
         return this.KeyRead(key);
         }

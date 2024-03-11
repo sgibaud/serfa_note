@@ -21,7 +21,7 @@ public class Home extends javax.swing.JFrame {
     private Login login;
     private Application_Background home;
     private Inscription inscription;
-    private BDDO db;
+    public BDDO db;
     private EditorPane editor;
     /**
      * Creates new form Home
@@ -31,8 +31,8 @@ public class Home extends javax.swing.JFrame {
         initComponents();
         login = new Login(this);
         inscription = new Inscription(this);
-        home = new Application_Background();
-        editor = new EditorPane();
+        home = new Application_Background(this);
+        editor = new EditorPane(this);
         setContentPane(login);
     }
     
@@ -69,8 +69,9 @@ public class Home extends javax.swing.JFrame {
         SwingUtilities.updateComponentTreeUI(app.login);
     }
     
-    public static void editor() {
+    public static void editor(int idF) {
         // FlatAnimatedLafChange.showSnapshot();
+        app.editor.setIdF(idF);
         app.setContentPane(app.editor);
         //app.editor.applyComponentOrientation(app.getComponentOrientation());
         // setSelectedMenu(0, 0);

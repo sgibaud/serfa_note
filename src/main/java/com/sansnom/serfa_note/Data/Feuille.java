@@ -26,4 +26,12 @@ public class Feuille {
     public int getId(){
         return this.id;
     }
+    
+    public String getTitre(){
+        return this.titre;
+    }
+    
+    public String getTexte(){
+        return this.text;
+    }
 }

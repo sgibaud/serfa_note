@@ -30,8 +30,9 @@ public class Application_Background extends javax.swing.JPanel {
     /**
      * Creates new form Application_Background
      */
-    public Application_Background() {
+    public Application_Background(Home home) {
         initComponents();
+        this.origin = home;
     }
 
     public void setUser(String user) {
@@ -651,9 +652,9 @@ public class Application_Background extends javax.swing.JPanel {
         JSelected.setVisible(true);
     }
 
-    private void JaddNoteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JaddNoteActionPerformed
+    private void JaddNoteActionPerformed(java.awt.event.ActionEvent evt) {                                         
         // TODO add your handling code here:
-        origin.editor();
+        origin.editor(1);
     }
 
 
