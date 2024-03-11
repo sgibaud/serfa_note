@@ -10,8 +10,14 @@ import java.awt.event.*;
  * @author draconic
  */
 public class Login extends javax.swing.JPanel {
+<<<<<<< HEAD
 
     private Home origin;
+=======
+    
+    
+  
+>>>>>>> psylook
     /**
      * Creates new form Login
      */

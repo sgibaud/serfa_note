@@ -20,8 +20,12 @@ public class Home extends javax.swing.JFrame {
     private static Home app;
     private Login login;
     private Application_Background home;
+<<<<<<< HEAD
     private Inscription inscription;
     private BDDO db;
+=======
+    private EditorPane editor;
+>>>>>>> psylook
     /**
      * Creates new form Home
      */
@@ -31,7 +35,11 @@ public class Home extends javax.swing.JFrame {
         login = new Login(this);
         inscription = new Inscription();
         home = new Application_Background();
+<<<<<<< HEAD
         home.setUser("vuh");
+=======
+        editor = new EditorPane();
+>>>>>>> psylook
         setContentPane(login);
     }
     
@@ -39,6 +47,7 @@ public class Home extends javax.swing.JFrame {
         component.applyComponentOrientation(app.getComponentOrientation());
         // app.home.showForm(component);
     }*/
+<<<<<<< HEAD
     
     public void login(String id,String pswd) {
         int valid = db.ConnectUser(id,pswd);
@@ -68,6 +77,8 @@ public class Home extends javax.swing.JFrame {
         app.inscription.applyComponentOrientation(app.getComponentOrientation());
         SwingUtilities.updateComponentTreeUI(app.inscription);
     }
+=======
+>>>>>>> psylook
     
     
     public static void logout() {
@@ -75,7 +86,20 @@ public class Home extends javax.swing.JFrame {
         app.login.applyComponentOrientation(app.getComponentOrientation());
         SwingUtilities.updateComponentTreeUI(app.login);
     }
+<<<<<<< HEAD
    
+=======
+    
+    public static void editor() {
+        // FlatAnimatedLafChange.showSnapshot();
+        app.setContentPane(app.editor);
+        //app.editor.applyComponentOrientation(app.getComponentOrientation());
+        // setSelectedMenu(0, 0);
+        //app.home.hideMenu();
+        SwingUtilities.updateComponentTreeUI(app.editor);
+        //FlatAnimatedLafChange.hideSnapshotWithAnimation();
+    }
+>>>>>>> psylook
 
     /**
      * This method is called from within the constructor to initialize the form.

@@ -5,7 +5,6 @@
 package com.sansnom.serfa_note;
 
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.*;
@@ -20,12 +19,17 @@ import com.sansnom.serfa_note.Home;
  * @author draconic
  */
 public class Application_Background extends javax.swing.JPanel {
+<<<<<<< HEAD
 
     public int idActiveUser;
     private Home home;
     private Nuancier nuancier;
     private Color colors;
 
+=======
+    
+   String activityUser;
+>>>>>>> psylook
     /**
      * Creates new form Application_Background
      */
@@ -319,7 +323,11 @@ public class Application_Background extends javax.swing.JPanel {
         JtextUser.setBackground(new java.awt.Color(23, 106, 115));
         JtextUser.setFont(new java.awt.Font("URW Gothic", 1, 14)); // NOI18N
         JtextUser.setForeground(new java.awt.Color(255, 255, 255));
+<<<<<<< HEAD
         JtextUser.setText("N/A");
+=======
+        JtextUser.setText(this.activityUser);
+>>>>>>> psylook
         JtextUser.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 0));
 
         javax.swing.GroupLayout LlogoLayoutLayout = new javax.swing.GroupLayout(LlogoLayout);
@@ -335,9 +343,9 @@ public class Application_Background extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(LlogoLayoutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(LlogoLayoutLayout.createSequentialGroup()
-                    .addGap(1, 10, Short.MAX_VALUE)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(JtextUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 11, Short.MAX_VALUE)))
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         LlogoLayoutLayout.setVerticalGroup(
             LlogoLayoutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -555,6 +563,11 @@ public class Application_Background extends javax.swing.JPanel {
         JaddNote.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/add.png"))); // NOI18N
         JaddNote.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/add_neg.png"))); // NOI18N
         JaddNote.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/add_roll.png"))); // NOI18N
+        JaddNote.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JaddNoteActionPerformed(evt);
+            }
+        });
 
         JlabelNote.setFont(new java.awt.Font("URW Gothic", 0, 20)); // NOI18N
         JlabelNote.setForeground(new java.awt.Color(255, 255, 255));
@@ -590,6 +603,7 @@ public class Application_Background extends javax.swing.JPanel {
         add(JRoot, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
+  
     private void JbtnExitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JbtnExitMouseClicked
         // TODO add your handling code here:
         home.logout();
@@ -615,6 +629,7 @@ public class Application_Background extends javax.swing.JPanel {
         jSelectedColor.setBackground(new Color(0,0,255));
     }//GEN-LAST:event_JblueActionPerformed
 
+<<<<<<< HEAD
     private void jPinkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPinkActionPerformed
         // TODO add your handling code here:
          jSelectedColor.setBackground(new Color(255,0,204));
@@ -672,6 +687,13 @@ public class Application_Background extends javax.swing.JPanel {
         JSelected.setLocation(270, 180);
         JSelected.setVisible(true);
     }
+=======
+    private void JaddNoteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JaddNoteActionPerformed
+        // TODO add your handling code here:
+        Home.editor();
+    }//GEN-LAST:event_JaddNoteActionPerformed
+
+>>>>>>> psylook
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel JClasseurBloc;
