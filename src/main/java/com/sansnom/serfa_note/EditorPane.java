@@ -7,19 +7,10 @@ package com.sansnom.serfa_note;
 import com.sansnom.serfa_note.Data.Feuille;
 import java.awt.*;
 import java.awt.event.*;
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.io.UnsupportedEncodingException;
-import java.io.Writer;
 import javax.swing.*;
 import javax.swing.text.*;
-import javax.swing.text.JTextComponent;
+import javax.swing.text.html.HTMLDocument;
+import javax.swing.text.html.HTMLEditorKit;
 
 /**
  *
@@ -107,7 +98,7 @@ public class EditorPane extends JPanel {
         textPane.setEditable(true);
         textPane.setContentType("text/html");
         textPane.setForeground(new Color(23, 106, 115));
-        textPane.setText("Vous pouvez commencer à écrire ! ");
+        textPane.setText("<b>Vous pouvez commencer à écrire ! </b>");
         textPane.setMargin(insets);
 
         // J'ajoute le MouseListener pour la sélection de texte
@@ -117,7 +108,42 @@ public class EditorPane extends JPanel {
                 changeStyle(null, null);
             }
         });
+        
+       
+        textPane.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(e.getKeyCode() == KeyEvent.VK_ENTER){
+                     int cursorPos = textPane.getCaretPosition();
+                     String fullText = textPane.getText();
+                     
+                     String updateText = fullText.substring(cursorPos, cursorPos)+"<br/>"+ fullText.substring(cursorPos);
+                     
+                     textPane.setText(updateText);
 
+                }
+            }
+        });
+        
+    
+
+        /*textPane.getDocument().addDocumentListener(new DocumentListener(){
+            @Override
+            public void insertUpdate(DocumentEvent e){
+                System.out.println("insert n dans doc");
+                addNewLineIfMissing();
+            }
+            
+            @Override
+            public void removeUpdate(DocumentEvent e){}
+
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                System.out.println("chamgement du document");            }
+            
+        });*/
+           
+                
         // Je mets mon bouton sauvegarder dans un panel pour pouvoir l'afficher à droite
         saveNoteButton = new JButton("Enregistrer");
         saveNoteButton.setBackground(new Color(32, 46, 64));
@@ -192,6 +218,15 @@ public class EditorPane extends JPanel {
         this.add(new JScrollPane(notePane), BorderLayout.CENTER);
         this.add(createLabelPane(), BorderLayout.SOUTH);
 
+    }
+    
+    private void addNewLine(JTextPane textPane){
+        try{
+            StyledDocument doc = textPane.getStyledDocument();
+            doc.insertString(textPane.getCaretPosition(), "<br/>", null);
+        }catch(BadLocationException ex){
+            ex.printStackTrace();
+        }
     }
 
     private JToolBar createToolBar() {
@@ -360,17 +395,79 @@ public class EditorPane extends JPanel {
         }
         return box;
     }
+  
     
+     private void changeStyle(String typeStyle, String font) {
+         
+        String fullText = textPane.getText();
+ 
+        //Je récupère le texte sélectionné
+        String selectedText = textPane.getSelectedText();
+        
+
+        //J'applique le style au texte sélectionné
+        String styledSelectedText = applyStyle(selectedText, typeStyle, font);
+        
+        //Je mets à jour le JTextPane et je remplace le texte sélectionné par le text stylisé
+        String updatedText = fullText.replace(selectedText,styledSelectedText );
+
+    // Mettre à jour le JTextPane avec le texte HTML modifié
+        System.out.println(selectedText);
     
-    //Change le style du contenu de la note
+    textPane.setText(updatedText);
+    
+}
+
+// J'applique le style au texte sélectionné
+private String applyStyle(String text, String typeStyle, String font) {
+    switch (typeStyle) {
+        case "bold":
+            return "<b>" + text + "</b>";
+        case "italic":
+            return "<i>" + text + "</i>";
+        case "colors":
+            Color color = JColorChooser.showDialog(null, "Choisis ta couleur", Color.black);
+            if (color != null) { // Si une couleur est choisie, je l'applique au texte
+                String hexColor = String.format("#%06X", (0xFFFFFF & color.getRGB()));
+                return "<font color='" +hexColor + "'>" + text + "</font>";            
+            }else {
+              return text;  
+            }    
+        case "fSize":
+            int fontSize = Integer.parseInt(font);
+            return "<font size='" + fontSize + "'>" + text + "</font>";
+        case "newFont":
+            // Ajoutez ici la logique pour appliquer la nouvelle police
+            return "<font face='" + font + "'>" + text + "</font>";
+        case "newLine":
+            return text + "<br/>";
+        default:
+            return text; // Aucun style appliqué
+    }
+}
+            
+    
+    /*//Change le style du contenu de la note
     private void changeStyle(String typeStyle, String font) {
 
         StyledDocument doc = textPane.getStyledDocument();
+        
+        if (doc == null) {
+        // Gérer le cas où le document est nul
+        return;
+    }
 
         // Je sélectionne le début et la fin de la sélection à la souris
         int start = textPane.getSelectionStart();
         int end = textPane.getSelectionEnd();
-        String selectedField = textPane.getSelectedText();
+        String selectedField;
+    try {
+        selectedField = getSelectedText(doc, start, end);
+    } catch (BadLocationException e) {
+        // Gérer les erreurs de "bad location"
+        e.printStackTrace();
+        return;
+    }
 
         // je récupère les attributs actuels de l'élément sélectionné
         AttributeSet currentAtt = doc.getCharacterElement(start).getAttributes();
@@ -417,7 +514,7 @@ public class EditorPane extends JPanel {
         // styles à appliquer, true = true
         doc.setCharacterAttributes(start, end - start, style, true);
 
-    }
+    }*/
     
     
     
@@ -466,9 +563,20 @@ public class EditorPane extends JPanel {
                     JOptionPane.INFORMATION_MESSAGE);
 
         }*/
+        HTMLEditorKit kit = new HTMLEditorKit();
+        HTMLDocument dochtml = new HTMLDocument();
+        textPane.setEditorKit(kit);
+        textPane.setDocument(dochtml);
         Feuille f = origin.db.GetFeuille(idF).getFirst();
         titleLb.setText(f.getTitre());
-        textPane.setText(f.getTexte());
+        String htmlContent = f.getTexte();
+        
+        try {
+            kit.insertHTML(dochtml, dochtml.getLength(), htmlContent, 0, 0, null);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        //textPane.setText(f.getTexte());
 
     }
 
