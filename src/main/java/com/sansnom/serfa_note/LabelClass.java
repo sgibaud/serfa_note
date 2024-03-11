@@ -30,14 +30,14 @@ public class LabelClass extends JPanel {
     private JPanel labelEditPanel;//panel contenant le labelTextField + les boutons Ajouter et Modifier + noteButtonPanel
     private JPanel displayLabelPanel;//panel contenant le labelTextField + les boutons Ajouter et Modifier
     private JPanel noteButtonPanel; //panel contenant les boutons ADD NOTE et SUPP NOTE
-    private JLabelButton newLabelButton; //bouton NEW
+    private JLabelButton newLabelButton; //bouton NEW 
     private JLabelButton suppLabelButton; //bouton SUPP
     private JLabelButton modifLabelButton; //bouton MOD
     private JLabelButton addNewLabelButton; //bouton ajouter
     private JLabelButton updateLabelButton; //bouton modifier
     private JLabelButton addLabelNoteButton; // bouton ADD NOTE
     private JLabelButton suppLabelNoteButton; // bouton SUPP NOTE
-    private JTextField labelTextField; 
+    private JTextField labelTextField;  //panel ou les labels choisis s'affichent
     private String oldLabel;
 
     private JButton addButton;
@@ -117,6 +117,7 @@ public class LabelClass extends JPanel {
         
         addNewLabelButton.setVisible(false);
         updateLabelButton.setVisible(false);
+        labelTextField.setVisible(false);
         labelTextField.setEditable(false);
         labelTextField.setPreferredSize(new Dimension(270, 40));
         
@@ -155,6 +156,7 @@ public class LabelClass extends JPanel {
         box.addActionListener(new ActionListener() {     
                 @Override
                 public void actionPerformed(ActionEvent e) {
+                    labelTextField.setVisible(true);
                     labelTextField.setText(box.getSelectedItem().toString());
                 }
         });
@@ -164,6 +166,7 @@ public class LabelClass extends JPanel {
             @Override
             public void actionPerformed(ActionEvent arg0) {
                 labelTextField.setEditable(true);
+                labelTextField.setVisible(true);
                 labelTextField.setText("Saisir le nouveau label ici");
                 addNewLabelButton.setVisible(true);
             }
@@ -186,6 +189,7 @@ public class LabelClass extends JPanel {
                 labelTextField.setEditable(true);
                 labelTextField.getText();
                 updateLabelButton.setVisible(true);
+                addNewLabelButton.setVisible(false);
                 oldLabel = box.getSelectedItem().toString();
             }
         });
