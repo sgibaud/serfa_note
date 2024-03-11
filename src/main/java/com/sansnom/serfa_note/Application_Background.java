@@ -19,53 +19,19 @@ import com.sansnom.serfa_note.Home;
  * @author draconic
  */
 public class Application_Background extends javax.swing.JPanel {
-<<<<<<< HEAD
+
 
     public int idActiveUser;
     private Home home;
     private Nuancier nuancier;
     private Color colors;
+    private Home origin;
 
-=======
-    
-   String activityUser;
->>>>>>> psylook
     /**
      * Creates new form Application_Background
      */
     public Application_Background() {
         initComponents();
-        //JButton[] btns = {JbtnExit};
-        //for (JButton btn : btns) {
-          //  btn.setForeground(new Color(21, 25, 28));
-            //btn.setUI(new BasicButtonUI());
-            //btn.addMouseListener(new MouseListener() {
-              //  @Override
-                //public void mouseClicked(MouseEvent e) {
-
-                //}
-
-               // @Override
-                //public void mousePressed(MouseEvent e) {
-
-                //}
-
-                //@Override
-                //public void mouseReleased(MouseEvent e) {
-
-                //}
-
-                //@Override
-                //public void mouseEntered(MouseEvent e) {
-                    // btn.setBackground(new Color(54,81,207));
-                //}
-
-                //@Override
-                //public void mouseExited(MouseEvent e) {
-                    // btn.setBackground(new Color(21,25,28));
-                //}
-            //});
-        //}
     }
 
     public void setUser(String user) {
@@ -323,11 +289,9 @@ public class Application_Background extends javax.swing.JPanel {
         JtextUser.setBackground(new java.awt.Color(23, 106, 115));
         JtextUser.setFont(new java.awt.Font("URW Gothic", 1, 14)); // NOI18N
         JtextUser.setForeground(new java.awt.Color(255, 255, 255));
-<<<<<<< HEAD
+
         JtextUser.setText("N/A");
-=======
-        JtextUser.setText(this.activityUser);
->>>>>>> psylook
+
         JtextUser.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 0));
 
         javax.swing.GroupLayout LlogoLayoutLayout = new javax.swing.GroupLayout(LlogoLayout);
@@ -629,7 +593,6 @@ public class Application_Background extends javax.swing.JPanel {
         jSelectedColor.setBackground(new Color(0,0,255));
     }//GEN-LAST:event_JblueActionPerformed
 
-<<<<<<< HEAD
     private void jPinkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPinkActionPerformed
         // TODO add your handling code here:
          jSelectedColor.setBackground(new Color(255,0,204));
@@ -687,13 +650,12 @@ public class Application_Background extends javax.swing.JPanel {
         JSelected.setLocation(270, 180);
         JSelected.setVisible(true);
     }
-=======
+
     private void JaddNoteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JaddNoteActionPerformed
         // TODO add your handling code here:
-        Home.editor();
-    }//GEN-LAST:event_JaddNoteActionPerformed
+        origin.editor();
+    }
 
->>>>>>> psylook
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel JClasseurBloc;
