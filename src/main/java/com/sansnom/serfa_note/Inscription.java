@@ -11,11 +11,13 @@ import java.awt.event.*;
  */
 public class Inscription extends javax.swing.JPanel {
 
+    private Home origin; 
     /**
      * Creates new form Login
      */
-    public Inscription() {
+    public Inscription(Home home) {
         initComponents();
+        this.origin = home;
     }
 
     /**
@@ -159,9 +161,8 @@ public class Inscription extends javax.swing.JPanel {
 
     private void JInscrireActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JInscrireActionPerformed
         // TODO add your handling code here:
-        Home homeInscription = new Home();
-        homeInscription.inscription(JuserNameInput.getText(),jPasswordField.getText());
-        homeInscription.login(JuserNameInput.getText(),jPasswordField.getText());  
+        origin.inscription(JuserNameInput.getText(),jPasswordField.getText());
+        origin.login(JuserNameInput.getText(),jPasswordField.getText());  
     }//GEN-LAST:event_JInscrireActionPerformed
    
     
