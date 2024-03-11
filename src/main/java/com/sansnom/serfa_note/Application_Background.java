@@ -31,37 +31,37 @@ public class Application_Background extends javax.swing.JPanel {
      */
     public Application_Background() {
         initComponents();
-        JButton[] btns = {JbtnExit};
-        for (JButton btn : btns) {
-            btn.setForeground(new Color(21, 25, 28));
-            btn.setUI(new BasicButtonUI());
-            btn.addMouseListener(new MouseListener() {
-                @Override
-                public void mouseClicked(MouseEvent e) {
+        //JButton[] btns = {JbtnExit};
+        //for (JButton btn : btns) {
+          //  btn.setForeground(new Color(21, 25, 28));
+            //btn.setUI(new BasicButtonUI());
+            //btn.addMouseListener(new MouseListener() {
+              //  @Override
+                //public void mouseClicked(MouseEvent e) {
 
-                }
+                //}
 
-                @Override
-                public void mousePressed(MouseEvent e) {
+               // @Override
+                //public void mousePressed(MouseEvent e) {
 
-                }
+                //}
 
-                @Override
-                public void mouseReleased(MouseEvent e) {
+                //@Override
+                //public void mouseReleased(MouseEvent e) {
 
-                }
+                //}
 
-                @Override
-                public void mouseEntered(MouseEvent e) {
+                //@Override
+                //public void mouseEntered(MouseEvent e) {
                     // btn.setBackground(new Color(54,81,207));
-                }
+                //}
 
-                @Override
-                public void mouseExited(MouseEvent e) {
+                //@Override
+                //public void mouseExited(MouseEvent e) {
                     // btn.setBackground(new Color(21,25,28));
-                }
-            });
-        }
+                //}
+            //});
+        //}
     }
 
     public void setUser(String user) {
@@ -121,23 +121,25 @@ public class Application_Background extends javax.swing.JPanel {
         JSelected.setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         JSelected.setEnabled(false);
         JSelected.setLocation(new java.awt.Point(0, 0));
-        JSelected.setMinimumSize(new java.awt.Dimension(540, 360));
+        JSelected.setMaximumSize(new java.awt.Dimension(270, 180));
+        JSelected.setMinimumSize(new java.awt.Dimension(270, 180));
         JSelected.setModal(true);
         JSelected.setName("ColorPicker"); // NOI18N
-        JSelected.setPreferredSize(new java.awt.Dimension(540, 360));
+        JSelected.setPreferredSize(new java.awt.Dimension(270, 180));
         JSelected.setResizable(false);
         JSelected.setSize(540,360);
         JSelected.setType(java.awt.Window.Type.POPUP);
 
         jDiagPan.setBackground(new java.awt.Color(204, 204, 204));
-        jDiagPan.setMaximumSize(new java.awt.Dimension(540, 360));
-        jDiagPan.setMinimumSize(new java.awt.Dimension(540, 360));
+        jDiagPan.setMaximumSize(new java.awt.Dimension(270, 180));
+        jDiagPan.setMinimumSize(new java.awt.Dimension(270, 180));
         jDiagPan.setNextFocusableComponent(jDiagPan);
+        jDiagPan.setPreferredSize(new java.awt.Dimension(270, 180));
         jDiagPan.setLayout(new java.awt.BorderLayout());
 
-        JLabelPane.setMaximumSize(new java.awt.Dimension(540, 60));
-        JLabelPane.setMinimumSize(new java.awt.Dimension(540, 60));
-        JLabelPane.setPreferredSize(new java.awt.Dimension(540, 60));
+        JLabelPane.setMaximumSize(new java.awt.Dimension(270, 30));
+        JLabelPane.setMinimumSize(new java.awt.Dimension(270, 30));
+        JLabelPane.setPreferredSize(new java.awt.Dimension(270, 30));
 
         jLabelColor.setFont(new java.awt.Font("URW Gothic", 1, 18)); // NOI18N
         jLabelColor.setText("Label couleur");
@@ -146,24 +148,23 @@ public class Application_Background extends javax.swing.JPanel {
         JLabelPane.setLayout(JLabelPaneLayout);
         JLabelPaneLayout.setHorizontalGroup(
             JLabelPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(JLabelPaneLayout.createSequentialGroup()
-                .addContainerGap(203, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JLabelPaneLayout.createSequentialGroup()
+                .addContainerGap(80, Short.MAX_VALUE)
                 .addComponent(jLabelColor)
-                .addContainerGap(216, Short.MAX_VALUE))
+                .addGap(69, 69, 69))
         );
         JLabelPaneLayout.setVerticalGroup(
             JLabelPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JLabelPaneLayout.createSequentialGroup()
-                .addContainerGap(23, Short.MAX_VALUE)
-                .addComponent(jLabelColor)
-                .addGap(14, 14, 14))
+                .addGap(0, 7, Short.MAX_VALUE)
+                .addComponent(jLabelColor))
         );
 
         jDiagPan.add(JLabelPane, java.awt.BorderLayout.NORTH);
 
-        JpaneColor.setMaximumSize(new java.awt.Dimension(200, 300));
-        JpaneColor.setMinimumSize(new java.awt.Dimension(200, 300));
-        JpaneColor.setPreferredSize(new java.awt.Dimension(200, 300));
+        JpaneColor.setMaximumSize(new java.awt.Dimension(150, 150));
+        JpaneColor.setMinimumSize(new java.awt.Dimension(150, 150));
+        JpaneColor.setPreferredSize(new java.awt.Dimension(150, 150));
         JpaneColor.setLayout(new java.awt.GridLayout(3, 4, 4, 4));
 
         Jblue.setBackground(new java.awt.Color(0, 0, 255));
