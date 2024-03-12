@@ -30,7 +30,7 @@ public class Home extends javax.swing.JFrame {
         db = new BDDO();
         initComponents();
         login = new Login(this);
-        inscription = new Inscription();
+        inscription = new Inscription(this);
         home = new Application_Background();
         editor = new EditorPane();
         setContentPane(login);
