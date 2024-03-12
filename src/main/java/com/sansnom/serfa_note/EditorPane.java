@@ -75,7 +75,7 @@ public class EditorPane extends JPanel {
 
     public void setIdF(int id){
         this.idF = id;
-        labelClass.setlistLabel(origin.db.GetLabels(1));
+        labelClass.setlistLabel(origin.db.GetLabels(idF));
     }
     
     private void initBlocNotes() {
