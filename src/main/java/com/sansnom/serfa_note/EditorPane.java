@@ -142,8 +142,9 @@ public class EditorPane extends JPanel {
                     }   
                     
                     //Je récupère l'index ou est le caractère après et je l'insère
+   
                     int index = fullText.indexOf(charAfter);
-                    if (index != -1) {
+                    if (index != -1 && index<  cursorPos) {
                         StringBuilder builder = new StringBuilder(fullText);
                         builder.insert(index, "<br/>");
                         updatedText = builder.toString();
@@ -419,6 +420,9 @@ public class EditorPane extends JPanel {
      private void changeStyle(String typeStyle, String font) {
          
         String fullText = textPane.getText();
+        int selectionStart = textPane.getSelectionStart();
+        int selectionEnd = textPane.getSelectionEnd();
+        
  
         //Je récupère le texte sélectionné
         String selectedText = textPane.getSelectedText();
