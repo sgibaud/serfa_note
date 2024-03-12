@@ -75,6 +75,7 @@ public class EditorPane extends JPanel {
 
     public void setIdF(int id){
         this.idF = id;
+        labelClass.setlistLabel(origin.db.GetLabels(1));
     }
     
     private void initBlocNotes() {
@@ -302,7 +303,7 @@ public class EditorPane extends JPanel {
         editLabelButton = new JButton();
         labelTitle = new JLabel();
         labelClass = new LabelClass();
-        labelClass.setlistLabel(origin.db.GetLabels(idF));
+        
         
         labelPane.setBackground(new Color(23, 106, 115));
         labelPane.setLayout(new FlowLayout(FlowLayout.LEFT));

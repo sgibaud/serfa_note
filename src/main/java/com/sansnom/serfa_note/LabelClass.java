@@ -64,10 +64,15 @@ public class LabelClass extends JPanel {
     }
     
     public void setlistLabel(ArrayList<Label> newlist){
-     this.listLabels = newlist;   
+     this.listLabels = newlist;
+     this.initLabels();
+     this.revalidate();
+     this.repaint();
+     
     }
 
     private void initLabels() {
+        this.removeAll();
         labelText = new String();
         labelPanel = new JPanel();
         labelPanel.setPreferredSize(new Dimension(600, 40));
