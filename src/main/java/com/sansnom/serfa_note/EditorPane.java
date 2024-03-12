@@ -110,40 +110,65 @@ public class EditorPane extends JPanel {
         });
         
        
-        textPane.addKeyListener(new KeyAdapter() {
+       textPane.addKeyListener(new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e) {
+                //J'insère un saut de ligne lorsqu'on tape sur la touche Enter
                 if(e.getKeyCode() == KeyEvent.VK_ENTER){
                      int cursorPos = textPane.getCaretPosition();
                      String fullText = textPane.getText();
-                     
-                     String updateText = fullText.substring(cursorPos, cursorPos)+"<br/>"+ fullText.substring(cursorPos);
-                     
-                     textPane.setText(updateText);
+                     String charBefore = "";
+                     String charAfter = "";
+                     String insertLine = "";
+                     String updatedText = "";
+
+                     /*// Je récupère le caractère avant le curseur
+                    try {
+                        if (cursorPos > 0 && cursorPos <= textPane.getDocument().getLength()) {
+                            charBefore = textPane.getText(cursorPos - 1, 1);
+                        }
+                    } catch (BadLocationException ex) {
+                        ex.printStackTrace(); 
+                    }*/
+
+                    // Je récupère le caractère après le curseur
+                    try {
+                        if (cursorPos >= 0 && cursorPos < textPane.getDocument().getLength() - 1) {
+                            charAfter = textPane.getText(cursorPos, 1);
+                        }
+                    } catch (BadLocationException ex) {
+                        ex.printStackTrace();
+                        
+                    }   
+                    
+                    //Je récupère l'index ou est le caractère après et je l'insère
+                    int index = fullText.indexOf(charAfter);
+                    if (index != -1) {
+                        StringBuilder builder = new StringBuilder(fullText);
+                        builder.insert(index, "<br/>");
+                        updatedText = builder.toString();
+                    }
+
+                    textPane.setText(updatedText);
+                    
+                
+
+                   
+                    System.out.println("Position du curseur : " + cursorPos);
+                    System.out.println("Caractere avant le curseur : " + charBefore);
+                    System.out.println("Caractere après le curseur : " + charAfter);
+                     System.out.println("saut de ligne insere : " + insertLine);
+                      System.out.println("text update : " + updatedText);
 
                 }
             }
         });
-        
-    
+       
+       
 
-        /*textPane.getDocument().addDocumentListener(new DocumentListener(){
-            @Override
-            public void insertUpdate(DocumentEvent e){
-                System.out.println("insert n dans doc");
-                addNewLineIfMissing();
-            }
-            
-            @Override
-            public void removeUpdate(DocumentEvent e){}
+// Fonction pour ajouter une nouvelle ligne
 
-            @Override
-            public void changedUpdate(DocumentEvent e) {
-                System.out.println("chamgement du document");            }
-            
-        });*/
-           
-                
+               
         // Je mets mon bouton sauvegarder dans un panel pour pouvoir l'afficher à droite
         saveNoteButton = new JButton("Enregistrer");
         saveNoteButton.setBackground(new Color(32, 46, 64));
@@ -220,14 +245,8 @@ public class EditorPane extends JPanel {
 
     }
     
-    private void addNewLine(JTextPane textPane){
-        try{
-            StyledDocument doc = textPane.getStyledDocument();
-            doc.insertString(textPane.getCaretPosition(), "<br/>", null);
-        }catch(BadLocationException ex){
-            ex.printStackTrace();
-        }
-    }
+    
+ 
 
     private JToolBar createToolBar() {
         JToolBar toolBar = new JToolBar();
@@ -404,17 +423,14 @@ public class EditorPane extends JPanel {
         //Je récupère le texte sélectionné
         String selectedText = textPane.getSelectedText();
         
-
         //J'applique le style au texte sélectionné
         String styledSelectedText = applyStyle(selectedText, typeStyle, font);
         
         //Je mets à jour le JTextPane et je remplace le texte sélectionné par le text stylisé
         String updatedText = fullText.replace(selectedText,styledSelectedText );
 
-    // Mettre à jour le JTextPane avec le texte HTML modifié
-        System.out.println(selectedText);
-    
-    textPane.setText(updatedText);
+    // Mettre à jour le JTextPane avec le texte HTML modifié    
+        textPane.setText(updatedText);
     
 }
 
@@ -451,23 +467,11 @@ private String applyStyle(String text, String typeStyle, String font) {
     private void changeStyle(String typeStyle, String font) {
 
         StyledDocument doc = textPane.getStyledDocument();
-        
-        if (doc == null) {
-        // Gérer le cas où le document est nul
-        return;
-    }
 
         // Je sélectionne le début et la fin de la sélection à la souris
         int start = textPane.getSelectionStart();
         int end = textPane.getSelectionEnd();
-        String selectedField;
-    try {
-        selectedField = getSelectedText(doc, start, end);
-    } catch (BadLocationException e) {
-        // Gérer les erreurs de "bad location"
-        e.printStackTrace();
-        return;
-    }
+        String selectedField = textPane.getSelectedText();
 
         // je récupère les attributs actuels de l'élément sélectionné
         AttributeSet currentAtt = doc.getCharacterElement(start).getAttributes();
@@ -519,6 +523,7 @@ private String applyStyle(String text, String typeStyle, String font) {
     
     
     
+    
     //sauvegarde le document/la note ////////////////////////////////////////////////////////////////////////////////////////////////////
     public void sauvegarder() {
         /*try {
@@ -563,6 +568,8 @@ private String applyStyle(String text, String typeStyle, String font) {
                     JOptionPane.INFORMATION_MESSAGE);
 
         }*/
+
+        
         HTMLEditorKit kit = new HTMLEditorKit();
         HTMLDocument dochtml = new HTMLDocument();
         textPane.setEditorKit(kit);
