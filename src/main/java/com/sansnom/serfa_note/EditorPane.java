@@ -150,28 +150,28 @@ public class EditorPane extends JPanel {
                 int selectionEnd = textPane.getSelectionEnd();
                 String selectedText = "";
 
-                                // Itérer vers l'arrière à partir de la position du curseur pour trouver l'espace précédent
-                                for (int i = cursorPos - 1; i >= 0; i--) {
-                                    char charact = textPane.getText(i, 1).charAt(0);
-                                    if (Character.isWhitespace(charact)) {
-                                        // Sélectionner les caractères jusqu'à l'espace précédent
-                                        selectedText = textPane.getText(i + 1, cursorPos - i - 1);
-                                        break;
-                                    }
-                                }
+                // Je sélectionne chaque caractère jusqu'à trouver le premier espace
+                for (int i = cursorPos - 1; i >= 0; i--) {
+                    char charact = textPane.getText(i, 1).charAt(0);
+                    if (Character.isWhitespace(charact)) {
+                        // Sélectionner les caractères jusqu'à l'espace précédent
+                        selectedText = textPane.getText(i + 1, cursorPos - i - 1);
+                        break;
+                    }
+                }
 
-                // Vérifier si une sélection est effectuée
+                // Je vérifie si une sélection est effectuée
                 if (selectedText != null && !selectedText.isEmpty()) {
                     String existingText = textPane.getText();
 
-                    // Recherchez la position réelle du texte sélectionné dans le texte complet
+                    // Je recherche la position réelle du texte sélectionné dans le texte complet
                     int realStart = existingText.indexOf(selectedText, selectionStart);
                     int realEnd = realStart + selectedText.length();
 
-                    // Ignorer les balises HTML au début du texte
+                    // J'ignore les balises HTML au début du texte
                     int textStart = existingText.indexOf("<body>", 0) + "<body>".length();
 
-                    // Ignorer les balises HTML à la fin du texte
+                    // J'ignore les balises HTML à la fin du texte
                     int textEnd = existingText.indexOf("</body>", textStart);
 
                     String textBeforeSelection = existingText.substring(textStart, realStart);
@@ -180,14 +180,14 @@ public class EditorPane extends JPanel {
                     String textLine = selectedText + "<br/>"; // Appliquer un style au texte sélectionné
                     String newText = textBeforeSelection + textLine + textAfterSelection;
 
-                    // Définir le texte complet dans le JTextPane
+                    // J'ajoute le nouveau texte complet dans le JTextPane
                     textPane.setText(newText);
 
                     // Mettre le curseur à la fin du texte modifié
                     textPane.setCaretPosition(textBeforeSelection.length() + textLine.length());
                 }
             } catch (BadLocationException ex) {
-                ex.printStackTrace(); // Gérer les exceptions liées à la position de texte invalide
+                ex.printStackTrace(); 
 }
                     
 
@@ -451,18 +451,18 @@ public class EditorPane extends JPanel {
     int selectionEnd = textPane.getSelectionEnd();
     String selectedText = textPane.getSelectedText();
 
-    // Vérifier si une sélection est effectuée
+    // Je vérifie si une sélection est effectuée
     if (selectedText != null && !selectedText.isEmpty()) {
         String existingText = textPane.getText();
 
-        // Recherchez la position réelle du texte sélectionné dans le texte complet
+        // Je recherche la position réelle du texte sélectionné dans le texte complet
         int realStart = existingText.indexOf(selectedText, selectionStart);
         int realEnd = realStart + selectedText.length();
 
-        // Ignorer les balises HTML au début du texte
+        // J'ignore les balises HTML au début du texte
         int textStart = existingText.indexOf("<body>", 0) + "<body>".length();
 
-        // Ignorer les balises HTML à la fin du texte
+        // J'ignore les balises HTML à la fin du texte
         int textEnd = existingText.indexOf("</body>", textStart);
 
         String textBeforeSelection = existingText.substring(textStart, realStart);
@@ -471,10 +471,10 @@ public class EditorPane extends JPanel {
         String styledSelectedText = applyStyle(selectedText, typeStyle, font); // Appliquer un style au texte sélectionné
         String newText = textBeforeSelection + styledSelectedText + textAfterSelection;
 
-        // Définir le texte complet dans le JTextPane
+        // J'ajoute le texte complet dans le JTextPane
         textPane.setText(newText);
 
-        // Mettre le curseur à la fin du texte modifié
+        // Je mets le curseur à la fin du texte modifié
         textPane.setCaretPosition(textBeforeSelection.length() + styledSelectedText.length());
     }
 
