@@ -60,6 +60,7 @@ public class EditorPane extends JPanel {
     private ImageIcon saveIcon = new ImageIcon(save_Icon.getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT));; //icône de sauvegarde redimensionnée 
     private ImageIcon add_Icon = new ImageIcon(getClass().getResource("/resources/add.png"));
     private ImageIcon addIcon = new ImageIcon(add_Icon.getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT));
+    public JModalLabel modal;
    
     
     public LabelClass labelClass; //classe label
@@ -70,6 +71,7 @@ public class EditorPane extends JPanel {
 
     public EditorPane(Home home) {
         this.origin = home;
+        modal = new JModalLabel(origin, "Labels : ", true,origin,idF);
         initBlocNotes();
     }
 
@@ -316,7 +318,6 @@ public class EditorPane extends JPanel {
         editLabelButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) { // ouvre la modale
-                JModalLabel modal = new JModalLabel(origin, "Labels : ", true,origin,idF);
                 modal.displayLabelBox("noteLabel",origin, idF);
                 modal.setVisible(true);
             }

@@ -17,7 +17,7 @@ import javax.swing.*;
 public class JModalLabel extends JDialog {
     
 
-    private LabelClass labels;
+    public LabelClass labels;
     private JPanel labelBoxPanel;
     private JPanel allLabelPanel;
     private JPanel labelNotePanel;

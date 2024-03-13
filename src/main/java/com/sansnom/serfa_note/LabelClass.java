@@ -53,6 +53,8 @@ public class LabelClass extends JPanel {
     private String contentAdded;
     private String[] labelName;
     
+    public JComboBox box;
+    
     private Home origin;
     private int idF;
 
@@ -65,6 +67,20 @@ public class LabelClass extends JPanel {
 
         initLabels();
 
+    }
+    
+    public void fillBox(ArrayList<Label> list){
+       
+    box.removeAllItems();
+    System.out.println(list);
+    System.out.println(box);
+        for (int i = 0; i < list.size(); i++) {
+            System.out.println(list.get(i).getLabel());
+            box.addItem(list.get(i).getLabel());
+        }
+    System.out.println(box);
+    box.revalidate();
+    box.repaint();
     }
     
     public void setlistLabel(ArrayList<Label> newlist){
@@ -151,23 +167,20 @@ public class LabelClass extends JPanel {
             noteButtonPanel.setVisible(false);
         }
         
-        JComboBox box = new JComboBox();
+        box = new JComboBox();
         box.setBackground(Color.WHITE);
         box.setPreferredSize(new Dimension(300, 40));
 
         labelBoxPanel.setLayout(new FlowLayout());
-        labelName = new String[listLabels.size()];
-        for (int i = 0; i < listLabels.size(); i++) {
-            labelName[i] = listLabels.get(i).getLabel();
-            box.addItem(labelName[i]);
-        }
+        
+        fillBox(origin.db.GetLabels());
+        
         box.setFont(new Font("Arial", Font.BOLD, 16));
         box.setForeground(new Color(23, 106, 115));
         box.addActionListener(new ActionListener() {     
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     labelTextField.setVisible(true);
-                    labelTextField.setText(box.getSelectedItem().toString());
                 }
         });
       
@@ -187,6 +200,8 @@ public class LabelClass extends JPanel {
             public void actionPerformed(ActionEvent arg0) {
                 labelTextField.setEditable(false);
                 origin.db.PostLabel(labelTextField.getText());
+                System.out.println(origin.db.GetLabels());
+                origin.editor.modal.labels.fillBox(origin.db.GetLabels());
                 addNewLabelButton.setVisible(false);
                 labelTextField.setText("Le label \"" + labelTextField.getText() + "\" est enregistré.");
 //Enregistrer le nouveau label labelTextField.getText(); -> INSERT //////////////////////////////////////////////////////////////////                 
@@ -198,6 +213,7 @@ public class LabelClass extends JPanel {
             public void actionPerformed(ActionEvent arg0) {
                 labelTextField.setEditable(true);
                 labelTextField.getText();
+                labelTextField.setText("Saisir le nouveau label ici");
                 updateLabelButton.setVisible(true);
                 addNewLabelButton.setVisible(false);
                 oldLabel = box.getSelectedItem().toString();
@@ -209,6 +225,7 @@ public class LabelClass extends JPanel {
             public void actionPerformed(ActionEvent arg0) {
                 labelTextField.setEditable(false);
                 origin.db.UpdateLabel(labelTextField.getText(),listLabels.get(box.getSelectedIndex()).getId());
+                fillBox(origin.db.GetLabels());
                 updateLabelButton.setVisible(false);
                 labelTextField.setText("Le label \"" + oldLabel + "\" a été modifié.");
 //Enregistrer le nouveau label labelTextField.getText(); -> UPDATE //////////////////////////////////////////////////////////////////                 
@@ -221,6 +238,7 @@ public class LabelClass extends JPanel {
                 int option = JOptionPane.showConfirmDialog(null, "Êtes-vous sûr de vouloir supprimer le label \""  + box.getSelectedItem().toString() + "\" ?", "Confirmation de suppression", JOptionPane.YES_NO_OPTION);
                     if (option == JOptionPane.YES_OPTION) {
                         origin.db.DeleteLabel(listLabels.get(box.getSelectedIndex()).getId());
+                        fillBox(origin.db.GetLabels());
                         listLabels.remove(box.getSelectedItem().toString());
                         labelTextField.setText("Le label \"" + box.getSelectedItem().toString() + "\" vient d'être supprimé.");
                     }
@@ -232,6 +250,7 @@ public class LabelClass extends JPanel {
             @Override
             public void actionPerformed(ActionEvent arg0) {
                 origin.db.AddLabel(listLabels.get(box.getSelectedIndex()).getId(), idF);
+                origin.editor.labelClass.setlistLabel(origin.db.GetLabels(idF));
                 labelTextField.getText();
                 labelTextField.setText("Le label \"" + labelTextField.getText() + "\" est lié à la note.");
 //Lier le label et la note labelTextField.getText(); -> INSERT idNote avec idLabel //////////////////////////////////////////////////////////////////                 
@@ -242,6 +261,7 @@ public class LabelClass extends JPanel {
             @Override
             public void actionPerformed(ActionEvent arg0) {
                 origin.db.RemoveLabel(listLabels.get(box.getSelectedIndex()).getId(), idF);
+                origin.editor.labelClass.setlistLabel(origin.db.GetLabels(idF));
                 labelTextField.getText();
                 labelTextField.setText("Le label \"" + labelTextField.getText() + "\" a été supprimé de la note.");
 //Supprimer le lien entre label et note labelTextField.getText(); -> DELETE idNote avec idLabel //////////////////////////////////////////////////////////////////                 
