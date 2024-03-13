@@ -79,6 +79,12 @@ public class Home extends javax.swing.JFrame {
         SwingUtilities.updateComponentTreeUI(app.editor);
         //FlatAnimatedLafChange.hideSnapshotWithAnimation();
     }
+    
+    public void returnToBg () {
+        app.setContentPane(app.home);
+        app.home.applyComponentOrientation(app.getComponentOrientation());
+        SwingUtilities.updateComponentTreeUI(app.home);
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
