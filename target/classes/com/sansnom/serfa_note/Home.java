@@ -31,8 +31,13 @@ public class Home extends javax.swing.JFrame {
         initComponents();
         login = new Login(this);
         inscription = new Inscription(this);
+<<<<<<< HEAD
         home = new Application_Background(this);
         editor = new EditorPane(this);
+=======
+        home = new Application_Background();
+        editor = new EditorPane();
+>>>>>>> designV2
         setContentPane(login);
     }
     
