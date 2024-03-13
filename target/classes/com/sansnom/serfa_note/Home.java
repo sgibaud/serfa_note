@@ -22,7 +22,7 @@ public class Home extends javax.swing.JFrame {
     private Application_Background home;
     private Inscription inscription;
     public BDDO db;
-    private EditorPane editor;
+    public EditorPane editor;
     /**
      * Creates new form Home
      */

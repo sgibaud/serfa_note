@@ -62,7 +62,7 @@ public class EditorPane extends JPanel {
     private ImageIcon addIcon = new ImageIcon(add_Icon.getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT));
    
     
-    private LabelClass labelClass; //classe label
+    public LabelClass labelClass; //classe label
     
     private String[] fontName;
     private String charset = "UTF-8";
@@ -302,7 +302,7 @@ public class EditorPane extends JPanel {
         labelField = new JPanel();
         editLabelButton = new JButton();
         labelTitle = new JLabel();
-        labelClass = new LabelClass();
+        labelClass = new LabelClass(this.origin,this.idF);
         
         
         labelPane.setBackground(new Color(23, 106, 115));
@@ -316,8 +316,8 @@ public class EditorPane extends JPanel {
         editLabelButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) { // ouvre la modale
-                JModalLabel modal = new JModalLabel(origin, "Labels : ", true);
-                modal.displayLabelBox("noteLabel");
+                JModalLabel modal = new JModalLabel(origin, "Labels : ", true,origin,idF);
+                modal.displayLabelBox("noteLabel",origin, idF);
                 modal.setVisible(true);
             }
         });

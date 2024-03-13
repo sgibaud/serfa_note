@@ -349,10 +349,10 @@ public class BDDO{
         return this.KeyRead(key);
         }
         
-        public int PostLabel(String libelle){  //Insere une feuille sur la BDD
+        public int PostLabel(String libelle){  //Insere un Label sur la BDD
         String[] values = {libelle};
             
-        ResultSet key = this.ExecuteQuery("INSERT INTO Label (libelle) VALUES (?,?,?);",values);
+        ResultSet key = this.ExecuteQuery("INSERT INTO Label (libelle) VALUES (?);",values);
         
         return this.KeyRead(key);
         }

@@ -27,11 +27,12 @@ public class JModalLabel extends JDialog {
     private JPanel modalPanel;
    
      
-    public JModalLabel(JFrame frame, String titre, boolean modal) {
+    public JModalLabel(JFrame frame, String titre, boolean modal, Home home, int id){
         
         super(frame, titre, modal);
         
-        labels = new LabelClass();
+        labels = new LabelClass(home, id);
+        labels.setlistLabel(home.db.GetLabels());
 
         modalPanel = new JPanel();
         modalPanel.setBackground(Color.WHITE);
@@ -47,8 +48,9 @@ public class JModalLabel extends JDialog {
     }
     
     
-    public void displayLabelBox(String labelType){
-        labels = new LabelClass();
+    public void displayLabelBox(String labelType, Home home, int id){
+        labels = new LabelClass(home,id);
+        labels.setlistLabel(home.db.GetLabels());
         labelBoxPanel = new JPanel();
   
         labelBoxPanel = labels.createAllLabelsModal(labelType);

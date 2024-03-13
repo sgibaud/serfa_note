@@ -21,4 +21,8 @@ public class Label {
      return this.libelle;
     }
     
+    public int getId(){
+     return this.id;
+    }
+    
 }
