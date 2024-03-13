@@ -44,6 +44,7 @@ public class EditorPane extends JPanel {
     private JButton italicButton; //met le texte en italique
     private JButton colorButton; // colorPicker et mise en couleur du texte
     private JButton saveNoteButton; // bouton qui sauvegarde le contenu de la note
+    private JButton closeButton; // bouton de retour
     private JComboBox fontBox; //change la typographie
 
     private ImageIcon edit_Icon = new ImageIcon(getClass().getResource("/resources/doc.png")); //icône de modifications
@@ -213,6 +214,19 @@ public class EditorPane extends JPanel {
                 sauvegarder();
             }
         });
+        closeButton = new JButton("Fermer");
+        closeButton.setBackground(new Color(32, 46, 64));
+        closeButton.setForeground(Color.WHITE);
+        closeButton.setFont(new Font("Arial", Font.BOLD, 18));
+        closeButton.setPreferredSize(new Dimension(150, 40));
+        closeButton.setBorder(javax.swing.BorderFactory.createLineBorder(new Color(0, 0, 0), 0));
+        closeButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent arg0) {
+                 origin.returnToBg();
+            }
+        });
+        savePanel.add(closeButton);
         savePanel.add(saveNoteButton);
 
         titleLb.setText("Title");
