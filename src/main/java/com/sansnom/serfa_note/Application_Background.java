@@ -32,11 +32,7 @@ public class Application_Background extends javax.swing.JPanel {
      */
     public Application_Background(Home home) {
         initComponents();
-<<<<<<< HEAD
         this.origin = home;
-=======
-        //JClasseurBloc.setVisible(false);
->>>>>>> designV2
     }
 
     public void setUser(String user) {
@@ -54,7 +50,7 @@ public class Application_Background extends javax.swing.JPanel {
 
         JSelected = new javax.swing.JDialog();
         jDiagPan = new javax.swing.JPanel();
-        JlabelColor = new javax.swing.JPanel();
+        JLabelPane = new javax.swing.JPanel();
         jLabelColor = new javax.swing.JLabel();
         JpaneColor = new javax.swing.JPanel();
         Jblue = new javax.swing.JButton();
@@ -69,6 +65,8 @@ public class Application_Background extends javax.swing.JPanel {
         jVioloine = new javax.swing.JButton();
         jChartreuse = new javax.swing.JButton();
         jKing = new javax.swing.JButton();
+        jNewNote = new javax.swing.JPanel();
+        JTextTitle1 = new javax.swing.JTextField();
         jNewClasseur = new javax.swing.JPanel();
         jSelectedColor = new javax.swing.JButton();
         JTextTitle = new javax.swing.JTextField();
@@ -90,10 +88,11 @@ public class Application_Background extends javax.swing.JPanel {
         JIntercalaire = new javax.swing.JPanel();
         JaddIntercalaire = new javax.swing.JButton();
         JLabelIntercalaire = new javax.swing.JLabel();
-        JIntercalaireBloc = new javax.swing.JPanel();
+        jIntercalaireBloc = new javax.swing.JPanel();
         Jnote = new javax.swing.JPanel();
         JaddNote = new javax.swing.JButton();
         JlabelNote = new javax.swing.JLabel();
+        jNoteBloc = new javax.swing.JPanel();
 
         JSelected.setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         JSelected.setEnabled(false);
@@ -112,30 +111,30 @@ public class Application_Background extends javax.swing.JPanel {
         jDiagPan.setPreferredSize(new java.awt.Dimension(270, 180));
         jDiagPan.setLayout(new java.awt.BorderLayout());
 
-        JlabelColor.setMaximumSize(new java.awt.Dimension(270, 30));
-        JlabelColor.setMinimumSize(new java.awt.Dimension(270, 30));
-        JlabelColor.setPreferredSize(new java.awt.Dimension(270, 30));
+        JLabelPane.setMaximumSize(new java.awt.Dimension(270, 30));
+        JLabelPane.setMinimumSize(new java.awt.Dimension(270, 30));
+        JLabelPane.setPreferredSize(new java.awt.Dimension(270, 30));
 
         jLabelColor.setFont(new java.awt.Font("URW Gothic", 1, 18)); // NOI18N
         jLabelColor.setText("Label couleur");
 
-        javax.swing.GroupLayout JlabelColorLayout = new javax.swing.GroupLayout(JlabelColor);
-        JlabelColor.setLayout(JlabelColorLayout);
-        JlabelColorLayout.setHorizontalGroup(
-            JlabelColorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JlabelColorLayout.createSequentialGroup()
+        javax.swing.GroupLayout JLabelPaneLayout = new javax.swing.GroupLayout(JLabelPane);
+        JLabelPane.setLayout(JLabelPaneLayout);
+        JLabelPaneLayout.setHorizontalGroup(
+            JLabelPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JLabelPaneLayout.createSequentialGroup()
                 .addContainerGap(80, Short.MAX_VALUE)
                 .addComponent(jLabelColor)
                 .addGap(69, 69, 69))
         );
-        JlabelColorLayout.setVerticalGroup(
-            JlabelColorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JlabelColorLayout.createSequentialGroup()
+        JLabelPaneLayout.setVerticalGroup(
+            JLabelPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JLabelPaneLayout.createSequentialGroup()
                 .addGap(0, 7, Short.MAX_VALUE)
                 .addComponent(jLabelColor))
         );
 
-        jDiagPan.add(JlabelColor, java.awt.BorderLayout.NORTH);
+        jDiagPan.add(JLabelPane, java.awt.BorderLayout.NORTH);
 
         JpaneColor.setMaximumSize(new java.awt.Dimension(150, 150));
         JpaneColor.setMinimumSize(new java.awt.Dimension(150, 150));
@@ -266,6 +265,23 @@ public class Application_Background extends javax.swing.JPanel {
                 .addComponent(jDiagPan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        jNewNote.setBackground(new java.awt.Color(42, 70, 105));
+        jNewNote.setMaximumSize(new java.awt.Dimension(235, 40));
+        jNewNote.setMinimumSize(new java.awt.Dimension(235, 40));
+        jNewNote.setPreferredSize(new java.awt.Dimension(235, 40));
+
+        JTextTitle1.setBackground(new java.awt.Color(42, 70, 105));
+        JTextTitle1.setFont(new java.awt.Font("URW Gothic", 0, 18)); // NOI18N
+        JTextTitle1.setForeground(new java.awt.Color(255, 255, 255));
+        JTextTitle1.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        JTextTitle1.setText("jTextField1");
+        JTextTitle1.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        JTextTitle1.setMargin(new java.awt.Insets(5, 2, 5, 2));
+        JTextTitle1.setMaximumSize(new java.awt.Dimension(220, 30));
+        JTextTitle1.setMinimumSize(new java.awt.Dimension(220, 30));
+        JTextTitle1.setPreferredSize(new java.awt.Dimension(220, 30));
+        jNewNote.add(JTextTitle1);
 
         jNewClasseur.setBackground(new java.awt.Color(42, 70, 105));
         jNewClasseur.setMaximumSize(new java.awt.Dimension(235, 40));
@@ -434,9 +450,10 @@ public class Application_Background extends javax.swing.JPanel {
         JlabelClasseur.setPreferredSize(new java.awt.Dimension(330, 25));
 
         JClasseurBloc.setBackground(new java.awt.Color(42, 70, 105));
-        JClasseurBloc.setMaximumSize(new java.awt.Dimension(242, 40));
-        JClasseurBloc.setMinimumSize(new java.awt.Dimension(242, 40));
-        JClasseurBloc.setPreferredSize(new java.awt.Dimension(242, 40));
+        JClasseurBloc.setAutoscrolls(true);
+        JClasseurBloc.setMaximumSize(new java.awt.Dimension(195, 540));
+        JClasseurBloc.setMinimumSize(new java.awt.Dimension(195, 540));
+        JClasseurBloc.setPreferredSize(new java.awt.Dimension(195, 540));
         JClasseurBloc.setLayout(new java.awt.GridLayout(10, 1));
 
         javax.swing.GroupLayout JClasseurLayout = new javax.swing.GroupLayout(JClasseur);
@@ -446,12 +463,12 @@ public class Application_Background extends javax.swing.JPanel {
             .addGroup(JClasseurLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(JClasseurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(JClasseurBloc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(JClasseurBloc, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(JClasseurLayout.createSequentialGroup()
                         .addComponent(JaddClasseur)
                         .addGap(5, 5, 5)
                         .addComponent(JlabelClasseur, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(9, Short.MAX_VALUE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
         JClasseurLayout.setVerticalGroup(
             JClasseurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -490,12 +507,12 @@ public class Application_Background extends javax.swing.JPanel {
         JLabelIntercalaire.setMinimumSize(new java.awt.Dimension(263, 30));
         JLabelIntercalaire.setPreferredSize(new java.awt.Dimension(263, 25));
 
-        JIntercalaireBloc.setBackground(new java.awt.Color(42, 70, 105));
-        JIntercalaireBloc.setAutoscrolls(true);
-        JIntercalaireBloc.setMaximumSize(new java.awt.Dimension(245, 40));
-        JIntercalaireBloc.setMinimumSize(new java.awt.Dimension(245, 40));
-        JIntercalaireBloc.setPreferredSize(new java.awt.Dimension(245, 40));
-        JIntercalaireBloc.setLayout(new java.awt.GridLayout(10, 1));
+        jIntercalaireBloc.setBackground(new java.awt.Color(42, 70, 105));
+        jIntercalaireBloc.setAutoscrolls(true);
+        jIntercalaireBloc.setMaximumSize(new java.awt.Dimension(195, 540));
+        jIntercalaireBloc.setMinimumSize(new java.awt.Dimension(195, 540));
+        jIntercalaireBloc.setPreferredSize(new java.awt.Dimension(195, 540));
+        jIntercalaireBloc.setLayout(new java.awt.GridLayout(10, 1));
 
         javax.swing.GroupLayout JIntercalaireLayout = new javax.swing.GroupLayout(JIntercalaire);
         JIntercalaire.setLayout(JIntercalaireLayout);
@@ -503,14 +520,13 @@ public class Application_Background extends javax.swing.JPanel {
             JIntercalaireLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(JIntercalaireLayout.createSequentialGroup()
                 .addGap(10, 10, 10)
-                .addGroup(JIntercalaireLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(JIntercalaireBloc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(JIntercalaireLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jIntercalaireBloc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(JIntercalaireLayout.createSequentialGroup()
                         .addComponent(JaddIntercalaire)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(JLabelIntercalaire, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 19, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addComponent(JLabelIntercalaire, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
         JIntercalaireLayout.setVerticalGroup(
             JIntercalaireLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -520,7 +536,7 @@ public class Application_Background extends javax.swing.JPanel {
                     .addComponent(JaddIntercalaire)
                     .addComponent(JLabelIntercalaire, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(JIntercalaireBloc, javax.swing.GroupLayout.DEFAULT_SIZE, 542, Short.MAX_VALUE)
+                .addComponent(jIntercalaireBloc, javax.swing.GroupLayout.DEFAULT_SIZE, 542, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -546,16 +562,28 @@ public class Application_Background extends javax.swing.JPanel {
         JlabelNote.setForeground(new java.awt.Color(255, 255, 255));
         JlabelNote.setText("nouvelle note");
 
+        jNoteBloc.setBackground(new java.awt.Color(42, 70, 105));
+        jNoteBloc.setAutoscrolls(true);
+        jNoteBloc.setMaximumSize(new java.awt.Dimension(195, 540));
+        jNoteBloc.setMinimumSize(new java.awt.Dimension(195, 540));
+        jNoteBloc.setPreferredSize(new java.awt.Dimension(195, 540));
+        jNoteBloc.setLayout(new java.awt.GridLayout(10, 1));
+
         javax.swing.GroupLayout JnoteLayout = new javax.swing.GroupLayout(Jnote);
         Jnote.setLayout(JnoteLayout);
         JnoteLayout.setHorizontalGroup(
             JnoteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(JnoteLayout.createSequentialGroup()
                 .addGap(10, 10, 10)
-                .addComponent(JaddNote)
-                .addGap(5, 5, 5)
-                .addComponent(JlabelNote)
-                .addGap(20, 20, 20))
+                .addGroup(JnoteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(JnoteLayout.createSequentialGroup()
+                        .addComponent(jNoteBloc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .addGroup(JnoteLayout.createSequentialGroup()
+                        .addComponent(JaddNote)
+                        .addGap(5, 5, 5)
+                        .addComponent(JlabelNote)
+                        .addGap(20, 20, 20))))
         );
         JnoteLayout.setVerticalGroup(
             JnoteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -564,7 +592,9 @@ public class Application_Background extends javax.swing.JPanel {
                 .addGroup(JnoteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(JlabelNote)
                     .addComponent(JaddNote))
-                .addGap(574, 574, 574))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jNoteBloc, javax.swing.GroupLayout.DEFAULT_SIZE, 548, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         Jcenter.add(Jnote);
@@ -658,7 +688,7 @@ public class Application_Background extends javax.swing.JPanel {
 
     private void JaddNoteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JaddNoteActionPerformed
         // TODO add your handling code here:
-        origin.editor();
+        origin.editor(1);
     }//GEN-LAST:event_JaddNoteActionPerformed
 
     private void JaddIntercalaireActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JaddIntercalaireActionPerformed
@@ -667,7 +697,7 @@ public class Application_Background extends javax.swing.JPanel {
         //panelBloc.setLayout(new BoxLayout(panelBloc, BoxLayout.Y_AXIS));
         panelBloc.setBackground(new java.awt.Color(42, 70, 105));
         panelBloc.add(jNewClasseur);
-        JIntercalaireBloc.add(panelBloc);
+        jIntercalaireBloc.add(panelBloc);
         panelBloc.revalidate();
         panelBloc.repaint();
         //System.out.println(jNewClasseur);
@@ -678,12 +708,6 @@ public class Application_Background extends javax.swing.JPanel {
         dialog();
     }//GEN-LAST:event_jSelectedColorActionPerformed
 
-    public void newIntercalaire() {
-        //jNewClasseur = new JPanel();
-        JIntercalaireBloc.add(jNewClasseur);
-        JIntercalaireBloc.revalidate();
-        JIntercalaireBloc.repaint();
-    }
 
     public void dialog() {
         JSelected = new JDialog(home, "Select Color", true);
@@ -693,24 +717,17 @@ public class Application_Background extends javax.swing.JPanel {
         JSelected.setVisible(true);
     }
 
-<<<<<<< HEAD
-    private void JaddNoteActionPerformed(java.awt.event.ActionEvent evt) {                                         
-        // TODO add your handling code here:
-        origin.editor(1);
-    }
-
-=======
->>>>>>> designV2
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel JClasseur;
     private javax.swing.JPanel JClasseurBloc;
     private javax.swing.JPanel JIntercalaire;
-    private javax.swing.JPanel JIntercalaireBloc;
     private javax.swing.JLabel JLabelIntercalaire;
+    private javax.swing.JPanel JLabelPane;
     private javax.swing.JPanel JRoot;
     private javax.swing.JDialog JSelected;
     private javax.swing.JTextField JTextTitle;
+    private javax.swing.JTextField JTextTitle1;
     private javax.swing.JButton JaddClasseur;
     private javax.swing.JButton JaddIntercalaire;
     private javax.swing.JButton JaddNote;
@@ -721,7 +738,6 @@ public class Application_Background extends javax.swing.JPanel {
     private javax.swing.JPanel Jcenterpanel;
     private javax.swing.JLabel JlabUser;
     private javax.swing.JLabel JlabelClasseur;
-    private javax.swing.JPanel JlabelColor;
     private javax.swing.JLabel JlabelNote;
     private javax.swing.JLabel Jlogo;
     private javax.swing.JPanel Jmenu;
@@ -736,10 +752,13 @@ public class Application_Background extends javax.swing.JPanel {
     private javax.swing.JPanel jDiagPan;
     private javax.swing.JButton jFog;
     private javax.swing.JButton jGreen;
+    private javax.swing.JPanel jIntercalaireBloc;
     private javax.swing.JButton jKing;
     private javax.swing.JLabel jLabelColor;
     private javax.swing.JButton jMenthe;
     private javax.swing.JPanel jNewClasseur;
+    private javax.swing.JPanel jNewNote;
+    private javax.swing.JPanel jNoteBloc;
     private javax.swing.JButton jOrange;
     private javax.swing.JButton jPink;
     private javax.swing.JButton jRed;
