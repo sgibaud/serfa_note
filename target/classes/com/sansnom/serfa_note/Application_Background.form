@@ -60,11 +60,7 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
           <SubComponents>
-<<<<<<< HEAD
             <Container class="javax.swing.JPanel" name="JLabelPane">
-=======
-            <Container class="javax.swing.JPanel" name="JlabelColor">
->>>>>>> designV2
               <Properties>
                 <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[270, 30]"/>
@@ -325,89 +321,6 @@
         </Container>
       </SubComponents>
     </Container>
-<<<<<<< HEAD
-=======
-    <Container class="javax.swing.JPanel" name="jNewClasseur">
-      <Properties>
-        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="69" green="46" red="2a" type="rgb"/>
-        </Property>
-        <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[235, 40]"/>
-        </Property>
-        <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[235, 40]"/>
-        </Property>
-        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[235, 40]"/>
-        </Property>
-      </Properties>
-
-      <Layout class="org.netbeans.modules.form.compat2.layouts.DesignFlowLayout"/>
-      <SubComponents>
-        <Component class="javax.swing.JButton" name="jSelectedColor">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="0" green="0" red="ff" type="rgb"/>
-            </Property>
-            <Property name="alignmentY" type="float" value="0.0"/>
-            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-              <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
-                <EmptyBorder bottom="0" left="0" right="0" top="0"/>
-              </Border>
-            </Property>
-            <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
-              <Insets value="[2, 2, 2, 2]"/>
-            </Property>
-            <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[15, 30]"/>
-            </Property>
-            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[15, 30]"/>
-            </Property>
-            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[15, 30]"/>
-            </Property>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jSelectedColorActionPerformed"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JTextField" name="JTextTitle">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="69" green="46" red="2a" type="rgb"/>
-            </Property>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="URW Gothic" size="18" style="0"/>
-            </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-            </Property>
-            <Property name="horizontalAlignment" type="int" value="2"/>
-            <Property name="text" type="java.lang.String" value="jTextField1"/>
-            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-              <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
-                <EmptyBorder bottom="0" left="0" right="0" top="0"/>
-              </Border>
-            </Property>
-            <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
-              <Insets value="[2, 2, 2, 2]"/>
-            </Property>
-            <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[180, 20]"/>
-            </Property>
-            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[180, 20]"/>
-            </Property>
-            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[180, 20]"/>
-            </Property>
-          </Properties>
-        </Component>
-      </SubComponents>
-    </Container>
->>>>>>> designV2
   </NonVisualComponents>
   <Properties>
     <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -673,11 +586,7 @@
                 <Property name="verticalGap" type="int" value="0"/>
               </Layout>
               <SubComponents>
-<<<<<<< HEAD
                 <Container class="javax.swing.JPanel" name="Jclasseur">
-=======
-                <Container class="javax.swing.JPanel" name="JClasseur">
->>>>>>> designV2
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="69" green="46" red="2a" type="rgb"/>
@@ -706,22 +615,14 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-<<<<<<< HEAD
                                   <Component id="JClasseurBloc" min="-2" pref="233" max="-2" attributes="0"/>
-=======
-                                  <Component id="JClasseurBloc" min="-2" max="-2" attributes="0"/>
->>>>>>> designV2
                                   <Group type="102" attributes="0">
                                       <Component id="JaddClasseur" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
                                       <Component id="JlabelClasseur" min="-2" pref="175" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-<<<<<<< HEAD
                               <EmptySpace pref="18" max="32767" attributes="0"/>
-=======
-                              <EmptySpace pref="9" max="32767" attributes="0"/>
->>>>>>> designV2
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -734,11 +635,7 @@
                                   <Component id="JaddClasseur" alignment="1" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-<<<<<<< HEAD
                               <Component id="JClasseurBloc" max="32767" attributes="0"/>
-=======
-                              <Component id="JClasseurBloc" pref="542" max="32767" attributes="0"/>
->>>>>>> designV2
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -761,12 +658,6 @@
                           <Image iconType="3" name="/resources/add_roll.png"/>
                         </Property>
                       </Properties>
-<<<<<<< HEAD
-=======
-                      <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JaddClasseurActionPerformed"/>
-                      </Events>
->>>>>>> designV2
                     </Component>
                     <Component class="javax.swing.JLabel" name="JlabelClasseur">
                       <Properties>
@@ -796,7 +687,6 @@
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="69" green="46" red="2a" type="rgb"/>
                         </Property>
-<<<<<<< HEAD
                         <Property name="autoscrolls" type="boolean" value="true"/>
                         <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                           <Dimension value="[195, 540]"/>
@@ -897,27 +787,6 @@
                   </SubComponents>
                 </Container>
                 <Container class="javax.swing.JPanel" name="Jintercalaire">
-=======
-                        <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                          <Dimension value="[242, 40]"/>
-                        </Property>
-                        <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                          <Dimension value="[242, 40]"/>
-                        </Property>
-                        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                          <Dimension value="[242, 40]"/>
-                        </Property>
-                      </Properties>
-
-                      <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridLayout">
-                        <Property name="columns" type="int" value="1"/>
-                        <Property name="rows" type="int" value="10"/>
-                      </Layout>
-                    </Container>
-                  </SubComponents>
-                </Container>
-                <Container class="javax.swing.JPanel" name="JIntercalaire">
->>>>>>> designV2
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="69" green="46" red="2a" type="rgb"/>
@@ -943,27 +812,12 @@
                   <Layout>
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-<<<<<<< HEAD
                           <Group type="102" attributes="0">
                               <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                               <Component id="JaddIntercalaire" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="JLabelIntercalaire" min="-2" pref="230" max="-2" attributes="0"/>
                               <EmptySpace pref="25" max="32767" attributes="0"/>
-=======
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="JIntercalaireBloc" max="32767" attributes="0"/>
-                                  <Group type="102" attributes="0">
-                                      <Component id="JaddIntercalaire" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="JLabelIntercalaire" min="-2" pref="230" max="-2" attributes="0"/>
-                                      <EmptySpace min="0" pref="19" max="32767" attributes="0"/>
-                                  </Group>
-                              </Group>
-                              <EmptySpace max="-2" attributes="0"/>
->>>>>>> designV2
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -975,13 +829,7 @@
                                   <Component id="JaddIntercalaire" alignment="1" min="-2" max="-2" attributes="0"/>
                                   <Component id="JLabelIntercalaire" alignment="1" min="-2" max="-2" attributes="0"/>
                               </Group>
-<<<<<<< HEAD
                               <EmptySpace min="-2" pref="566" max="-2" attributes="0"/>
-=======
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="JIntercalaireBloc" pref="542" max="32767" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
->>>>>>> designV2
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -1002,12 +850,6 @@
                           <Image iconType="3" name="/resources/add_roll.png"/>
                         </Property>
                       </Properties>
-<<<<<<< HEAD
-=======
-                      <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JaddIntercalaireActionPerformed"/>
-                      </Events>
->>>>>>> designV2
                     </Component>
                     <Component class="javax.swing.JLabel" name="JLabelIntercalaire">
                       <Properties>
@@ -1029,31 +871,6 @@
                         </Property>
                       </Properties>
                     </Component>
-<<<<<<< HEAD
-=======
-                    <Container class="javax.swing.JPanel" name="JIntercalaireBloc">
-                      <Properties>
-                        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="69" green="46" red="2a" type="rgb"/>
-                        </Property>
-                        <Property name="autoscrolls" type="boolean" value="true"/>
-                        <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                          <Dimension value="[245, 40]"/>
-                        </Property>
-                        <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                          <Dimension value="[245, 40]"/>
-                        </Property>
-                        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                          <Dimension value="[245, 40]"/>
-                        </Property>
-                      </Properties>
-
-                      <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridLayout">
-                        <Property name="columns" type="int" value="1"/>
-                        <Property name="rows" type="int" value="10"/>
-                      </Layout>
-                    </Container>
->>>>>>> designV2
                   </SubComponents>
                 </Container>
                 <Container class="javax.swing.JPanel" name="Jnote">
@@ -1120,12 +937,6 @@
                           <Image iconType="3" name="/resources/add_roll.png"/>
                         </Property>
                       </Properties>
-<<<<<<< HEAD
-=======
-                      <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JaddNoteActionPerformed"/>
-                      </Events>
->>>>>>> designV2
                     </Component>
                     <Component class="javax.swing.JLabel" name="JlabelNote">
                       <Properties>
