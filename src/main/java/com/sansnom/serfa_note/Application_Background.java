@@ -33,6 +33,7 @@ public class Application_Background extends javax.swing.JPanel {
     public Application_Background(Home home) {
         initComponents();
         this.origin = home;
+        //jIconOn.setVisible(false);
     }
 
     public void setUser(String user) {
@@ -70,6 +71,7 @@ public class Application_Background extends javax.swing.JPanel {
         jNewClasseur = new javax.swing.JPanel();
         jSelectedColor = new javax.swing.JButton();
         JTextTitle = new javax.swing.JTextField();
+        jIconOn = new javax.swing.JLabel();
         JRoot = new javax.swing.JPanel();
         Jmenu = new javax.swing.JPanel();
         LlogoLayout = new javax.swing.JPanel();
@@ -288,10 +290,14 @@ public class Application_Background extends javax.swing.JPanel {
         jNewClasseur.setMaximumSize(new java.awt.Dimension(235, 40));
         jNewClasseur.setMinimumSize(new java.awt.Dimension(235, 40));
         jNewClasseur.setPreferredSize(new java.awt.Dimension(235, 40));
+        java.awt.FlowLayout flowLayout1 = new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 4, 0);
+        flowLayout1.setAlignOnBaseline(true);
+        jNewClasseur.setLayout(flowLayout1);
 
         jSelectedColor.setBackground(new java.awt.Color(255, 0, 0));
         jSelectedColor.setAlignmentY(0.0F);
         jSelectedColor.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        jSelectedColor.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jSelectedColor.setMargin(new java.awt.Insets(2, 2, 2, 2));
         jSelectedColor.setMaximumSize(new java.awt.Dimension(15, 30));
         jSelectedColor.setMinimumSize(new java.awt.Dimension(15, 30));
@@ -310,10 +316,19 @@ public class Application_Background extends javax.swing.JPanel {
         JTextTitle.setText("jTextField1");
         JTextTitle.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         JTextTitle.setMargin(new java.awt.Insets(2, 2, 2, 2));
-        JTextTitle.setMaximumSize(new java.awt.Dimension(180, 20));
-        JTextTitle.setMinimumSize(new java.awt.Dimension(180, 20));
-        JTextTitle.setPreferredSize(new java.awt.Dimension(180, 20));
+        JTextTitle.setMaximumSize(new java.awt.Dimension(160, 20));
+        JTextTitle.setMinimumSize(new java.awt.Dimension(160, 20));
+        JTextTitle.setPreferredSize(new java.awt.Dimension(160, 20));
+        JTextTitle.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                JTextTitleMouseClicked(evt);
+            }
+        });
         jNewClasseur.add(JTextTitle);
+
+        jIconOn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/on@2x.png"))); // NOI18N
+        jNewClasseur.add(jIconOn);
+        jIconOn.getAccessibleContext().setAccessibleName("jIconOn");
 
         setMaximumSize(new java.awt.Dimension(1080, 720));
         setMinimumSize(new java.awt.Dimension(1080, 720));
@@ -400,8 +415,8 @@ public class Application_Background extends javax.swing.JPanel {
         Jtop.setPreferredSize(new java.awt.Dimension(980, 100));
 
         JbtnSearch.setBackground(new Color(255,255,255,0));
-        JbtnSearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/loupe@2x.png"))); // NOI18N
-        JbtnSearch.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/loupe_neg@2x.png"))); // NOI18N
+        JbtnSearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/label_search@2x.png"))); // NOI18N
+        JbtnSearch.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/label_search_neg@2x.png"))); // NOI18N
 
         javax.swing.GroupLayout JtopLayout = new javax.swing.GroupLayout(Jtop);
         Jtop.setLayout(JtopLayout);
@@ -621,57 +636,57 @@ public class Application_Background extends javax.swing.JPanel {
     private void JblueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JblueActionPerformed
         // TODO add your handling code here:
         // colors = nuancier.colors[0];
-        jSelectedColor.setBackground(new Color(0, 0, 255));
+        jSelectedColor.setBackground(new Color(255, 0, 0));
     }//GEN-LAST:event_JblueActionPerformed
 
     private void jPinkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPinkActionPerformed
         // TODO add your handling code here:
-        jSelectedColor.setBackground(new Color(255, 0, 204));
+        jSelectedColor.setBackground(new Color(0, 0, 255));
     }//GEN-LAST:event_jPinkActionPerformed
 
     private void jOrangeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jOrangeActionPerformed
         // TODO add your handling code here:
-        jSelectedColor.setBackground(new Color(255, 153, 51));
+        jSelectedColor.setBackground(new Color(203,34,229));
     }//GEN-LAST:event_jOrangeActionPerformed
 
     private void jRedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRedActionPerformed
         // TODO add your handling code here:
-        jSelectedColor.setBackground(new Color(255, 0, 0));
+        jSelectedColor.setBackground(new Color(229,195,23));
     }//GEN-LAST:event_jRedActionPerformed
 
     private void jAmbreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAmbreActionPerformed
         // TODO add your handling code here:
-        jSelectedColor.setBackground(new Color(240, 195, 0));
+        jSelectedColor.setBackground(new Color(255,122,82));
     }//GEN-LAST:event_jAmbreActionPerformed
 
     private void jFogActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFogActionPerformed
         // TODO add your handling code here:
-        jSelectedColor.setBackground(new Color(187, 210, 225));
+        jSelectedColor.setBackground(new Color(20,204,149));
     }//GEN-LAST:event_jFogActionPerformed
 
     private void jCanariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCanariActionPerformed
         // TODO add your handling code here:
-        jSelectedColor.setBackground(new Color(231, 240, 13));
+        jSelectedColor.setBackground(new Color(87,110,242));
     }//GEN-LAST:event_jCanariActionPerformed
 
     private void jMentheActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMentheActionPerformed
         // TODO add your handling code here:
-        jSelectedColor.setBackground(new Color(84, 249, 141));
+        jSelectedColor.setBackground(new Color(191,48,139));
     }//GEN-LAST:event_jMentheActionPerformed
 
     private void jVioloineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jVioloineActionPerformed
         // TODO add your handling code here:
-        jSelectedColor.setBackground(new Color(161, 6, 132));
+        jSelectedColor.setBackground(new Color(191,201,201));
     }//GEN-LAST:event_jVioloineActionPerformed
 
     private void jChartreuseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jChartreuseActionPerformed
         // TODO add your handling code here:
-        jSelectedColor.setBackground(new Color(194, 247, 50));
+        jSelectedColor.setBackground(new Color(102,205,217));
     }//GEN-LAST:event_jChartreuseActionPerformed
 
     private void jKingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jKingActionPerformed
         // TODO add your handling code here:
-        jSelectedColor.setBackground(new Color(49, 140, 231));
+        jSelectedColor.setBackground(new Color(178,31,0));
     }//GEN-LAST:event_jKingActionPerformed
 
 
@@ -708,6 +723,12 @@ public class Application_Background extends javax.swing.JPanel {
         // TODO add your handling code here:
         dialog();
     }//GEN-LAST:event_jSelectedColorActionPerformed
+
+    private void JTextTitleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JTextTitleMouseClicked
+        // TODO add your handling code here:
+        //jIconOn.setVisible(true);
+        jIconOn.setIcon(new ImageIcon(getClass().getResource("/resources/off@2x.png"))); 
+    }//GEN-LAST:event_JTextTitleMouseClicked
 
 
     public void dialog() {
@@ -753,6 +774,7 @@ public class Application_Background extends javax.swing.JPanel {
     private javax.swing.JPanel jDiagPan;
     private javax.swing.JButton jFog;
     private javax.swing.JButton jGreen;
+    private javax.swing.JLabel jIconOn;
     private javax.swing.JPanel jIntercalaireBloc;
     private javax.swing.JButton jKing;
     private javax.swing.JLabel jLabelColor;

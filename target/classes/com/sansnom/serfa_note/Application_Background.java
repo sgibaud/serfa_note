@@ -33,6 +33,7 @@ public class Application_Background extends javax.swing.JPanel {
     public Application_Background(Home home) {
         initComponents();
         this.origin = home;
+        //jIconOn.setVisible(false);
     }
 
     public void setUser(String user) {
@@ -70,6 +71,7 @@ public class Application_Background extends javax.swing.JPanel {
         jNewClasseur = new javax.swing.JPanel();
         jSelectedColor = new javax.swing.JButton();
         JTextTitle = new javax.swing.JTextField();
+        jIconOn = new javax.swing.JLabel();
         JRoot = new javax.swing.JPanel();
         Jmenu = new javax.swing.JPanel();
         LlogoLayout = new javax.swing.JPanel();
@@ -288,10 +290,14 @@ public class Application_Background extends javax.swing.JPanel {
         jNewClasseur.setMaximumSize(new java.awt.Dimension(235, 40));
         jNewClasseur.setMinimumSize(new java.awt.Dimension(235, 40));
         jNewClasseur.setPreferredSize(new java.awt.Dimension(235, 40));
+        java.awt.FlowLayout flowLayout1 = new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 4, 0);
+        flowLayout1.setAlignOnBaseline(true);
+        jNewClasseur.setLayout(flowLayout1);
 
         jSelectedColor.setBackground(new java.awt.Color(255, 0, 0));
         jSelectedColor.setAlignmentY(0.0F);
         jSelectedColor.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        jSelectedColor.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jSelectedColor.setMargin(new java.awt.Insets(2, 2, 2, 2));
         jSelectedColor.setMaximumSize(new java.awt.Dimension(15, 30));
         jSelectedColor.setMinimumSize(new java.awt.Dimension(15, 30));
@@ -310,10 +316,19 @@ public class Application_Background extends javax.swing.JPanel {
         JTextTitle.setText("jTextField1");
         JTextTitle.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         JTextTitle.setMargin(new java.awt.Insets(2, 2, 2, 2));
-        JTextTitle.setMaximumSize(new java.awt.Dimension(180, 20));
-        JTextTitle.setMinimumSize(new java.awt.Dimension(180, 20));
-        JTextTitle.setPreferredSize(new java.awt.Dimension(180, 20));
+        JTextTitle.setMaximumSize(new java.awt.Dimension(160, 20));
+        JTextTitle.setMinimumSize(new java.awt.Dimension(160, 20));
+        JTextTitle.setPreferredSize(new java.awt.Dimension(160, 20));
+        JTextTitle.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                JTextTitleMouseClicked(evt);
+            }
+        });
         jNewClasseur.add(JTextTitle);
+
+        jIconOn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/on@2x.png"))); // NOI18N
+        jNewClasseur.add(jIconOn);
+        jIconOn.getAccessibleContext().setAccessibleName("jIconOn");
 
         setMaximumSize(new java.awt.Dimension(1080, 720));
         setMinimumSize(new java.awt.Dimension(1080, 720));
@@ -400,8 +415,8 @@ public class Application_Background extends javax.swing.JPanel {
         Jtop.setPreferredSize(new java.awt.Dimension(980, 100));
 
         JbtnSearch.setBackground(new Color(255,255,255,0));
-        JbtnSearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/loupe@2x.png"))); // NOI18N
-        JbtnSearch.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/loupe_neg@2x.png"))); // NOI18N
+        JbtnSearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/label_search@2x.png"))); // NOI18N
+        JbtnSearch.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/label_search_neg@2x.png"))); // NOI18N
 
         javax.swing.GroupLayout JtopLayout = new javax.swing.GroupLayout(Jtop);
         Jtop.setLayout(JtopLayout);
@@ -709,6 +724,12 @@ public class Application_Background extends javax.swing.JPanel {
         dialog();
     }//GEN-LAST:event_jSelectedColorActionPerformed
 
+    private void JTextTitleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JTextTitleMouseClicked
+        // TODO add your handling code here:
+        //jIconOn.setVisible(true);
+        jIconOn.setIcon(new ImageIcon(getClass().getResource("/resources/off@2x.png"))); 
+    }//GEN-LAST:event_JTextTitleMouseClicked
+
 
     public void dialog() {
         JSelected = new JDialog(home, "Select Color", true);
@@ -753,6 +774,7 @@ public class Application_Background extends javax.swing.JPanel {
     private javax.swing.JPanel jDiagPan;
     private javax.swing.JButton jFog;
     private javax.swing.JButton jGreen;
+    private javax.swing.JLabel jIconOn;
     private javax.swing.JPanel jIntercalaireBloc;
     private javax.swing.JButton jKing;
     private javax.swing.JLabel jLabelColor;
