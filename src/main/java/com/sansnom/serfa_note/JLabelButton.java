@@ -18,7 +18,7 @@ public class JLabelButton extends JButton {
         this.setBackground(Color.WHITE);
         this.setFont(new Font("Arial", Font.BOLD, 16));
         this.setForeground(new Color(23, 106, 115));
-        this.setPreferredSize(new Dimension(75, 40));
+        this.setPreferredSize(new Dimension(75, 50));
     }
     
 }
