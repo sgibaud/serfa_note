@@ -293,7 +293,7 @@ public class LabelClass extends JPanel {
         addLabelNoteButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent arg0) {
-<<<<<<< HEAD
+
                 System.out.println(origin.editor.labelClass.cangetlabels());
                 System.out.println(origin.editor.labelClass.haslabel(listLabels.get(box.getSelectedIndex()).getId()));
                 if((origin.editor.labelClass.cangetlabels())&&!(origin.editor.labelClass.haslabel(listLabels.get(box.getSelectedIndex()).getId()))){
@@ -306,13 +306,13 @@ public class LabelClass extends JPanel {
                     labelTextField.getText();
                     labelTextField.setText("Le label n'a pas pu être lié a la note.");
                 }
-=======
+
                 oldLabel = box.getSelectedItem().toString();
                 origin.db.AddLabel(listLabels.get(box.getSelectedIndex()).getId(), idF);
                 origin.editor.labelClass.setlistLabel(origin.db.GetLabels(idF));
                 labelTextField.getText();
                 JOptionPane.showMessageDialog(null,"Le label \"" + oldLabel + "\" est lié à la note.","",JOptionPane.PLAIN_MESSAGE);
->>>>>>> editorV2
+
 //Lier le label et la note labelTextField.getText(); -> INSERT idNote avec idLabel //////////////////////////////////////////////////////////////////                 
             }
         });
