@@ -4,6 +4,9 @@
  */
 package com.sansnom.serfa_note;
 
+import com.sansnom.serfa_note.Data.Classeur;
+import com.sansnom.serfa_note.Data.Feuille;
+import com.sansnom.serfa_note.Data.Intercalaire;
 import java.awt.Color;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -14,6 +17,7 @@ import javax.swing.plaf.basic.BasicButtonUI;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import com.sansnom.serfa_note.Home;
+import java.util.ArrayList;
 
 /**
  *
@@ -22,6 +26,8 @@ import com.sansnom.serfa_note.Home;
 public class Application_Background extends javax.swing.JPanel {
 
     public int idActiveUser;
+    public int idActiveClasseur;
+    public int idActiveIntercalaire;
     private Home home;
     private Nuancier nuancier;
     private Color colors;
@@ -35,8 +41,49 @@ public class Application_Background extends javax.swing.JPanel {
         this.origin = home;
     }
 
-    public void setUser(String user) {
+    public void setUser(int id, String user) {
+        idActiveUser = id;
         JtextUser.setText(user);
+        loadClasseurs();
+    }
+    
+    private void loadClasseurs(){
+       cleartables(2);
+       System.out.println(this.idActiveUser);
+       ArrayList<Classeur> clist = this.origin.db.GetClasseurs(this.idActiveUser);
+       System.out.println(clist);
+       Classeur newcla;
+       for(int i = 0;i<clist.size();i++){
+           newcla = clist.get(i);
+           addClasseur(newcla);
+       }
+    }
+    
+    private void loadIntercalaire(){
+       cleartables(1);
+       ArrayList<Intercalaire> ilist = this.origin.db.GetIntercalaires(this.idActiveClasseur);
+       Intercalaire newint;
+       for(int i = 0;i<ilist.size();i++){
+           newint = ilist.get(i);
+           addIntercalaire(newint);
+       }
+    }
+    
+    private void loadFeuille(){
+        cleartables(0);
+        ArrayList<Feuille> flist = this.origin.db.GetFeuilles(this.idActiveIntercalaire);
+        Feuille newf;
+       for(int i = 0;i<flist.size();i++){
+           newf = flist.get(i);
+           addFeuille(newf);
+       }
+        
+    }
+    
+    private void cleartables(int i){
+        if(i>0){jIntercalaireBloc.removeAll();}
+        if(i>1){JClasseurBloc.removeAll();}
+        Jnote.removeAll();
     }
 
     /**
@@ -676,31 +723,65 @@ public class Application_Background extends javax.swing.JPanel {
 
     private void JaddClasseurActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JaddClasseurActionPerformed
         // TODO add your handling code here:
+        int i = origin.db.PostClasseur("New", "666666", this.idActiveUser);
+        addClasseur(new Classeur(i,"New","666666"));
+    }//GEN-LAST:event_JaddClasseurActionPerformed
+
+    private void addClasseur(Classeur newcla){
         JPanel panelBloc = new JPanel();
         //panelBloc.setLayout(new BoxLayout(panelBloc, BoxLayout.Y_AXIS));
         panelBloc.setBackground(new java.awt.Color(42, 70, 105));
+        jNewClasseur.getComponent(0).setBackground(Color.decode(newcla.getCol()));
+        JTextField t = (JTextField)jNewClasseur.getComponent(1);
+        t.setText(newcla.getLib());
         panelBloc.add(jNewClasseur);
         JClasseurBloc.add(panelBloc);
+        //panelBloc.getComponent(0).;
         panelBloc.revalidate();
         panelBloc.repaint();
         //System.out.println(jNewClasseur);
-    }//GEN-LAST:event_JaddClasseurActionPerformed
-
-    private void JaddNoteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JaddNoteActionPerformed
-        // TODO add your handling code here:
-        origin.editor(1);
-    }//GEN-LAST:event_JaddNoteActionPerformed
-
-    private void JaddIntercalaireActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JaddIntercalaireActionPerformed
-        // TODO add your handling code here:
+    }
+    
+    private void addFeuille(Feuille newf){
         JPanel panelBloc = new JPanel();
         //panelBloc.setLayout(new BoxLayout(panelBloc, BoxLayout.Y_AXIS));
         panelBloc.setBackground(new java.awt.Color(42, 70, 105));
+        jNewClasseur.getComponent(0).setBackground(Color.decode("999999"));
+        JTextField t = (JTextField)jNewClasseur.getComponent(1);
+        t.setText(newf.getTitre());
+        panelBloc.add(jNewClasseur);
+        Jnote.add(panelBloc);
+        //panelBloc.getComponent(0).;
+        panelBloc.revalidate();
+        panelBloc.repaint();
+        //System.out.println(jNewClasseur);
+    }
+    
+    private void addIntercalaire(Intercalaire newIn){
+         JPanel panelBloc = new JPanel();
+        //panelBloc.setLayout(new BoxLayout(panelBloc, BoxLayout.Y_AXIS));
+        panelBloc.setBackground(new java.awt.Color(42, 70, 105));
+        jNewClasseur.getComponent(0).setBackground(Color.decode(newIn.getCol()));
+        JTextField t = (JTextField)jNewClasseur.getComponent(1);
+        t.setText(newIn.getLib());
         panelBloc.add(jNewClasseur);
         jIntercalaireBloc.add(panelBloc);
         panelBloc.revalidate();
         panelBloc.repaint();
         //System.out.println(jNewClasseur);
+    }
+    
+    private void JaddNoteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JaddNoteActionPerformed
+        // TODO add your handling code here:
+        int i = origin.db.PostFeuille("Nouvelle Note", "", this.idActiveIntercalaire);
+        origin.editor(i);
+    }//GEN-LAST:event_JaddNoteActionPerformed
+
+    private void JaddIntercalaireActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JaddIntercalaireActionPerformed
+        // TODO add your handling code here:
+        
+        int i = origin.db.PostIntercalaire("New", "333333", this.idActiveClasseur);
+        addIntercalaire(new Intercalaire(i,"New","333333"));
     }//GEN-LAST:event_JaddIntercalaireActionPerformed
 
     private void jSelectedColorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jSelectedColorActionPerformed

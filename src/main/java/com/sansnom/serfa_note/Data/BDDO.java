@@ -121,7 +121,7 @@ public class BDDO{
 	public ArrayList<Classeur> GetClasseurs(int owner){
             String[] values = {String.valueOf(owner)};
             
-        ResultSet set = this.ExecuteQuery("SELECT * FROM Classeur INNER JOIN Utilisateur ON Classeur.idUtilisateur = Utilisateur.idUtilisateur WHERE idUtilisateur = ?;",values);
+        ResultSet set = this.ExecuteQuery("SELECT * FROM Classeur INNER JOIN Utilisateur ON Classeur.idUtilisateur = Utilisateur.idUtilisateur WHERE Utilisateur.idUtilisateur = ?;",values);
         
         ArrayList<Classeur> reslist = new ArrayList<Classeur>();
             try {

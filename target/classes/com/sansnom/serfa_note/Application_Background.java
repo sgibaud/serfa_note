@@ -4,6 +4,9 @@
  */
 package com.sansnom.serfa_note;
 
+import com.sansnom.serfa_note.Data.Classeur;
+import com.sansnom.serfa_note.Data.Feuille;
+import com.sansnom.serfa_note.Data.Intercalaire;
 import java.awt.Color;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -14,6 +17,7 @@ import javax.swing.plaf.basic.BasicButtonUI;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import com.sansnom.serfa_note.Home;
+import java.util.ArrayList;
 
 /**
  *
@@ -22,6 +26,8 @@ import com.sansnom.serfa_note.Home;
 public class Application_Background extends javax.swing.JPanel {
 
     public int idActiveUser;
+    public int idActiveClasseur;
+    public int idActiveIntercalaire;
     private Home home;
     private Nuancier nuancier;
     private Color colors;
@@ -35,8 +41,49 @@ public class Application_Background extends javax.swing.JPanel {
         this.origin = home;
     }
 
-    public void setUser(String user) {
+    public void setUser(int id, String user) {
+        idActiveUser = id;
         JtextUser.setText(user);
+        loadClasseurs();
+    }
+    
+    private void loadClasseurs(){
+       cleartables(2);
+       System.out.println(this.idActiveUser);
+       ArrayList<Classeur> clist = this.origin.db.GetClasseurs(this.idActiveUser);
+       System.out.println(clist);
+       Classeur newcla;
+       for(int i = 0;i<clist.size();i++){
+           newcla = clist.get(i);
+           addClasseur(newcla);
+       }
+    }
+    
+    private void loadIntercalaire(){
+       cleartables(1);
+       ArrayList<Intercalaire> ilist = this.origin.db.GetIntercalaires(this.idActiveClasseur);
+       Intercalaire newint;
+       for(int i = 0;i<ilist.size();i++){
+           newint = ilist.get(i);
+           addIntercalaire(newint);
+       }
+    }
+    
+    private void loadFeuille(){
+        cleartables(0);
+        ArrayList<Feuille> flist = this.origin.db.GetFeuilles(this.idActiveIntercalaire);
+        Feuille newf;
+       for(int i = 0;i<flist.size();i++){
+           newf = flist.get(i);
+           addFeuille(newf);
+       }
+        
+    }
+    
+    private void cleartables(int i){
+        if(i>0){jIntercalaireBloc.removeAll();}
+        if(i>1){JClasseurBloc.removeAll();}
+        Jnote.removeAll();
     }
 
     /**
@@ -65,6 +112,8 @@ public class Application_Background extends javax.swing.JPanel {
         jVioloine = new javax.swing.JButton();
         jChartreuse = new javax.swing.JButton();
         jKing = new javax.swing.JButton();
+        jNewNote = new javax.swing.JPanel();
+        JTextTitle1 = new javax.swing.JTextField();
         jNewClasseur = new javax.swing.JPanel();
         jSelectedColor = new javax.swing.JButton();
         JTextTitle = new javax.swing.JTextField();
@@ -263,6 +312,23 @@ public class Application_Background extends javax.swing.JPanel {
                 .addComponent(jDiagPan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        jNewNote.setBackground(new java.awt.Color(42, 70, 105));
+        jNewNote.setMaximumSize(new java.awt.Dimension(235, 40));
+        jNewNote.setMinimumSize(new java.awt.Dimension(235, 40));
+        jNewNote.setPreferredSize(new java.awt.Dimension(235, 40));
+
+        JTextTitle1.setBackground(new java.awt.Color(42, 70, 105));
+        JTextTitle1.setFont(new java.awt.Font("URW Gothic", 0, 18)); // NOI18N
+        JTextTitle1.setForeground(new java.awt.Color(255, 255, 255));
+        JTextTitle1.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        JTextTitle1.setText("jTextField1");
+        JTextTitle1.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        JTextTitle1.setMargin(new java.awt.Insets(5, 2, 5, 2));
+        JTextTitle1.setMaximumSize(new java.awt.Dimension(220, 30));
+        JTextTitle1.setMinimumSize(new java.awt.Dimension(220, 30));
+        JTextTitle1.setPreferredSize(new java.awt.Dimension(220, 30));
+        jNewNote.add(JTextTitle1);
 
         jNewClasseur.setBackground(new java.awt.Color(42, 70, 105));
         jNewClasseur.setMaximumSize(new java.awt.Dimension(235, 40));
@@ -548,7 +614,7 @@ public class Application_Background extends javax.swing.JPanel {
         jNoteBloc.setMaximumSize(new java.awt.Dimension(195, 540));
         jNoteBloc.setMinimumSize(new java.awt.Dimension(195, 540));
         jNoteBloc.setPreferredSize(new java.awt.Dimension(195, 540));
-        jNoteBloc.setLayout(new java.awt.GridLayout());
+        jNoteBloc.setLayout(new java.awt.GridLayout(10, 1));
 
         javax.swing.GroupLayout JnoteLayout = new javax.swing.GroupLayout(Jnote);
         Jnote.setLayout(JnoteLayout);
@@ -657,31 +723,65 @@ public class Application_Background extends javax.swing.JPanel {
 
     private void JaddClasseurActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JaddClasseurActionPerformed
         // TODO add your handling code here:
+        int i = origin.db.PostClasseur("New", "666666", this.idActiveUser);
+        addClasseur(new Classeur(i,"New","666666"));
+    }//GEN-LAST:event_JaddClasseurActionPerformed
+
+    private void addClasseur(Classeur newcla){
         JPanel panelBloc = new JPanel();
         //panelBloc.setLayout(new BoxLayout(panelBloc, BoxLayout.Y_AXIS));
         panelBloc.setBackground(new java.awt.Color(42, 70, 105));
+        jNewClasseur.getComponent(0).setBackground(Color.decode(newcla.getCol()));
+        JTextField t = (JTextField)jNewClasseur.getComponent(1);
+        t.setText(newcla.getLib());
         panelBloc.add(jNewClasseur);
         JClasseurBloc.add(panelBloc);
+        //panelBloc.getComponent(0).;
         panelBloc.revalidate();
         panelBloc.repaint();
         //System.out.println(jNewClasseur);
-    }//GEN-LAST:event_JaddClasseurActionPerformed
-
-    private void JaddNoteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JaddNoteActionPerformed
-        // TODO add your handling code here:
-        origin.editor(1);
-    }//GEN-LAST:event_JaddNoteActionPerformed
-
-    private void JaddIntercalaireActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JaddIntercalaireActionPerformed
-        // TODO add your handling code here:
+    }
+    
+    private void addFeuille(Feuille newf){
         JPanel panelBloc = new JPanel();
         //panelBloc.setLayout(new BoxLayout(panelBloc, BoxLayout.Y_AXIS));
         panelBloc.setBackground(new java.awt.Color(42, 70, 105));
+        jNewClasseur.getComponent(0).setBackground(Color.decode("999999"));
+        JTextField t = (JTextField)jNewClasseur.getComponent(1);
+        t.setText(newf.getTitre());
+        panelBloc.add(jNewClasseur);
+        Jnote.add(panelBloc);
+        //panelBloc.getComponent(0).;
+        panelBloc.revalidate();
+        panelBloc.repaint();
+        //System.out.println(jNewClasseur);
+    }
+    
+    private void addIntercalaire(Intercalaire newIn){
+         JPanel panelBloc = new JPanel();
+        //panelBloc.setLayout(new BoxLayout(panelBloc, BoxLayout.Y_AXIS));
+        panelBloc.setBackground(new java.awt.Color(42, 70, 105));
+        jNewClasseur.getComponent(0).setBackground(Color.decode(newIn.getCol()));
+        JTextField t = (JTextField)jNewClasseur.getComponent(1);
+        t.setText(newIn.getLib());
         panelBloc.add(jNewClasseur);
         jIntercalaireBloc.add(panelBloc);
         panelBloc.revalidate();
         panelBloc.repaint();
         //System.out.println(jNewClasseur);
+    }
+    
+    private void JaddNoteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JaddNoteActionPerformed
+        // TODO add your handling code here:
+        int i = origin.db.PostFeuille("Nouvelle Note", "", this.idActiveIntercalaire);
+        origin.editor(i);
+    }//GEN-LAST:event_JaddNoteActionPerformed
+
+    private void JaddIntercalaireActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JaddIntercalaireActionPerformed
+        // TODO add your handling code here:
+        
+        int i = origin.db.PostIntercalaire("New", "333333", this.idActiveClasseur);
+        addIntercalaire(new Intercalaire(i,"New","333333"));
     }//GEN-LAST:event_JaddIntercalaireActionPerformed
 
     private void jSelectedColorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jSelectedColorActionPerformed
@@ -708,6 +808,7 @@ public class Application_Background extends javax.swing.JPanel {
     private javax.swing.JPanel JRoot;
     private javax.swing.JDialog JSelected;
     private javax.swing.JTextField JTextTitle;
+    private javax.swing.JTextField JTextTitle1;
     private javax.swing.JButton JaddClasseur;
     private javax.swing.JButton JaddIntercalaire;
     private javax.swing.JButton JaddNote;
@@ -737,6 +838,7 @@ public class Application_Background extends javax.swing.JPanel {
     private javax.swing.JLabel jLabelColor;
     private javax.swing.JButton jMenthe;
     private javax.swing.JPanel jNewClasseur;
+    private javax.swing.JPanel jNewNote;
     private javax.swing.JPanel jNoteBloc;
     private javax.swing.JButton jOrange;
     private javax.swing.JButton jPink;

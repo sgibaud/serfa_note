@@ -31,13 +31,8 @@ public class Home extends javax.swing.JFrame {
         initComponents();
         login = new Login(this);
         inscription = new Inscription(this);
-<<<<<<< HEAD
         home = new Application_Background(this);
         editor = new EditorPane(this);
-=======
-        home = new Application_Background();
-        editor = new EditorPane();
->>>>>>> designV2
         setContentPane(login);
     }
     
@@ -45,7 +40,7 @@ public class Home extends javax.swing.JFrame {
     public void login(String id,String pswd) {
         int valid = db.ConnectUser(id,pswd);
         if (valid != -1){
-            home.setUser(id);
+            home.setUser(valid,id);
             home.idActiveUser = valid;
             app.setContentPane(app.home);
             app.home.applyComponentOrientation(app.getComponentOrientation());

@@ -22,4 +22,12 @@ public class Intercalaire {
     public int getId(){
     return this.id;
     }
+    
+    public String getLib(){
+    return this.libelle;
+    }    
+    
+    public String getCol(){
+    return "#"+this.couleur;
+    }    
 }

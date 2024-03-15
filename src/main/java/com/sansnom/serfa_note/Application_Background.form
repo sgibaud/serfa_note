@@ -767,7 +767,7 @@
                                   <Component id="JaddClasseur" alignment="1" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="JClasseurBloc" pref="542" max="32767" attributes="0"/>
+                              <Component id="JClasseurBloc" max="32767" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -890,7 +890,7 @@
                                   <Component id="JLabelIntercalaire" alignment="1" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="jIntercalaireBloc" pref="542" max="32767" attributes="0"/>
+                              <Component id="jIntercalaireBloc" max="32767" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>

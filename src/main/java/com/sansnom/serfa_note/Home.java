@@ -40,7 +40,7 @@ public class Home extends javax.swing.JFrame {
     public void login(String id,String pswd) {
         int valid = db.ConnectUser(id,pswd);
         if (valid != -1){
-            home.setUser(id);
+            home.setUser(valid,id);
             home.idActiveUser = valid;
             app.setContentPane(app.home);
             app.home.applyComponentOrientation(app.getComponentOrientation());
