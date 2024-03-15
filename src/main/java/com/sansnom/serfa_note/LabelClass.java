@@ -10,6 +10,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -31,32 +32,35 @@ public class LabelClass extends JPanel {
     private JPanel labelEditPanel;//panel contenant le labelTextField + les boutons Ajouter et Modifier + noteButtonPanel
     private JPanel displayLabelPanel;//panel contenant le labelTextField + les boutons Ajouter et Modifier
     private JPanel noteButtonPanel; //panel contenant les boutons ADD NOTE et SUPP NOTE
-    private JLabelButton newLabelButton; //bouton NEW 
-    private JLabelButton suppLabelButton; //bouton SUPP
-    private JLabelButton modifLabelButton; //bouton MOD
+    private JButton newLabelButton; //bouton NEW 
+    private JButton suppLabelButton; //bouton SUPP
+    private JButton modifLabelButton; //bouton MOD
     private JLabelButton addNewLabelButton; //bouton ajouter
     private JLabelButton updateLabelButton; //bouton modifier
-    private JLabelButton addLabelNoteButton; // bouton ADD NOTE
-    private JLabelButton suppLabelNoteButton; // bouton SUPP NOTE
+    private JButton addLabelNoteButton; // bouton ADD NOTE
+    private JButton suppLabelNoteButton; // bouton SUPP NOTE
     private JTextField labelTextField;  //panel ou les labels choisis s'affichent
     private String oldLabel;
-
-    private JButton addButton;
-    
-
+ 
     private JComboBox labelBox;
 
     private ArrayList<Label> listLabels;
 
     private String labelText;
     
-    private String contentAdded;
     private String[] labelName;
     
     public JComboBox box;
     
     private Home origin;
     private int idF;
+    
+    
+    private ImageIcon newLabelIcon = new ImageIcon(getClass().getResource("/resources/new_note2x.png"));
+    private ImageIcon editLabelIcon = new ImageIcon(getClass().getResource("/resources/doc2x.png"));
+    private ImageIcon suppLabelIcon = new ImageIcon(getClass().getResource("/resources/sub_note2x.png"));
+    private ImageIcon addNoteIcon = new ImageIcon(getClass().getResource("/resources/add_note2x.png"));
+    private ImageIcon suppNoteIcon = new ImageIcon(getClass().getResource("/resources/remove_note2x.png"));
 
     public LabelClass(Home home, int id) {
         this.origin = home;
@@ -141,15 +145,38 @@ public class LabelClass extends JPanel {
         labelEditPanel = new JPanel();
         noteButtonPanel = new JPanel();
         displayLabelPanel = new JPanel();
-        newLabelButton = new JLabelButton("NEW");
-        suppLabelButton = new JLabelButton("SUPP");
-        modifLabelButton = new JLabelButton("MOD");
-        labelTextField = new JTextField("Choisissez, modifier ou supprimer un label");
+        newLabelButton = new JButton();
+        suppLabelButton = new JButton();
+        modifLabelButton = new JButton();
+        labelTextField = new JTextField();
         addNewLabelButton = new JLabelButton("Ajouter");
         updateLabelButton  = new JLabelButton("Modifier");
-        addLabelNoteButton  = new JLabelButton("ADD NOTE");
-        suppLabelNoteButton  = new JLabelButton("SUPP NOTE");
+        addLabelNoteButton  = new JButton();
+        suppLabelNoteButton  = new JButton();
         oldLabel = new String();
+        
+        newLabelButton.setIcon(newLabelIcon);
+        modifLabelButton.setIcon(editLabelIcon);
+        suppLabelButton.setIcon(suppLabelIcon);
+        addLabelNoteButton.setIcon(addNoteIcon);
+        suppLabelNoteButton.setIcon(suppNoteIcon);
+        
+        newLabelButton.setBackground(new Color(242, 242, 242,0));
+        modifLabelButton.setBackground(new Color(242, 242, 242,0));
+        suppLabelButton.setBackground(new Color(242, 242, 242,0));
+        addLabelNoteButton.setBackground(new Color(242, 242, 242,0));
+        suppLabelNoteButton.setBackground(new Color(242, 242, 242,0));
+        
+        newLabelButton.setPressedIcon(new ImageIcon(getClass().getResource("/resources/new_note_neg2x.png")));
+        newLabelButton.setRolloverIcon(new ImageIcon(getClass().getResource("/resources/new_note_neg2x.png"))); 
+        modifLabelButton.setPressedIcon(new ImageIcon(getClass().getResource("/resources/doc_neg_12x.png")));
+        modifLabelButton.setRolloverIcon(new ImageIcon(getClass().getResource("/resources/doc_neg_12x.png")));
+        suppLabelButton.setPressedIcon(new ImageIcon(getClass().getResource("/resources/sub_note_neg2x.png")));
+        suppLabelButton.setRolloverIcon(new ImageIcon(getClass().getResource("/resources/sub_note_neg2x.png")));
+        addLabelNoteButton.setPressedIcon(new ImageIcon(getClass().getResource("/resources/add_note_neg2x.png")));
+        addLabelNoteButton.setRolloverIcon(new ImageIcon(getClass().getResource("/resources/add_note_neg2x.png")));
+        suppLabelNoteButton.setPressedIcon(new ImageIcon(getClass().getResource("/resources/remove_note_neg2x.png")));
+        suppLabelNoteButton.setRolloverIcon(new ImageIcon(getClass().getResource("/resources/remove_note_neg2x.png")));
         
         addNewLabelButton.setVisible(false);
         updateLabelButton.setVisible(false);
@@ -190,7 +217,7 @@ public class LabelClass extends JPanel {
         box.addActionListener(new ActionListener() {     
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    labelTextField.setVisible(true);
+                    labelTextField.setVisible(false);
                 }
         });
       
@@ -200,8 +227,8 @@ public class LabelClass extends JPanel {
             public void actionPerformed(ActionEvent arg0) {
                 labelTextField.setEditable(true);
                 labelTextField.setVisible(true);
-                labelTextField.setText("Saisir le nouveau label ici");
                 addNewLabelButton.setVisible(true);
+                updateLabelButton.setVisible(false);
             }
         });
         
@@ -213,7 +240,9 @@ public class LabelClass extends JPanel {
                 System.out.println(origin.db.GetLabels());
                 origin.editor.modal.labels.fillBox(origin.db.GetLabels());
                 addNewLabelButton.setVisible(false);
-                labelTextField.setText("Le label \"" + labelTextField.getText() + "\" est enregistré.");
+                JOptionPane.showMessageDialog(null,"Le label \"" + labelTextField.getText() + "\" a été enregistré.","",JOptionPane.PLAIN_MESSAGE);
+                labelTextField.setVisible(false);
+                labelTextField.setText("");
 //Enregistrer le nouveau label labelTextField.getText(); -> INSERT //////////////////////////////////////////////////////////////////                 
             }
         });
@@ -223,7 +252,8 @@ public class LabelClass extends JPanel {
             public void actionPerformed(ActionEvent arg0) {
                 labelTextField.setEditable(true);
                 labelTextField.getText();
-                labelTextField.setText("Saisir le nouveau label ici");
+                labelTextField.setVisible(true);
+                //labelTextField.setText("");
                 updateLabelButton.setVisible(true);
                 addNewLabelButton.setVisible(false);
                 oldLabel = box.getSelectedItem().toString();
@@ -237,7 +267,10 @@ public class LabelClass extends JPanel {
                 origin.db.UpdateLabel(labelTextField.getText(),listLabels.get(box.getSelectedIndex()).getId());
                 fillBox(origin.db.GetLabels());
                 updateLabelButton.setVisible(false);
-                labelTextField.setText("Le label \"" + oldLabel + "\" a été modifié.");
+                JOptionPane.showMessageDialog(null,"Le label \"" + oldLabel + "\" a été modifié.","",JOptionPane.PLAIN_MESSAGE);
+                labelTextField.setVisible(false);
+                labelTextField.setText("");
+
 //Enregistrer le nouveau label labelTextField.getText(); -> UPDATE //////////////////////////////////////////////////////////////////                 
             }
         });
@@ -245,12 +278,13 @@ public class LabelClass extends JPanel {
         suppLabelButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent arg0) {
+                oldLabel = box.getSelectedItem().toString();
                 int option = JOptionPane.showConfirmDialog(null, "Êtes-vous sûr de vouloir supprimer le label \""  + box.getSelectedItem().toString() + "\" ?", "Confirmation de suppression", JOptionPane.YES_NO_OPTION);
                     if (option == JOptionPane.YES_OPTION) {
                         origin.db.DeleteLabel(listLabels.get(box.getSelectedIndex()).getId());
                         fillBox(origin.db.GetLabels());
                         listLabels.remove(box.getSelectedItem().toString());
-                        labelTextField.setText("Le label \"" + box.getSelectedItem().toString() + "\" vient d'être supprimé.");
+                        JOptionPane.showMessageDialog(null,"Le label \"" + oldLabel + "\" vient d'être supprimé.","",JOptionPane.PLAIN_MESSAGE);
                     }
 //Enregistrer le label choisi : box.getSelectedItem().toString(); -> DELETE //////////////////////////////////////////////////////////////////                 
             }
@@ -259,6 +293,7 @@ public class LabelClass extends JPanel {
         addLabelNoteButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent arg0) {
+<<<<<<< HEAD
                 System.out.println(origin.editor.labelClass.cangetlabels());
                 System.out.println(origin.editor.labelClass.haslabel(listLabels.get(box.getSelectedIndex()).getId()));
                 if((origin.editor.labelClass.cangetlabels())&&!(origin.editor.labelClass.haslabel(listLabels.get(box.getSelectedIndex()).getId()))){
@@ -271,6 +306,13 @@ public class LabelClass extends JPanel {
                     labelTextField.getText();
                     labelTextField.setText("Le label n'a pas pu être lié a la note.");
                 }
+=======
+                oldLabel = box.getSelectedItem().toString();
+                origin.db.AddLabel(listLabels.get(box.getSelectedIndex()).getId(), idF);
+                origin.editor.labelClass.setlistLabel(origin.db.GetLabels(idF));
+                labelTextField.getText();
+                JOptionPane.showMessageDialog(null,"Le label \"" + oldLabel + "\" est lié à la note.","",JOptionPane.PLAIN_MESSAGE);
+>>>>>>> editorV2
 //Lier le label et la note labelTextField.getText(); -> INSERT idNote avec idLabel //////////////////////////////////////////////////////////////////                 
             }
         });
@@ -278,10 +320,11 @@ public class LabelClass extends JPanel {
         suppLabelNoteButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent arg0) {
+                oldLabel = box.getSelectedItem().toString();
                 origin.db.RemoveLabel(listLabels.get(box.getSelectedIndex()).getId(), idF);
                 origin.editor.labelClass.setlistLabel(origin.db.GetLabels(idF));
                 labelTextField.getText();
-                labelTextField.setText("Le label \"" + labelTextField.getText() + "\" a été supprimé de la note.");
+                JOptionPane.showMessageDialog(null,"Le label \"" + oldLabel + "\" a été supprimé de la note.","",JOptionPane.PLAIN_MESSAGE);
 //Supprimer le lien entre label et note labelTextField.getText(); -> DELETE idNote avec idLabel //////////////////////////////////////////////////////////////////                 
             }
         });
@@ -309,7 +352,6 @@ public class LabelClass extends JPanel {
         return labelBoxPanel;
     }
 
-    
-    
+
 
 }

@@ -240,9 +240,7 @@ public class EditorPane extends JPanel {
 
         editTitleButton = new JButton();
         editTitleButton.setIcon(editIcon);
-        editTitleButton.setBackground(Color.white);
-        editTitleButton.setBorder(BorderFactory.createLineBorder(Color.WHITE, 0));
-        editTitleButton.setBorderPainted(false);
+        editTitleButton.setBackground(new Color(255, 255, 255,0));
         editTitleButton.setPreferredSize(new Dimension(50, 30));
         editTitleButton.addActionListener(new ActionListener() {
             @Override
@@ -255,9 +253,7 @@ public class EditorPane extends JPanel {
 
         saveTitleButton = new JButton();
         saveTitleButton.setIcon(saveIcon);
-        saveTitleButton.setBackground(new Color(230, 233, 240));
-        saveTitleButton.setBorderPainted(false);
-        saveTitleButton.setBorder(BorderFactory.createLineBorder(Color.WHITE, 0));
+        saveTitleButton.setBackground(new Color(230, 233, 240,0));
         saveTitleButton.setVisible(false);
         saveTitleButton.setPreferredSize(new Dimension(50, 30));
         saveTitleButton.addActionListener(new ActionListener() {
