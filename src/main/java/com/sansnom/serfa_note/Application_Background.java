@@ -698,7 +698,7 @@ public class Application_Background extends javax.swing.JPanel {
         panelBloc.add(jNewClasseur);
         JClasseurBloc.add(panelBloc);
         panelBloc.revalidate();
-        panelBloc.repaint();
+        //panelBloc.repaint();
         //System.out.println(jNewClasseur);
     }//GEN-LAST:event_JaddClasseurActionPerformed
 

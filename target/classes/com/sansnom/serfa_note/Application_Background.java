@@ -636,57 +636,57 @@ public class Application_Background extends javax.swing.JPanel {
     private void JblueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JblueActionPerformed
         // TODO add your handling code here:
         // colors = nuancier.colors[0];
-        jSelectedColor.setBackground(new Color(0, 0, 255));
+        jSelectedColor.setBackground(new Color(255, 0, 0));
     }//GEN-LAST:event_JblueActionPerformed
 
     private void jPinkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPinkActionPerformed
         // TODO add your handling code here:
-        jSelectedColor.setBackground(new Color(255, 0, 204));
+        jSelectedColor.setBackground(new Color(0, 0, 255));
     }//GEN-LAST:event_jPinkActionPerformed
 
     private void jOrangeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jOrangeActionPerformed
         // TODO add your handling code here:
-        jSelectedColor.setBackground(new Color(255, 153, 51));
+        jSelectedColor.setBackground(new Color(203,34,229));
     }//GEN-LAST:event_jOrangeActionPerformed
 
     private void jRedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRedActionPerformed
         // TODO add your handling code here:
-        jSelectedColor.setBackground(new Color(255, 0, 0));
+        jSelectedColor.setBackground(new Color(229,195,23));
     }//GEN-LAST:event_jRedActionPerformed
 
     private void jAmbreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAmbreActionPerformed
         // TODO add your handling code here:
-        jSelectedColor.setBackground(new Color(240, 195, 0));
+        jSelectedColor.setBackground(new Color(255,122,82));
     }//GEN-LAST:event_jAmbreActionPerformed
 
     private void jFogActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFogActionPerformed
         // TODO add your handling code here:
-        jSelectedColor.setBackground(new Color(187, 210, 225));
+        jSelectedColor.setBackground(new Color(20,204,149));
     }//GEN-LAST:event_jFogActionPerformed
 
     private void jCanariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCanariActionPerformed
         // TODO add your handling code here:
-        jSelectedColor.setBackground(new Color(231, 240, 13));
+        jSelectedColor.setBackground(new Color(87,110,242));
     }//GEN-LAST:event_jCanariActionPerformed
 
     private void jMentheActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMentheActionPerformed
         // TODO add your handling code here:
-        jSelectedColor.setBackground(new Color(84, 249, 141));
+        jSelectedColor.setBackground(new Color(191,48,139));
     }//GEN-LAST:event_jMentheActionPerformed
 
     private void jVioloineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jVioloineActionPerformed
         // TODO add your handling code here:
-        jSelectedColor.setBackground(new Color(161, 6, 132));
+        jSelectedColor.setBackground(new Color(191,201,201));
     }//GEN-LAST:event_jVioloineActionPerformed
 
     private void jChartreuseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jChartreuseActionPerformed
         // TODO add your handling code here:
-        jSelectedColor.setBackground(new Color(194, 247, 50));
+        jSelectedColor.setBackground(new Color(102,205,217));
     }//GEN-LAST:event_jChartreuseActionPerformed
 
     private void jKingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jKingActionPerformed
         // TODO add your handling code here:
-        jSelectedColor.setBackground(new Color(49, 140, 231));
+        jSelectedColor.setBackground(new Color(178,31,0));
     }//GEN-LAST:event_jKingActionPerformed
 
 
@@ -698,7 +698,7 @@ public class Application_Background extends javax.swing.JPanel {
         panelBloc.add(jNewClasseur);
         JClasseurBloc.add(panelBloc);
         panelBloc.revalidate();
-        panelBloc.repaint();
+        //panelBloc.repaint();
         //System.out.println(jNewClasseur);
     }//GEN-LAST:event_JaddClasseurActionPerformed
 
