@@ -44,14 +44,22 @@ public class Application_Background extends javax.swing.JPanel {
     public void setUser(int id, String user) {
         idActiveUser = id;
         JtextUser.setText(user);
-        loadClasseurs();
+        loadClasseur();
     }
     
-    private void loadClasseurs(){
+    public void setClasseur(int id) {
+        this.idActiveClasseur = id;
+        loadIntercalaire();
+    }
+    
+    public void setIntercalaire(int id) {
+        this.idActiveIntercalaire = id;
+        loadFeuille();
+    }
+    
+    private void loadClasseur(){
        cleartables(2);
-       System.out.println(this.idActiveUser);
        ArrayList<Classeur> clist = this.origin.db.GetClasseurs(this.idActiveUser);
-       System.out.println(clist);
        Classeur newcla;
        for(int i = 0;i<clist.size();i++){
            newcla = clist.get(i);
@@ -773,8 +781,8 @@ public class Application_Background extends javax.swing.JPanel {
     
     private void JaddNoteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JaddNoteActionPerformed
         // TODO add your handling code here:
-        int i = origin.db.PostFeuille("Nouvelle Note", "", this.idActiveIntercalaire);
-        origin.editor(i);
+        //int i = origin.db.PostFeuille("Nouvelle Note", "", this.idActiveIntercalaire);
+        origin.editor(1);
     }//GEN-LAST:event_JaddNoteActionPerformed
 
     private void JaddIntercalaireActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JaddIntercalaireActionPerformed

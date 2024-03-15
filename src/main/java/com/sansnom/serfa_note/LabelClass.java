@@ -91,6 +91,16 @@ public class LabelClass extends JPanel {
      
     }
 
+    public boolean cangetlabels(){
+           if(this.listLabels.size()<2){return true;}
+           else {return false;}
+    }
+    
+    public boolean haslabel(int id){
+        for(int i = 0;i<this.listLabels.size();i++){if(listLabels.get(i).getId() == id){return true;}}
+        return false;
+    }
+    
     private void initLabels() {
         this.removeAll();
         labelText = new String();
@@ -249,10 +259,18 @@ public class LabelClass extends JPanel {
         addLabelNoteButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent arg0) {
-                origin.db.AddLabel(listLabels.get(box.getSelectedIndex()).getId(), idF);
-                origin.editor.labelClass.setlistLabel(origin.db.GetLabels(idF));
-                labelTextField.getText();
-                labelTextField.setText("Le label \"" + labelTextField.getText() + "\" est lié à la note.");
+                System.out.println(origin.editor.labelClass.cangetlabels());
+                System.out.println(origin.editor.labelClass.haslabel(listLabels.get(box.getSelectedIndex()).getId()));
+                if((origin.editor.labelClass.cangetlabels())&&!(origin.editor.labelClass.haslabel(listLabels.get(box.getSelectedIndex()).getId()))){
+                    origin.db.AddLabel(listLabels.get(box.getSelectedIndex()).getId(), idF);
+                    origin.editor.labelClass.setlistLabel(origin.db.GetLabels(idF));
+                    labelTextField.getText();
+                    labelTextField.setText("Le label \"" + labelTextField.getText() + "\" est lié à la note.");
+                }
+                else{
+                    labelTextField.getText();
+                    labelTextField.setText("Le label n'a pas pu être lié a la note.");
+                }
 //Lier le label et la note labelTextField.getText(); -> INSERT idNote avec idLabel //////////////////////////////////////////////////////////////////                 
             }
         });
