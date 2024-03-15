@@ -65,6 +65,8 @@ public class Application_Background extends javax.swing.JPanel {
         jVioloine = new javax.swing.JButton();
         jChartreuse = new javax.swing.JButton();
         jKing = new javax.swing.JButton();
+        jNewNote = new javax.swing.JPanel();
+        JTextTitle1 = new javax.swing.JTextField();
         jNewClasseur = new javax.swing.JPanel();
         jSelectedColor = new javax.swing.JButton();
         JTextTitle = new javax.swing.JTextField();
@@ -263,6 +265,23 @@ public class Application_Background extends javax.swing.JPanel {
                 .addComponent(jDiagPan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        jNewNote.setBackground(new java.awt.Color(42, 70, 105));
+        jNewNote.setMaximumSize(new java.awt.Dimension(235, 40));
+        jNewNote.setMinimumSize(new java.awt.Dimension(235, 40));
+        jNewNote.setPreferredSize(new java.awt.Dimension(235, 40));
+
+        JTextTitle1.setBackground(new java.awt.Color(42, 70, 105));
+        JTextTitle1.setFont(new java.awt.Font("URW Gothic", 0, 18)); // NOI18N
+        JTextTitle1.setForeground(new java.awt.Color(255, 255, 255));
+        JTextTitle1.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        JTextTitle1.setText("jTextField1");
+        JTextTitle1.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        JTextTitle1.setMargin(new java.awt.Insets(5, 2, 5, 2));
+        JTextTitle1.setMaximumSize(new java.awt.Dimension(220, 30));
+        JTextTitle1.setMinimumSize(new java.awt.Dimension(220, 30));
+        JTextTitle1.setPreferredSize(new java.awt.Dimension(220, 30));
+        jNewNote.add(JTextTitle1);
 
         jNewClasseur.setBackground(new java.awt.Color(42, 70, 105));
         jNewClasseur.setMaximumSize(new java.awt.Dimension(235, 40));
@@ -548,7 +567,7 @@ public class Application_Background extends javax.swing.JPanel {
         jNoteBloc.setMaximumSize(new java.awt.Dimension(195, 540));
         jNoteBloc.setMinimumSize(new java.awt.Dimension(195, 540));
         jNoteBloc.setPreferredSize(new java.awt.Dimension(195, 540));
-        jNoteBloc.setLayout(new java.awt.GridLayout());
+        jNoteBloc.setLayout(new java.awt.GridLayout(10, 1));
 
         javax.swing.GroupLayout JnoteLayout = new javax.swing.GroupLayout(Jnote);
         Jnote.setLayout(JnoteLayout);
@@ -708,6 +727,7 @@ public class Application_Background extends javax.swing.JPanel {
     private javax.swing.JPanel JRoot;
     private javax.swing.JDialog JSelected;
     private javax.swing.JTextField JTextTitle;
+    private javax.swing.JTextField JTextTitle1;
     private javax.swing.JButton JaddClasseur;
     private javax.swing.JButton JaddIntercalaire;
     private javax.swing.JButton JaddNote;
@@ -737,6 +757,7 @@ public class Application_Background extends javax.swing.JPanel {
     private javax.swing.JLabel jLabelColor;
     private javax.swing.JButton jMenthe;
     private javax.swing.JPanel jNewClasseur;
+    private javax.swing.JPanel jNewNote;
     private javax.swing.JPanel jNoteBloc;
     private javax.swing.JButton jOrange;
     private javax.swing.JButton jPink;
