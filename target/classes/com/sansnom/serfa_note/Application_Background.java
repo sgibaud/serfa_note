@@ -32,6 +32,7 @@ public class Application_Background extends javax.swing.JPanel {
     private Nuancier nuancier;
     private Color colors;
     private Home origin;
+    private JButton jSelectedColors;
 
     /**
      * Creates new form Application_Background
@@ -39,7 +40,6 @@ public class Application_Background extends javax.swing.JPanel {
     public Application_Background(Home home) {
         initComponents();
         this.origin = home;
-        //jIconOn.setVisible(false);
     }
 
     public void setUser(int id, String user) {
@@ -47,51 +47,55 @@ public class Application_Background extends javax.swing.JPanel {
         JtextUser.setText(user);
         loadClasseur();
     }
-    
+
     public void setClasseur(int id) {
         this.idActiveClasseur = id;
         loadIntercalaire();
     }
-    
+
     public void setIntercalaire(int id) {
         this.idActiveIntercalaire = id;
         loadFeuille();
     }
-    
-    private void loadClasseur(){
-       cleartables(2);
-       ArrayList<Classeur> clist = this.origin.db.GetClasseurs(this.idActiveUser);
-       Classeur newcla;
-       for(int i = 0;i<clist.size();i++){
-           newcla = clist.get(i);
-           addClasseur(newcla);
-       }
+
+    private void loadClasseur() {
+        cleartables(2);
+        ArrayList<Classeur> clist = this.origin.db.GetClasseurs(this.idActiveUser);
+        Classeur newcla;
+        for (int i = 0; i < clist.size(); i++) {
+            newcla = clist.get(i);
+            addClasseur(newcla);
+        }
     }
-    
-    private void loadIntercalaire(){
-       cleartables(1);
-       ArrayList<Intercalaire> ilist = this.origin.db.GetIntercalaires(this.idActiveClasseur);
-       Intercalaire newint;
-       for(int i = 0;i<ilist.size();i++){
-           newint = ilist.get(i);
-           addIntercalaire(newint);
-       }
+
+    private void loadIntercalaire() {
+        cleartables(1);
+        ArrayList<Intercalaire> ilist = this.origin.db.GetIntercalaires(this.idActiveClasseur);
+        Intercalaire newIn;
+        for (int i = 0; i < ilist.size(); i++) {
+            newIn = ilist.get(i);
+            addIntercalaire(newIn);
+        }
     }
-    
-    private void loadFeuille(){
+
+    private void loadFeuille() {
         cleartables(0);
         ArrayList<Feuille> flist = this.origin.db.GetFeuilles(this.idActiveIntercalaire);
         Feuille newf;
-       for(int i = 0;i<flist.size();i++){
-           newf = flist.get(i);
-           addFeuille(newf);
-       }
-        
+        for (int i = 0; i < flist.size(); i++) {
+            newf = flist.get(i);
+            addFeuille(newf);
+        }
+
     }
-    
-    private void cleartables(int i){
-        if(i>0){jIntercalaireBloc.removeAll();}
-        if(i>1){JClasseurBloc.removeAll();}
+
+    private void cleartables(int i) {
+        if (i > 0) {
+            jIntercalaireBloc.removeAll();
+        }
+        if (i > 1) {
+            JClasseurBloc.removeAll();
+        }
         Jnote.removeAll();
     }
 
@@ -344,6 +348,7 @@ public class Application_Background extends javax.swing.JPanel {
         jNewClasseur.setBackground(new java.awt.Color(42, 70, 105));
         jNewClasseur.setMaximumSize(new java.awt.Dimension(235, 40));
         jNewClasseur.setMinimumSize(new java.awt.Dimension(235, 40));
+        jNewClasseur.setName(""); // NOI18N
         jNewClasseur.setPreferredSize(new java.awt.Dimension(235, 40));
         java.awt.FlowLayout flowLayout1 = new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 4, 0);
         flowLayout1.setAlignOnBaseline(true);
@@ -549,7 +554,7 @@ public class Application_Background extends javax.swing.JPanel {
                     .addComponent(JlabelClasseur, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(JaddClasseur))
                 .addGap(18, 18, 18)
-                .addComponent(JClasseurBloc, javax.swing.GroupLayout.DEFAULT_SIZE, 542, Short.MAX_VALUE)
+                .addComponent(JClasseurBloc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -607,7 +612,7 @@ public class Application_Background extends javax.swing.JPanel {
                     .addComponent(JaddIntercalaire)
                     .addComponent(JLabelIntercalaire, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jIntercalaireBloc, javax.swing.GroupLayout.DEFAULT_SIZE, 542, Short.MAX_VALUE)
+                .addComponent(jIntercalaireBloc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -685,116 +690,231 @@ public class Application_Background extends javax.swing.JPanel {
 
     private void jGreenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jGreenActionPerformed
         // TODO add your handling code here: jSelectedColor.setBackground(new Color(51,51,255));
-        jSelectedColor.setBackground(new Color(0, 255, 0));
+        jSelectedColors.setBackground(new Color(0, 255, 0));
     }//GEN-LAST:event_jGreenActionPerformed
 
     private void JblueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JblueActionPerformed
         // TODO add your handling code here:
         // colors = nuancier.colors[0];
-        jSelectedColor.setBackground(new Color(255, 0, 0));
+        jSelectedColors.setBackground(new Color(255, 0, 0));
     }//GEN-LAST:event_JblueActionPerformed
 
     private void jPinkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPinkActionPerformed
         // TODO add your handling code here:
-        jSelectedColor.setBackground(new Color(0, 0, 255));
+        jSelectedColors.setBackground(new Color(0, 0, 255));
     }//GEN-LAST:event_jPinkActionPerformed
 
     private void jOrangeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jOrangeActionPerformed
         // TODO add your handling code here:
-        jSelectedColor.setBackground(new Color(203,34,229));
+        jSelectedColors.setBackground(new Color(203, 34, 229));
     }//GEN-LAST:event_jOrangeActionPerformed
 
     private void jRedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRedActionPerformed
         // TODO add your handling code here:
-        jSelectedColor.setBackground(new Color(229,195,23));
+        jSelectedColors.setBackground(new Color(229, 195, 23));
     }//GEN-LAST:event_jRedActionPerformed
 
     private void jAmbreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAmbreActionPerformed
         // TODO add your handling code here:
-        jSelectedColor.setBackground(new Color(255,122,82));
+        jSelectedColors.setBackground(new Color(255, 122, 82));
     }//GEN-LAST:event_jAmbreActionPerformed
 
     private void jFogActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFogActionPerformed
         // TODO add your handling code here:
-        jSelectedColor.setBackground(new Color(20,204,149));
+        jSelectedColors.setBackground(new Color(20, 204, 149));
     }//GEN-LAST:event_jFogActionPerformed
 
     private void jCanariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCanariActionPerformed
         // TODO add your handling code here:
-        jSelectedColor.setBackground(new Color(87,110,242));
+        jSelectedColors.setBackground(new Color(87, 110, 242));
     }//GEN-LAST:event_jCanariActionPerformed
 
     private void jMentheActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMentheActionPerformed
         // TODO add your handling code here:
-        jSelectedColor.setBackground(new Color(191,48,139));
+        jSelectedColors.setBackground(new Color(191, 48, 139));
     }//GEN-LAST:event_jMentheActionPerformed
 
     private void jVioloineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jVioloineActionPerformed
         // TODO add your handling code here:
-        jSelectedColor.setBackground(new Color(191,201,201));
+        jSelectedColors.setBackground(new Color(191, 201, 201));
     }//GEN-LAST:event_jVioloineActionPerformed
 
     private void jChartreuseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jChartreuseActionPerformed
         // TODO add your handling code here:
-        jSelectedColor.setBackground(new Color(102,205,217));
+        jSelectedColors.setBackground(new Color(102, 205, 217));
     }//GEN-LAST:event_jChartreuseActionPerformed
 
     private void jKingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jKingActionPerformed
         // TODO add your handling code here:
-        jSelectedColor.setBackground(new Color(178,31,0));
+        jSelectedColors.setBackground(new Color(178, 31, 0));
     }//GEN-LAST:event_jKingActionPerformed
 
 
     private void JaddClasseurActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JaddClasseurActionPerformed
         // TODO add your handling code here:
         int i = origin.db.PostClasseur("New", "666666", this.idActiveUser);
-        addClasseur(new Classeur(i,"New","666666"));
+        addClasseur(new Classeur(i, "New", "333333"));
     }//GEN-LAST:event_JaddClasseurActionPerformed
 
-    private void addClasseur(Classeur newcla){
+    private void addClasseur(Classeur newcla) {
         JPanel panelBloc = new JPanel();
-        //panelBloc.setLayout(new BoxLayout(panelBloc, BoxLayout.Y_AXIS));
         panelBloc.setBackground(new java.awt.Color(42, 70, 105));
-        jNewClasseur.getComponent(0).setBackground(Color.decode(newcla.getCol()));
-        JTextField t = (JTextField)jNewClasseur.getComponent(1);
-        t.setText(newcla.getLib());
-        panelBloc.add(jNewClasseur);
+        panelBloc.setMaximumSize(new Dimension(235, 40));
+        panelBloc.setMinimumSize(new java.awt.Dimension(235, 40));
+        panelBloc.setName(""); // NOI18N
+        panelBloc.setPreferredSize(new java.awt.Dimension(235, 40));
+        java.awt.FlowLayout flowLayout1 = new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 4, 0);
+        flowLayout1.setAlignOnBaseline(true);
+        panelBloc.setLayout(flowLayout1);
+
+        // bouton sélecteur de couleur
+        JButton jSelectedColors = new JButton();
+        jSelectedColors.setBackground(new java.awt.Color(255, 0, 0));
+        jSelectedColors.setAlignmentY(0.0F);
+        jSelectedColors.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        jSelectedColors.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jSelectedColors.setMargin(new java.awt.Insets(2, 2, 2, 2));
+        jSelectedColors.setMaximumSize(new java.awt.Dimension(15, 30));
+        jSelectedColors.setMinimumSize(new java.awt.Dimension(15, 30));
+        jSelectedColors.setPreferredSize(new java.awt.Dimension(15, 30));
+        jSelectedColors.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jSelectedColorActionPerformed(evt);
+            }
+        });
+        panelBloc.add(jSelectedColors);
+
+        // champs texte nom classeur 
+        JTextField JTextClasseur = new JTextField();
+        JTextClasseur.setText(newcla.getLib());
+
+        JTextClasseur.setBackground(new java.awt.Color(42, 70, 105));
+        JTextClasseur.setFont(new java.awt.Font("URW Gothic", 0, 18)); // NOI18N
+        JTextClasseur.setForeground(new java.awt.Color(255, 255, 255));
+        JTextClasseur.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        JTextClasseur.setText(newcla.getLib());
+        JTextClasseur.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        JTextClasseur.setMargin(new java.awt.Insets(2, 2, 2, 2));
+        JTextClasseur.setMaximumSize(new java.awt.Dimension(160, 20));
+        JTextClasseur.setMinimumSize(new java.awt.Dimension(160, 20));
+        JTextClasseur.setPreferredSize(new java.awt.Dimension(160, 20));
+        JTextClasseur.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                JTextTitleMouseClicked(evt);
+            }
+        });
+        panelBloc.add(JTextClasseur);
+
+        // bouton icon lien vers intercalaire
+        JLabel jIconOn = new JLabel();
+        jIconOn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/on@2x.png"))); // NOI18N
+        panelBloc.add(jIconOn);
+        jIconOn.getAccessibleContext().setAccessibleName("jIconOn");
+
         JClasseurBloc.add(panelBloc);
-        //panelBloc.getComponent(0).;
+
+        // regénère le composant
         panelBloc.revalidate();
-        //panelBloc.repaint();
-        //System.out.println(jNewClasseur);
+        panelBloc.repaint();
+
     }
-    
-    private void addFeuille(Feuille newf){
+
+    private void addFeuille(Feuille newf) {
         JPanel panelBloc = new JPanel();
-        //panelBloc.setLayout(new BoxLayout(panelBloc, BoxLayout.Y_AXIS));
         panelBloc.setBackground(new java.awt.Color(42, 70, 105));
-        jNewClasseur.getComponent(0).setBackground(Color.decode("999999"));
-        JTextField t = (JTextField)jNewClasseur.getComponent(1);
-        t.setText(newf.getTitre());
-        panelBloc.add(jNewClasseur);
-        Jnote.add(panelBloc);
-        //panelBloc.getComponent(0).;
+        panelBloc.setMaximumSize(new Dimension(235, 40));
+        panelBloc.setMinimumSize(new java.awt.Dimension(235, 40));
+        panelBloc.setName(""); // NOI18N
+        panelBloc.setPreferredSize(new java.awt.Dimension(235, 40));
+        java.awt.FlowLayout flowLayout1 = new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 4, 0);
+        flowLayout1.setAlignOnBaseline(true);
+        panelBloc.setLayout(flowLayout1);
+
+        // champs texte nom intercalaire 
+        JTextField JNotes = new JTextField();
+        JNotes.setText(newf.getTitre());
+
+        JNotes.setBackground(new java.awt.Color(42, 70, 105));
+        JNotes.setFont(new java.awt.Font("URW Gothic", 0, 18)); // NOI18N
+        JNotes.setForeground(new java.awt.Color(255, 255, 255));
+        JNotes.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        JNotes.setText(newf.getTitre());
+        JNotes.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        JNotes.setMargin(new java.awt.Insets(5, 2, 5, 2));
+        JNotes.setMaximumSize(new java.awt.Dimension(220, 30));
+        JNotes.setMinimumSize(new java.awt.Dimension(220, 30));
+        JNotes.setPreferredSize(new java.awt.Dimension(220, 30));
+        panelBloc.add(JNotes);
+        jNoteBloc.add(panelBloc);
+
+        // regénère le composant
         panelBloc.revalidate();
         panelBloc.repaint();
-        //System.out.println(jNewClasseur);
+
     }
-    
-    private void addIntercalaire(Intercalaire newIn){
-         JPanel panelBloc = new JPanel();
-        //panelBloc.setLayout(new BoxLayout(panelBloc, BoxLayout.Y_AXIS));
+
+    private void addIntercalaire(Intercalaire newIn) {
+        JPanel panelBloc = new JPanel();
         panelBloc.setBackground(new java.awt.Color(42, 70, 105));
-        jNewClasseur.getComponent(0).setBackground(Color.decode(newIn.getCol()));
-        JTextField t = (JTextField)jNewClasseur.getComponent(1);
-        t.setText(newIn.getLib());
-        panelBloc.add(jNewClasseur);
+        panelBloc.setMaximumSize(new Dimension(235, 40));
+        panelBloc.setMinimumSize(new java.awt.Dimension(235, 40));
+        panelBloc.setName(""); // NOI18N
+        panelBloc.setPreferredSize(new java.awt.Dimension(235, 40));
+        java.awt.FlowLayout flowLayout1 = new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 4, 0);
+        flowLayout1.setAlignOnBaseline(true);
+        panelBloc.setLayout(flowLayout1);
+
+        // bouton sélecteur de couleur
+        JButton jSelectedColors = new JButton();
+        jSelectedColors.setBackground(new java.awt.Color(255, 0, 0));
+        jSelectedColors.setAlignmentY(0.0F);
+        jSelectedColors.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        jSelectedColors.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jSelectedColors.setMargin(new java.awt.Insets(2, 2, 2, 2));
+        jSelectedColors.setMaximumSize(new java.awt.Dimension(15, 30));
+        jSelectedColors.setMinimumSize(new java.awt.Dimension(15, 30));
+        jSelectedColors.setPreferredSize(new java.awt.Dimension(15, 30));
+        jSelectedColors.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jSelectedColorActionPerformed(evt);
+            }
+        });
+        panelBloc.add(jSelectedColors);
+
+        // champs texte nom intercalaire 
+        JTextField JTextIntercalaire = new JTextField();
+        JTextIntercalaire.setText(newIn.getLib());
+
+        JTextIntercalaire.setBackground(new java.awt.Color(42, 70, 105));
+        JTextIntercalaire.setFont(new java.awt.Font("URW Gothic", 0, 18)); // NOI18N
+        JTextIntercalaire.setForeground(new java.awt.Color(255, 255, 255));
+        JTextIntercalaire.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        JTextIntercalaire.setText(newIn.getLib());
+        JTextIntercalaire.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        JTextIntercalaire.setMargin(new java.awt.Insets(2, 2, 2, 2));
+        JTextIntercalaire.setMaximumSize(new java.awt.Dimension(160, 20));
+        JTextIntercalaire.setMinimumSize(new java.awt.Dimension(160, 20));
+        JTextIntercalaire.setPreferredSize(new java.awt.Dimension(160, 20));
+        JTextIntercalaire.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                JTextTitleMouseClicked(evt);
+            }
+        });
+        panelBloc.add(JTextIntercalaire);
+
+        // bouton icon lien vers intercalaire
+        JLabel jIconOn = new JLabel();
+        jIconOn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/on@2x.png"))); // NOI18N
+        panelBloc.add(jIconOn);
+        jIconOn.getAccessibleContext().setAccessibleName("jIconOn");
+
         jIntercalaireBloc.add(panelBloc);
+
+        // regénère le composant
         panelBloc.revalidate();
         panelBloc.repaint();
-        //System.out.println(jNewClasseur);
     }
-    
+
     private void JaddNoteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JaddNoteActionPerformed
         // TODO add your handling code here:
         //int i = origin.db.PostFeuille("Nouvelle Note", "", this.idActiveIntercalaire);
@@ -803,9 +923,8 @@ public class Application_Background extends javax.swing.JPanel {
 
     private void JaddIntercalaireActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JaddIntercalaireActionPerformed
         // TODO add your handling code here:
-        
         int i = origin.db.PostIntercalaire("New", "333333", this.idActiveClasseur);
-        addIntercalaire(new Intercalaire(i,"New","333333"));
+        addIntercalaire(new Intercalaire(i, "New", "333333"));
     }//GEN-LAST:event_JaddIntercalaireActionPerformed
 
     private void jSelectedColorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jSelectedColorActionPerformed
@@ -816,9 +935,8 @@ public class Application_Background extends javax.swing.JPanel {
     private void JTextTitleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JTextTitleMouseClicked
         // TODO add your handling code here:
         //jIconOn.setVisible(true);
-        jIconOn.setIcon(new ImageIcon(getClass().getResource("/resources/off@2x.png"))); 
+        jIconOn.setIcon(new ImageIcon(getClass().getResource("/resources/off@2x.png")));
     }//GEN-LAST:event_JTextTitleMouseClicked
-
 
     public void dialog() {
         JSelected = new JDialog(home, "Select Color", true);
@@ -868,7 +986,7 @@ public class Application_Background extends javax.swing.JPanel {
     private javax.swing.JButton jKing;
     private javax.swing.JLabel jLabelColor;
     private javax.swing.JButton jMenthe;
-    private javax.swing.JPanel jNewClasseur;
+    private static javax.swing.JPanel jNewClasseur;
     private javax.swing.JPanel jNewNote;
     private javax.swing.JPanel jNoteBloc;
     private javax.swing.JButton jOrange;
