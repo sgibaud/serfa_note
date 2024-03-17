@@ -71,6 +71,7 @@ public class EditorPane extends JPanel {
     public void setIdF(int id){
         this.idF = id;
         labelClass.setlistLabel(origin.db.GetLabels(idF));
+        lecture();
     }
     
     private void initBlocNotes() {
@@ -103,7 +104,7 @@ public class EditorPane extends JPanel {
         textPane.setEditable(true);
         textPane.setContentType("text/html");
         textPane.setForeground(new Color(23, 106, 115));
-        textPane.setText("<b>Vous pouvez commencer à écrire ! </b>");
+        //textPane.setText("<b>Vous pouvez commencer à écrire ! </b>");
         textPane.setMargin(insets);
 
         // J'ajoute le MouseListener pour la sélection de texte
@@ -232,7 +233,7 @@ public class EditorPane extends JPanel {
         savePanel.add(closeButton);
         savePanel.add(saveNoteButton);
 
-        titleLb.setText("Title");
+        //titleLb.setText("Title");
         titleLb.setFont(new Font("Arial", Font.BOLD, 20));
         titleLb.setEditable(false);
         titleLb.setMargin(insets);
