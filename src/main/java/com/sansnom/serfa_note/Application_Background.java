@@ -96,8 +96,9 @@ public class Application_Background extends javax.swing.JPanel {
         if (i > 1) {
             JClasseurBloc.removeAll();
         }
-        Jnote.removeAll();
+        jNoteBloc.removeAll();
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -724,7 +725,7 @@ public class Application_Background extends javax.swing.JPanel {
         panelBloc.setLayout(flowLayout1);
 
         // bouton sélecteur de couleur
-        jSelectedColors.setBackground(new java.awt.Color(255, 0, 0));
+        jSelectedColors.setBackground(Color.decode(newcla.getCol()));
         jSelectedColors.setAlignmentY(0.0F);
         jSelectedColors.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         jSelectedColors.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -734,7 +735,11 @@ public class Application_Background extends javax.swing.JPanel {
         jSelectedColors.setPreferredSize(new java.awt.Dimension(15, 30));
         jSelectedColors.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                dialog();
+                //dialog();
+                if (e.getSource() == jSelectedColors) {
+                   Color color = JColorChooser.showDialog(null, "Choisis ta couleur", Color.black);
+                   jSelectedColors.setBackground(color);
+                }
             }
         });
         panelBloc.add(jSelectedColors);
@@ -757,6 +762,11 @@ public class Application_Background extends javax.swing.JPanel {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jIconOn.setIcon(new ImageIcon(getClass().getResource("/resources/off@2x.png")));
                 setClasseur(newcla.getId());
+                String hex = Integer.toHexString(jSelectedColors.getBackground().getRGB()).substring(2);
+                //System.out.println("contenu JTextClasseur " + JTextClasseur.getText());
+                //System.out.println("BG du bouton couleur " + hex);
+                origin.db.UpdateClasseur(JTextClasseur.getText(), hex ,newcla.getId());
+                
             }
         });
         panelBloc.add(JTextClasseur);
@@ -774,40 +784,6 @@ public class Application_Background extends javax.swing.JPanel {
 
     }
 
-    private void addFeuille(Feuille newf) {
-        JPanel panelBloc = new JPanel(); //not invoke "javax.swing.JButton.setBackground(java.awt.Color)" because "this.jSelectedColors" is null
-        panelBloc.setBackground(new java.awt.Color(42, 70, 105));
-        panelBloc.setMaximumSize(new Dimension(235, 40));
-        panelBloc.setMinimumSize(new java.awt.Dimension(235, 40));
-        panelBloc.setName(""); // NOI18N
-        panelBloc.setPreferredSize(new java.awt.Dimension(235, 40));
-        java.awt.FlowLayout flowLayout1 = new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 4, 0);
-        flowLayout1.setAlignOnBaseline(true);
-        panelBloc.setLayout(flowLayout1);
-
-        // champs texte nom intercalaire 
-        JTextField JNotes = new JTextField();
-        JNotes.setText(newf.getTitre());
-        System.out.println(newf.getTitre());
-
-        JNotes.setBackground(new java.awt.Color(42, 70, 105));
-        JNotes.setFont(new java.awt.Font("URW Gothic", 0, 18)); // NOI18N
-        JNotes.setForeground(new java.awt.Color(255, 255, 255));
-        JNotes.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        JNotes.setText(newf.getTitre());
-        JNotes.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        JNotes.setMargin(new java.awt.Insets(5, 2, 5, 2));
-        JNotes.setMaximumSize(new java.awt.Dimension(220, 30));
-        JNotes.setMinimumSize(new java.awt.Dimension(220, 30));
-        JNotes.setPreferredSize(new java.awt.Dimension(220, 30));
-        panelBloc.add(JNotes);
-        jNoteBloc.add(panelBloc);
-
-        // regénère le composant
-        panelBloc.revalidate();
-        panelBloc.repaint();
-
-    }
 
     private void addIntercalaire(Intercalaire newIn) {
         // variables
@@ -825,7 +801,7 @@ public class Application_Background extends javax.swing.JPanel {
         panelBloc.setLayout(flowLayout1);
 
         // bouton sélecteur de couleur
-        jSelectedColors.setBackground(new java.awt.Color(255, 0, 0));
+        jSelectedColors.setBackground(Color.decode(newIn.getCol()));
         jSelectedColors.setAlignmentY(0.0F);
         jSelectedColors.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         jSelectedColors.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -835,7 +811,11 @@ public class Application_Background extends javax.swing.JPanel {
         jSelectedColors.setPreferredSize(new java.awt.Dimension(15, 30));
         jSelectedColors.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jSelectedColorsActionPerformed(evt);
+                //jSelectedColorsActionPerformed(evt);
+                if (evt.getSource() == jSelectedColors) {
+                   Color color = JColorChooser.showDialog(null, "Choisis ta couleur", Color.black);
+                   jSelectedColors.setBackground(color);
+                }
             }
         });
         panelBloc.add(jSelectedColors);
@@ -859,6 +839,9 @@ public class Application_Background extends javax.swing.JPanel {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jIconOn.setIcon(new ImageIcon(getClass().getResource("/resources/off@2x.png")));
                 setIntercalaire(newIn.getId());
+                System.out.println("intercalaires " + newIn.getLib());
+                String hex = Integer.toHexString(jSelectedColors.getBackground().getRGB()).substring(2);
+                origin.db.UpdateIntercalaire(JTextIntercalaire.getText(), hex, newIn.getId());
             }
         });
         panelBloc.add(JTextIntercalaire);
@@ -874,11 +857,60 @@ public class Application_Background extends javax.swing.JPanel {
         panelBloc.revalidate();
         panelBloc.repaint();
     }
+    
+     private void addFeuille(Feuille newf) {
+        JPanel panelBloc = new JPanel(); //not invoke "javax.swing.JButton.setBackground(java.awt.Color)" because "this.jSelectedColors" is null
+        JLabel jIconOn = new JLabel();
+        
+        panelBloc.setBackground(new java.awt.Color(42, 70, 105));
+        panelBloc.setMaximumSize(new Dimension(235, 40));
+        panelBloc.setMinimumSize(new java.awt.Dimension(235, 40));
+        panelBloc.setName(""); // NOI18N
+        panelBloc.setPreferredSize(new java.awt.Dimension(235, 40));
+        java.awt.FlowLayout flowLayout1 = new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 4, 0);
+        flowLayout1.setAlignOnBaseline(true);
+        panelBloc.setLayout(flowLayout1);
+
+        // champs texte nom intercalaire 
+        JTextField JNotes = new JTextField();
+        JNotes.setText(newf.getTitre());
+        System.out.println("feuilles : " + newf.getTitre());
+
+        JNotes.setBackground(new java.awt.Color(42, 70, 105));
+        JNotes.setFont(new java.awt.Font("URW Gothic", 0, 18)); // NOI18N
+        JNotes.setForeground(new java.awt.Color(255, 255, 255));
+        JNotes.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        JNotes.setText(newf.getTitre());
+        JNotes.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        JNotes.setMargin(new java.awt.Insets(5, 2, 5, 2));
+        JNotes.setMaximumSize(new java.awt.Dimension(220, 30));
+        JNotes.setMinimumSize(new java.awt.Dimension(220, 30));
+        JNotes.setPreferredSize(new java.awt.Dimension(220, 30));
+        jIconOn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jIconOn.setIcon(new ImageIcon(getClass().getResource("/resources/off@2x.png")));
+                origin.editor(newf.getId());
+            }
+        });
+        panelBloc.add(JNotes);
+        jNoteBloc.add(panelBloc);
+        
+        jIconOn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/on@2x.png"))); // NOI18N
+        panelBloc.add(jIconOn);
+        jIconOn.getAccessibleContext().setAccessibleName("jIconOn");
+
+        // regénère le composant
+        panelBloc.revalidate();
+        panelBloc.repaint();
+
+    }
 
     private void JaddNoteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JaddNoteActionPerformed
         // TODO add your handling code here:
         //int i = origin.db.PostFeuille("Nouvelle Note", "", this.idActiveIntercalaire);
-        origin.editor(1);
+        //origin.editor(1);
+        int i = origin.db.PostFeuille("New", "333333", this.idActiveIntercalaire);
+        addFeuille(new Feuille(i, "New", "333333"));
     }//GEN-LAST:event_JaddNoteActionPerformed
 
     private void JaddIntercalaireActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JaddIntercalaireActionPerformed
