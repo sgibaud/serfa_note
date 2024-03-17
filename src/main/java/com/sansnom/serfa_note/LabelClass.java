@@ -155,6 +155,7 @@ public class LabelClass extends JPanel {
         suppLabelNoteButton  = new JButton();
         oldLabel = new String();
         
+        //customization des boutons
         newLabelButton.setIcon(newLabelIcon);
         modifLabelButton.setIcon(editLabelIcon);
         suppLabelButton.setIcon(suppLabelIcon);
@@ -178,6 +179,7 @@ public class LabelClass extends JPanel {
         suppLabelNoteButton.setPressedIcon(new ImageIcon(getClass().getResource("/resources/remove_note_neg2x.png")));
         suppLabelNoteButton.setRolloverIcon(new ImageIcon(getClass().getResource("/resources/remove_note_neg2x.png")));
         
+        //apparence de la box
         addNewLabelButton.setVisible(false);
         updateLabelButton.setVisible(false);
         labelTextField.setVisible(false);
@@ -198,6 +200,7 @@ public class LabelClass extends JPanel {
         addLabelNoteButton.setPreferredSize(new Dimension(120, 40)); 
         suppLabelNoteButton.setPreferredSize(new Dimension(120, 40)); 
         
+        // permet d'utiliser différents panel
         if(labelType.equals("noteLabel")){
             noteButtonPanel.setVisible(true);
         }else {

@@ -3,6 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package com.sansnom.serfa_note;
+import com.sansnom.serfa_note.Data.Label;
+import com.sansnom.serfa_note.Data.Feuille;
 
 import com.sansnom.serfa_note.Data.Classeur;
 import com.sansnom.serfa_note.Data.Feuille;
@@ -33,6 +35,9 @@ public class Application_Background extends javax.swing.JPanel {
     private Color colors;
     private Home origin;
     private JButton jSelectedColors;
+    private LabelClass labels;
+    
+    private ArrayList<Label> listLabels;
 
     /**
      * Creates new form Application_Background
@@ -40,6 +45,7 @@ public class Application_Background extends javax.swing.JPanel {
     public Application_Background(Home home) {
         initComponents();
         this.origin = home;
+        this.fillBox(origin.db.GetLabels());
     }
 
     public void setUser(int id, String user) {
@@ -99,6 +105,33 @@ public class Application_Background extends javax.swing.JPanel {
         jNoteBloc.removeAll();
     }
     
+   public void fillBox(ArrayList<Label> list){
+       
+    jlabelBoxBG.removeAllItems();
+    System.out.println(list);
+    System.out.println(jlabelBoxBG);
+        for (int i = 0; i < list.size(); i++) {
+            System.out.println(list.get(i).getLabel());
+            jlabelBoxBG.addItem(list.get(i).getLabel());
+        }
+    System.out.println(jlabelBoxBG);
+    jlabelBoxBG.revalidate();
+    jlabelBoxBG.repaint();
+    }
+   
+   public void displayFeuilleByTag(ArrayList<Feuille> list){
+       JTextField titleNoteField = new JTextField();
+       JPanel notePanel = new JPanel();
+       notePanel.setBackground(new java.awt.Color(42, 70, 105));
+       for (int i = 0; i < list.size(); i++) {
+           System.out.println(list.get(i).getTitre());
+           titleNoteField.setText(list.get(i).getTitre());
+           notePanel.add(titleNoteField);
+        }
+       
+       jNoteBloc.add(notePanel);
+   }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -138,6 +171,8 @@ public class Application_Background extends javax.swing.JPanel {
         Jcenterpanel = new javax.swing.JPanel();
         Jtop = new javax.swing.JPanel();
         JbtnSearch = new javax.swing.JButton();
+        jLabelboxPanel = new javax.swing.JPanel();
+        jlabelBoxBG = new javax.swing.JComboBox<>();
         Jcenter = new javax.swing.JPanel();
         JClasseur = new javax.swing.JPanel();
         JaddClasseur = new javax.swing.JButton();
@@ -429,6 +464,37 @@ public class Application_Background extends javax.swing.JPanel {
         JbtnSearch.setBackground(new Color(255,255,255,0));
         JbtnSearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/label_search@2x.png"))); // NOI18N
         JbtnSearch.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/label_search_neg@2x.png"))); // NOI18N
+        JbtnSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JbtnSearchActionPerformed(evt);
+            }
+        });
+
+        jLabelboxPanel.setBackground(new java.awt.Color(32, 46, 64));
+
+        jlabelBoxBG.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jlabelBoxBG.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jlabelBoxBGActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jLabelboxPanelLayout = new javax.swing.GroupLayout(jLabelboxPanel);
+        jLabelboxPanel.setLayout(jLabelboxPanelLayout);
+        jLabelboxPanelLayout.setHorizontalGroup(
+            jLabelboxPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jLabelboxPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jlabelBoxBG, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(182, Short.MAX_VALUE))
+        );
+        jLabelboxPanelLayout.setVerticalGroup(
+            jLabelboxPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jLabelboxPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jlabelBoxBG)
+                .addContainerGap())
+        );
 
         javax.swing.GroupLayout JtopLayout = new javax.swing.GroupLayout(Jtop);
         Jtop.setLayout(JtopLayout);
@@ -437,15 +503,21 @@ public class Application_Background extends javax.swing.JPanel {
             .addGroup(JtopLayout.createSequentialGroup()
                 .addGap(10, 10, 10)
                 .addComponent(JbtnSearch)
-                .addGap(911, 911, 911))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabelboxPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         JtopLayout.setVerticalGroup(
             JtopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JtopLayout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addComponent(JbtnSearch)
+                .addGap(45, 45, 45)
+                .addGroup(JtopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(JbtnSearch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabelboxPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(14, 14, 14))
         );
+
+        jLabelboxPanel.setVisible(false);
 
         Jcenterpanel.add(Jtop, java.awt.BorderLayout.NORTH);
 
@@ -898,7 +970,6 @@ public class Application_Background extends javax.swing.JPanel {
         jIconOn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/on@2x.png"))); // NOI18N
         panelBloc.add(jIconOn);
         jIconOn.getAccessibleContext().setAccessibleName("jIconOn");
-
         // regénère le composant
         panelBloc.revalidate();
         panelBloc.repaint();
@@ -918,6 +989,18 @@ public class Application_Background extends javax.swing.JPanel {
         int i = origin.db.PostIntercalaire("New", "333333", this.idActiveClasseur);
         addIntercalaire(new Intercalaire(i, "New", "333333"));
     }//GEN-LAST:event_JaddIntercalaireActionPerformed
+
+    private void jlabelBoxBGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jlabelBoxBGActionPerformed
+        // TODO add your handling code here:
+        System.out.println("item Box " + origin.db.GetFeuillesByTag(jlabelBoxBG.getSelectedIndex()));
+        ArrayList<Feuille> feuilleLabel = origin.db.GetFeuillesByTag(jlabelBoxBG.getSelectedIndex());
+        displayFeuilleByTag(feuilleLabel);
+    }//GEN-LAST:event_jlabelBoxBGActionPerformed
+
+    private void JbtnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JbtnSearchActionPerformed
+        // TODO add your handling code here:
+       jLabelboxPanel.setVisible(true);
+    }//GEN-LAST:event_JbtnSearchActionPerformed
 
     private void jSelectedColorsActionPerformed(ActionEvent e) {
         dialog();
@@ -1144,6 +1227,7 @@ public class Application_Background extends javax.swing.JPanel {
     private javax.swing.JPanel jIntercalaireBloc;
     private javax.swing.JButton jKing;
     private javax.swing.JLabel jLabelColor;
+    private javax.swing.JPanel jLabelboxPanel;
     private javax.swing.JButton jMenthe;
     private javax.swing.JPanel jNewNote;
     private javax.swing.JPanel jNoteBloc;
@@ -1151,6 +1235,7 @@ public class Application_Background extends javax.swing.JPanel {
     private javax.swing.JButton jPink;
     private javax.swing.JButton jRed;
     private javax.swing.JButton jVioloine;
+    private javax.swing.JComboBox<String> jlabelBoxBG;
     // End of variables declaration//GEN-END:variables
 
 }
