@@ -753,17 +753,18 @@ public class Application_Background extends javax.swing.JPanel {
         JTextClasseur.setMaximumSize(new java.awt.Dimension(160, 20));
         JTextClasseur.setMinimumSize(new java.awt.Dimension(160, 20));
         JTextClasseur.setPreferredSize(new java.awt.Dimension(160, 20));
+        jIconOn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jIconOn.setIcon(new ImageIcon(getClass().getResource("/resources/off@2x.png")));
+                setClasseur(newcla.getId());
+            }
+        });
         panelBloc.add(JTextClasseur);
 
         // bouton icon lien vers intercalaire
         jIconOn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/on@2x.png"))); // NOI18N
         panelBloc.add(jIconOn);
         jIconOn.getAccessibleContext().setAccessibleName("jIconOn");
-        jIconOn.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jIconOn.setIcon(new ImageIcon(getClass().getResource("/resources/off@2x.png")));
-            }
-        });
 
         JClasseurBloc.add(panelBloc);
 
@@ -787,6 +788,7 @@ public class Application_Background extends javax.swing.JPanel {
         // champs texte nom intercalaire 
         JTextField JNotes = new JTextField();
         JNotes.setText(newf.getTitre());
+        System.out.println(newf.getTitre());
 
         JNotes.setBackground(new java.awt.Color(42, 70, 105));
         JNotes.setFont(new java.awt.Font("URW Gothic", 0, 18)); // NOI18N
@@ -841,6 +843,7 @@ public class Application_Background extends javax.swing.JPanel {
         // champs texte nom intercalaire 
         JTextField JTextIntercalaire = new JTextField();
         JTextIntercalaire.setText(newIn.getLib());
+        System.out.println(newIn.getLib());
 
         JTextIntercalaire.setBackground(new java.awt.Color(42, 70, 105));
         JTextIntercalaire.setFont(new java.awt.Font("URW Gothic", 0, 18)); // NOI18N
@@ -852,9 +855,10 @@ public class Application_Background extends javax.swing.JPanel {
         JTextIntercalaire.setMaximumSize(new java.awt.Dimension(160, 20));
         JTextIntercalaire.setMinimumSize(new java.awt.Dimension(160, 20));
         JTextIntercalaire.setPreferredSize(new java.awt.Dimension(160, 20));
-        JTextIntercalaire.addMouseListener(new java.awt.event.MouseAdapter() {
+        jIconOn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jIconOn.setIcon(new ImageIcon(getClass().getResource("/resources/off@2x.png")));
+                setIntercalaire(newIn.getId());
             }
         });
         panelBloc.add(JTextIntercalaire);

@@ -756,6 +756,7 @@ public class Application_Background extends javax.swing.JPanel {
         jIconOn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jIconOn.setIcon(new ImageIcon(getClass().getResource("/resources/off@2x.png")));
+                setClasseur(newcla.getId());
             }
         });
         panelBloc.add(JTextClasseur);
@@ -787,6 +788,7 @@ public class Application_Background extends javax.swing.JPanel {
         // champs texte nom intercalaire 
         JTextField JNotes = new JTextField();
         JNotes.setText(newf.getTitre());
+        System.out.println(newf.getTitre());
 
         JNotes.setBackground(new java.awt.Color(42, 70, 105));
         JNotes.setFont(new java.awt.Font("URW Gothic", 0, 18)); // NOI18N
@@ -841,6 +843,7 @@ public class Application_Background extends javax.swing.JPanel {
         // champs texte nom intercalaire 
         JTextField JTextIntercalaire = new JTextField();
         JTextIntercalaire.setText(newIn.getLib());
+        System.out.println(newIn.getLib());
 
         JTextIntercalaire.setBackground(new java.awt.Color(42, 70, 105));
         JTextIntercalaire.setFont(new java.awt.Font("URW Gothic", 0, 18)); // NOI18N
@@ -855,6 +858,7 @@ public class Application_Background extends javax.swing.JPanel {
         jIconOn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jIconOn.setIcon(new ImageIcon(getClass().getResource("/resources/off@2x.png")));
+                setIntercalaire(newIn.getId());
             }
         });
         panelBloc.add(JTextIntercalaire);
