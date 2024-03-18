@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package com.sansnom.serfa_note;
+
 import com.sansnom.serfa_note.Data.Label;
 import com.sansnom.serfa_note.Data.Feuille;
 
@@ -37,10 +38,11 @@ public class Application_Background extends javax.swing.JPanel {
     private JButton jSelectedColors;
     private LabelClass labels;
     
+    private String noteId;
+
     private ArrayList<Label> listLabels;
 
     private Color SelectedColorBtn;
-
 
     /**
      * Creates new form Application_Background
@@ -75,6 +77,12 @@ public class Application_Background extends javax.swing.JPanel {
             newcla = clist.get(i);
             addClasseur(newcla);
         }
+        JClasseurBloc.revalidate();
+        JClasseurBloc.repaint();
+        jIntercalaireBloc.revalidate();
+        jIntercalaireBloc.repaint();
+        jNoteBloc.revalidate();
+        jNoteBloc.repaint();
     }
 
     private void loadIntercalaire() {
@@ -87,6 +95,8 @@ public class Application_Background extends javax.swing.JPanel {
         }
         jIntercalaireBloc.revalidate();
         jIntercalaireBloc.repaint();
+        jNoteBloc.revalidate();
+        jNoteBloc.repaint();
     }
 
     private void loadFeuille() {
@@ -97,8 +107,23 @@ public class Application_Background extends javax.swing.JPanel {
             newf = flist.get(i);
             addFeuille(newf);
         }
-
+        jNoteBloc.revalidate();
+        jNoteBloc.repaint();
     }
+    
+    private void loadLabel(){
+        cleartables(0);
+           ArrayList<Feuille> feuilleLabel = origin.db.GetFeuillesByTag(jlabelBoxBG.getSelectedIndex());
+           Feuille newf;
+        Label newLab;
+        for (int i = 0; i < feuilleLabel.size(); i++) {
+            //System.out.println(list.get(i).getTitre());
+                newf = feuilleLabel.get(i);
+                displayFeuilleByTag(newf);
+        } 
+        jNoteBloc.revalidate();
+        jNoteBloc.repaint();
+       }
 
     private void cleartables(int i) {
         if (i > 0) {
@@ -108,35 +133,23 @@ public class Application_Background extends javax.swing.JPanel {
             JClasseurBloc.removeAll();
         }
         jNoteBloc.removeAll();
+        
     }
-    
-   public void fillBox(ArrayList<Label> list){
-       
-    jlabelBoxBG.removeAllItems();
-    System.out.println(list);
-    System.out.println(jlabelBoxBG);
+
+    public void fillBox(ArrayList<Label> list) {
+
+        jlabelBoxBG.removeAllItems();
+        //System.out.println(list);
+        //System.out.println(jlabelBoxBG);
         for (int i = 0; i < list.size(); i++) {
-            System.out.println(list.get(i).getLabel());
+            //System.out.println(list.get(i).getLabel());
             jlabelBoxBG.addItem(list.get(i).getLabel());
         }
-    System.out.println(jlabelBoxBG);
-    jlabelBoxBG.revalidate();
-    jlabelBoxBG.repaint();
+        //System.out.println(jlabelBoxBG);
+        jlabelBoxBG.revalidate();
+        jlabelBoxBG.repaint();
+        
     }
-   
-   public void displayFeuilleByTag(ArrayList<Feuille> list){
-       JTextField titleNoteField = new JTextField();
-       JPanel notePanel = new JPanel();
-       notePanel.setBackground(new java.awt.Color(42, 70, 105));
-       for (int i = 0; i < list.size(); i++) {
-           System.out.println(list.get(i).getTitre());
-           titleNoteField.setText(list.get(i).getTitre());
-           notePanel.add(titleNoteField);
-        }
-       
-       jNoteBloc.add(notePanel);
-   }
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -882,8 +895,8 @@ public class Application_Background extends javax.swing.JPanel {
                 String hex = Integer.toHexString(jSelectedColors.getBackground().getRGB()).substring(2);
                 //System.out.println("contenu JTextClasseur " + JTextClasseur.getText());
                 //System.out.println("BG du bouton couleur " + hex);
-                origin.db.UpdateClasseur(JTextClasseur.getText(), hex ,newcla.getId());
-                
+                origin.db.UpdateClasseur(JTextClasseur.getText(), hex, newcla.getId());
+
             }
         });
         panelBloc.add(JTextClasseur);
@@ -900,7 +913,6 @@ public class Application_Background extends javax.swing.JPanel {
         panelBloc.repaint();
 
     }
-
 
     private void addIntercalaire(Intercalaire newIn) {
         // variables
@@ -938,7 +950,7 @@ public class Application_Background extends javax.swing.JPanel {
         // champs texte nom intercalaire 
         JTextField JTextIntercalaire = new JTextField();
         JTextIntercalaire.setText(newIn.getLib());
-        System.out.println(newIn.getLib());
+        //System.out.println(newIn.getLib());
 
         JTextIntercalaire.setBackground(new java.awt.Color(42, 70, 105));
         JTextIntercalaire.setFont(new java.awt.Font("URW Gothic", 0, 18)); // NOI18N
@@ -954,7 +966,7 @@ public class Application_Background extends javax.swing.JPanel {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jIconOn.setIcon(new ImageIcon(getClass().getResource("/resources/off@2x.png")));
                 setIntercalaire(newIn.getId());
-                System.out.println("intercalaires " + newIn.getLib());
+                //System.out.println("intercalaires " + newIn.getLib());
                 String hex = Integer.toHexString(jSelectedColors.getBackground().getRGB()).substring(2);
                 origin.db.UpdateIntercalaire(JTextIntercalaire.getText(), hex, newIn.getId());
             }
@@ -972,11 +984,11 @@ public class Application_Background extends javax.swing.JPanel {
         panelBloc.revalidate();
         panelBloc.repaint();
     }
-    
-     private void addFeuille(Feuille newf) {
+
+    private void addFeuille(Feuille newf) {
         JPanel panelBloc = new JPanel(); //not invoke "javax.swing.JButton.setBackground(java.awt.Color)" because "this.jSelectedColors" is null
         JLabel jIconOn = new JLabel();
-        
+
         panelBloc.setBackground(new java.awt.Color(42, 70, 105));
         panelBloc.setMaximumSize(new Dimension(235, 40));
         panelBloc.setMinimumSize(new java.awt.Dimension(235, 40));
@@ -989,7 +1001,7 @@ public class Application_Background extends javax.swing.JPanel {
         // champs texte nom intercalaire 
         JTextField JNotes = new JTextField();
         JNotes.setText(newf.getTitre());
-        System.out.println("feuilles : " + newf.getTitre());
+        //System.out.println("feuilles : " + newf.getTitre());
 
         JNotes.setBackground(new java.awt.Color(42, 70, 105));
         JNotes.setFont(new java.awt.Font("URW Gothic", 0, 18)); // NOI18N
@@ -1009,7 +1021,7 @@ public class Application_Background extends javax.swing.JPanel {
         });
         panelBloc.add(JNotes);
         jNoteBloc.add(panelBloc);
-        
+
         jIconOn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/on@2x.png"))); // NOI18N
         panelBloc.add(jIconOn);
         jIconOn.getAccessibleContext().setAccessibleName("jIconOn");
@@ -1018,6 +1030,56 @@ public class Application_Background extends javax.swing.JPanel {
         panelBloc.repaint();
 
     }
+    
+       public void displayFeuilleByTag(Feuille newf) {
+        JTextField titleNoteField = new JTextField();
+        JPanel panelBloc = new JPanel(); //not invoke "javax.swing.JButton.setBackground(java.awt.Color)" because "this.jSelectedColors" is null
+        JLabel jIconOn = new JLabel();
+        
+        titleNoteField.setBackground(new java.awt.Color(42, 70, 105));
+        titleNoteField.setFont(new java.awt.Font("URW Gothic", 0, 18)); // NOI18N
+        titleNoteField.setForeground(new java.awt.Color(255, 255, 255));
+        titleNoteField.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        titleNoteField.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        titleNoteField.setMargin(new java.awt.Insets(5, 2, 5, 2));
+        titleNoteField.setMaximumSize(new java.awt.Dimension(220, 30));
+        titleNoteField.setMinimumSize(new java.awt.Dimension(220, 30));
+        titleNoteField.setPreferredSize(new java.awt.Dimension(220, 30));
+        
+        panelBloc.setBackground(new java.awt.Color(42, 70, 105));
+        panelBloc.setMaximumSize(new Dimension(235, 40));
+        panelBloc.setMinimumSize(new java.awt.Dimension(235, 40));
+        panelBloc.setName(""); // NOI18N
+        panelBloc.setPreferredSize(new java.awt.Dimension(235, 40));
+        java.awt.FlowLayout flowLayout1 = new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 4, 0);
+        flowLayout1.setAlignOnBaseline(true);
+        panelBloc.setLayout(flowLayout1);
+        
+        
+                titleNoteField.setText(newf.getTitre());
+                panelBloc.add(titleNoteField);
+                panelBloc.add(jIconOn);  
+        
+        jIconOn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jIconOn.setIcon(new ImageIcon(getClass().getResource("/resources/off@2x.png")));
+                origin.editor(newf.getId());
+            }
+        });
+        
+        jNoteBloc.add(panelBloc);
+        
+        jIconOn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/on@2x.png"))); // NOI18N
+        panelBloc.add(jIconOn);
+        jIconOn.getAccessibleContext().setAccessibleName("jIconOn");
+        // regénère le composant
+        panelBloc.revalidate();
+        panelBloc.repaint();
+        jNoteBloc.revalidate();
+        jNoteBloc.repaint();
+    }
+       
+       
 
     private void JaddNoteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JaddNoteActionPerformed
         // TODO add your handling code here:
@@ -1027,17 +1089,17 @@ public class Application_Background extends javax.swing.JPanel {
         addFeuille(new Feuille(i, "New", "333333"));
     }//GEN-LAST:event_JaddNoteActionPerformed
 
-                                             
+
     private void jlabelBoxBGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jlabelBoxBGActionPerformed
         // TODO add your handling code here:
-        System.out.println("item Box " + origin.db.GetFeuillesByTag(jlabelBoxBG.getSelectedIndex()));
-        ArrayList<Feuille> feuilleLabel = origin.db.GetFeuillesByTag(jlabelBoxBG.getSelectedIndex());
-        displayFeuilleByTag(feuilleLabel);
+        //System.out.println("item Box " + origin.db.GetFeuillesByTag(jlabelBoxBG.getSelectedIndex()));
+        loadLabel();
+        
     }//GEN-LAST:event_jlabelBoxBGActionPerformed
 
     private void JbtnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JbtnSearchActionPerformed
         // TODO add your handling code here:
-       jLabelboxPanel.setVisible(true);
+        jLabelboxPanel.setVisible(true);
     }//GEN-LAST:event_JbtnSearchActionPerformed
 
     private void jSelectedColorsActionPerformed(ActionEvent e) {
