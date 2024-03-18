@@ -46,7 +46,9 @@ public class Home extends javax.swing.JFrame {
             app.home.applyComponentOrientation(app.getComponentOrientation());
             SwingUtilities.updateComponentTreeUI(app.home);
             }
-        else {}
+        else {
+        this.login.messageError();
+        }
     }
    
     

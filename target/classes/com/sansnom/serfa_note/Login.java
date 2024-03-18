@@ -4,6 +4,7 @@
  */
 package com.sansnom.serfa_note;
 import java.awt.event.*;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -20,6 +21,10 @@ public class Login extends javax.swing.JPanel {
         this.origin = home;
     }
 
+    public void messageError(){
+        JOptionPane.showMessageDialog(null,"Nom d'utilisateur ou mot de passe incorrect","",JOptionPane.PLAIN_MESSAGE);
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
