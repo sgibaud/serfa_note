@@ -113,6 +113,40 @@ public class Application_Background extends javax.swing.JPanel {
         jNoteBloc.removeAll();
     }
     
+    private void unselect(int vaal){
+        JLabel Icon;
+        JPanel temp;
+        switch (vaal){
+            case 0:
+                for(int i = 0;i<jNoteBloc.getComponentCount();i++){
+                    temp = (JPanel)jNoteBloc.getComponent(i);
+                    Icon = (JLabel)temp.getComponent(2);
+                    Icon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/on@2x.png")));
+                }
+                jNoteBloc.revalidate();
+                jNoteBloc.repaint();
+                break;
+            case 1:
+                for(int i = 0;i<jIntercalaireBloc.getComponentCount();i++){
+                    temp = (JPanel)jIntercalaireBloc.getComponent(i);
+                    Icon = (JLabel)temp.getComponent(2);
+                    Icon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/on@2x.png")));
+                }
+                jIntercalaireBloc.revalidate();
+                jIntercalaireBloc.repaint();
+                break;
+            case 2:
+                for(int i = 0;i<JClasseurBloc.getComponentCount();i++){
+                    temp = (JPanel)JClasseurBloc.getComponent(i);
+                    Icon = (JLabel)temp.getComponent(2);
+                    Icon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/on@2x.png")));
+                }
+                JClasseurBloc.revalidate();
+                JClasseurBloc.repaint();
+                break;
+        }
+    }
+    
    public void fillBox(ArrayList<Label> list){
        
     jlabelBoxBG.removeAllItems();
@@ -880,6 +914,7 @@ public class Application_Background extends javax.swing.JPanel {
         jIconOn.addMouseListener(new java.awt.event.MouseAdapter() {
 
             public void mouseClicked(java.awt.event.MouseEvent evt) {
+                unselect(2);
                 jIconOn.setIcon(new ImageIcon(getClass().getResource("/resources/off@2x.png")));
                 setClasseur(newcla.getId());
                 String hex = Integer.toHexString(jSelectedColors.getBackground().getRGB()).substring(2);
@@ -955,6 +990,7 @@ public class Application_Background extends javax.swing.JPanel {
         JTextIntercalaire.setPreferredSize(new java.awt.Dimension(160, 20));
         jIconOn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
+                unselect(1);
                 jIconOn.setIcon(new ImageIcon(getClass().getResource("/resources/off@2x.png")));
                 setIntercalaire(newIn.getId());
                 System.out.println("intercalaires " + newIn.getLib());
