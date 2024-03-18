@@ -34,14 +34,13 @@ public class Application_Background extends javax.swing.JPanel {
     private Nuancier nuancier;
     private Color colors;
     private Home origin;
-<<<<<<< HEAD
     private JButton jSelectedColors;
     private LabelClass labels;
     
     private ArrayList<Label> listLabels;
-=======
-    private JButton jSelectedColorBtn;
->>>>>>> calage
+
+    private Color SelectedColorBtn;
+
 
     /**
      * Creates new form Application_Background
@@ -86,6 +85,8 @@ public class Application_Background extends javax.swing.JPanel {
             newIn = ilist.get(i);
             addIntercalaire(newIn);
         }
+        jIntercalaireBloc.revalidate();
+        jIntercalaireBloc.repaint();
     }
 
     private void loadFeuille() {
@@ -738,7 +739,6 @@ public class Application_Background extends javax.swing.JPanel {
         add(JRoot, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
-    private Color SelectedColorBtn;
 
     private void JbtnExitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JbtnExitMouseClicked
         // TODO add your handling code here:
@@ -783,7 +783,7 @@ public class Application_Background extends javax.swing.JPanel {
 
     private void jCanariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCanariActionPerformed
         // TODO add your handling code here:
-        SelectedColorBtn = jSelectedColorBtn.getBackground();
+        SelectedColorBtn = jCanari.getBackground();
     }//GEN-LAST:event_jCanariActionPerformed
 
     private void jMentheActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMentheActionPerformed
@@ -813,14 +813,6 @@ public class Application_Background extends javax.swing.JPanel {
         addClasseur(new Classeur(i, "New", "333333"));
     }//GEN-LAST:event_JaddClasseurActionPerformed
 
-
-    private void JaddNoteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JaddNoteActionPerformed
-        // TODO add your handling code here:
-        int i = origin.db.PostFeuille("Nouvelle Note", "", this.idActiveIntercalaire);
-        origin.editor(1);
-        //addFeuille(new Feuille(i, "new"));
-    }//GEN-LAST:event_JaddNoteActionPerformed
-
     private void JaddIntercalaireActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JaddIntercalaireActionPerformed
         // TODO add your handling code here:
         int i = origin.db.PostIntercalaire("New", "333333", this.idActiveClasseur);
@@ -843,10 +835,6 @@ public class Application_Background extends javax.swing.JPanel {
         panelBloc.setLayout(flowLayout1);
 
         // bouton sélecteur de couleur
-<<<<<<< HEAD
-=======
-        //jSelectedColors.setBackground(new java.awt.Color(255, 0, 0));
->>>>>>> calage
         jSelectedColors.setBackground(Color.decode(newcla.getCol()));
         jSelectedColors.setAlignmentY(0.0F);
         jSelectedColors.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
@@ -857,16 +845,9 @@ public class Application_Background extends javax.swing.JPanel {
         jSelectedColors.setPreferredSize(new java.awt.Dimension(15, 30));
         jSelectedColors.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-<<<<<<< HEAD
                 //dialog();
-                if (e.getSource() == jSelectedColors) {
-                   Color color = JColorChooser.showDialog(null, "Choisis ta couleur", Color.black);
-                   jSelectedColors.setBackground(color);
-                }
-=======
                 dialog();
                 jSelectedColors.setBackground(SelectedColorBtn);
->>>>>>> calage
             }
         }
         );
@@ -874,7 +855,6 @@ public class Application_Background extends javax.swing.JPanel {
 
         // champs texte nom classeur 
         JTextField JTextClasseur = new JTextField();
-
         JTextClasseur.setText(newcla.getLib());
 
         JTextClasseur.setBackground(
@@ -884,7 +864,6 @@ public class Application_Background extends javax.swing.JPanel {
         JTextClasseur.setForeground(
                 new java.awt.Color(255, 255, 255));
         JTextClasseur.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-
         JTextClasseur.setText(newcla.getLib());
         JTextClasseur.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         JTextClasseur.setMargin(
@@ -922,10 +901,7 @@ public class Application_Background extends javax.swing.JPanel {
 
     }
 
-<<<<<<< HEAD
 
-=======
->>>>>>> calage
     private void addIntercalaire(Intercalaire newIn) {
         // variables
         JPanel panelBloc = new JPanel();
@@ -952,16 +928,9 @@ public class Application_Background extends javax.swing.JPanel {
         jSelectedColors.setPreferredSize(new java.awt.Dimension(15, 30));
         jSelectedColors.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-<<<<<<< HEAD
-                //jSelectedColorsActionPerformed(evt);
-                if (evt.getSource() == jSelectedColors) {
-                   Color color = JColorChooser.showDialog(null, "Choisis ta couleur", Color.black);
-                   jSelectedColors.setBackground(color);
-                }
-=======
+
                 jSelectedColorsActionPerformed(evt);
 
->>>>>>> calage
             }
         });
         panelBloc.add(jSelectedColors);
@@ -1050,7 +1019,6 @@ public class Application_Background extends javax.swing.JPanel {
 
     }
 
-<<<<<<< HEAD
     private void JaddNoteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JaddNoteActionPerformed
         // TODO add your handling code here:
         //int i = origin.db.PostFeuille("Nouvelle Note", "", this.idActiveIntercalaire);
@@ -1058,43 +1026,8 @@ public class Application_Background extends javax.swing.JPanel {
         int i = origin.db.PostFeuille("New", "333333", this.idActiveIntercalaire);
         addFeuille(new Feuille(i, "New", "333333"));
     }//GEN-LAST:event_JaddNoteActionPerformed
-=======
-    private void addFeuille(Feuille newf) {
-        JPanel panelBloc = new JPanel(); //not invoke "javax.swing.JButton.setBackground(java.awt.Color)" because "this.jSelectedColors" is null
-        panelBloc.setBackground(new java.awt.Color(42, 70, 105));
-        panelBloc.setMaximumSize(new Dimension(235, 40));
-        panelBloc.setMinimumSize(new java.awt.Dimension(235, 40));
-        panelBloc.setName(""); // NOI18N
-        panelBloc.setPreferredSize(new java.awt.Dimension(235, 40));
-        java.awt.FlowLayout flowLayout1 = new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 4, 0);
-        flowLayout1.setAlignOnBaseline(true);
-        panelBloc.setLayout(flowLayout1);
->>>>>>> calage
 
-        // champs texte nom intercalaire 
-        JTextField JNotes = new JTextField();
-        JNotes.setText(newf.getTitre());
-        System.out.println(newf.getTitre());
-
-        JNotes.setBackground(new java.awt.Color(42, 70, 105));
-        JNotes.setFont(new java.awt.Font("URW Gothic", 0, 18)); // NOI18N
-        JNotes.setForeground(new java.awt.Color(255, 255, 255));
-        JNotes.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        JNotes.setText(newf.getTitre());
-        JNotes.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        JNotes.setMargin(new java.awt.Insets(5, 2, 5, 2));
-        JNotes.setMaximumSize(new java.awt.Dimension(220, 30));
-        JNotes.setMinimumSize(new java.awt.Dimension(220, 30));
-        JNotes.setPreferredSize(new java.awt.Dimension(220, 30));
-        panelBloc.add(JNotes);
-
-        jNoteBloc.add(panelBloc);
-
-        // regénère le composant
-        panelBloc.revalidate();
-        panelBloc.repaint();
-    }
-
+                                             
     private void jlabelBoxBGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jlabelBoxBGActionPerformed
         // TODO add your handling code here:
         System.out.println("item Box " + origin.db.GetFeuillesByTag(jlabelBoxBG.getSelectedIndex()));
