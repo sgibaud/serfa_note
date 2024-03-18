@@ -42,7 +42,7 @@ public class NewUser extends javax.swing.JPanel {
         jUserNameL.setFont(new java.awt.Font("URW Gothic", 1, 14)); // NOI18N
         jUserNameL.setForeground(new java.awt.Color(255, 255, 255));
         jUserNameL.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jUserNameL.setText("mail user");
+        jUserNameL.setText("mail utilisateur");
         jUserNameL.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         jUserNameL.setPreferredSize(new java.awt.Dimension(57, 10));
 
@@ -57,7 +57,7 @@ public class NewUser extends javax.swing.JPanel {
         JlabMail.setFont(new java.awt.Font("URW Gothic", 1, 14)); // NOI18N
         JlabMail.setForeground(new java.awt.Color(255, 255, 255));
         JlabMail.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        JlabMail.setText("user name");
+        JlabMail.setText("nom utilisateur");
         JlabMail.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         JlabMail.setPreferredSize(new java.awt.Dimension(57, 10));
 

@@ -54,13 +54,13 @@ public class Login extends javax.swing.JPanel {
         JlabelLogin.setFont(new java.awt.Font("URW Gothic", 0, 36)); // NOI18N
         JlabelLogin.setForeground(new java.awt.Color(255, 255, 255));
         JlabelLogin.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        JlabelLogin.setText("Login");
+        JlabelLogin.setText("Bienvenue");
         JlabelLogin.setPreferredSize(new java.awt.Dimension(130, 60));
 
         jUserNameL.setFont(new java.awt.Font("URW Gothic", 1, 14)); // NOI18N
         jUserNameL.setForeground(new java.awt.Color(255, 255, 255));
         jUserNameL.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jUserNameL.setText("user name");
+        jUserNameL.setText("nom utilisateur");
         jUserNameL.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         jUserNameL.setPreferredSize(new java.awt.Dimension(57, 10));
 
@@ -75,7 +75,7 @@ public class Login extends javax.swing.JPanel {
         jPasswordL.setFont(new java.awt.Font("URW Gothic", 1, 14)); // NOI18N
         jPasswordL.setForeground(new java.awt.Color(255, 255, 255));
         jPasswordL.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jPasswordL.setText("password");
+        jPasswordL.setText("mot de passe");
         jPasswordL.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         jPasswordL.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         jPasswordL.setPreferredSize(new java.awt.Dimension(51, 10));
@@ -127,13 +127,13 @@ public class Login extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JcardLoginLayout.createSequentialGroup()
                 .addGroup(JcardLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(JcardLoginLayout.createSequentialGroup()
-                        .addContainerGap(170, Short.MAX_VALUE)
+                        .addContainerGap(151, Short.MAX_VALUE)
                         .addGroup(JcardLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                             .addComponent(jPasswordL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jUserNameL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(JuserNameInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(Jlogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(JlabelLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(JlabelLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(JcardLoginLayout.createSequentialGroup()
                         .addGap(169, 169, 169)
