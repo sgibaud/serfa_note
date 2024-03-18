@@ -75,6 +75,8 @@ public class Application_Background extends javax.swing.JPanel {
             newcla = clist.get(i);
             addClasseur(newcla);
         }
+        JClasseurBloc.revalidate();
+        JClasseurBloc.repaint();
     }
 
     private void loadIntercalaire() {
@@ -97,7 +99,8 @@ public class Application_Background extends javax.swing.JPanel {
             newf = flist.get(i);
             addFeuille(newf);
         }
-
+        jNoteBloc.revalidate();
+        jNoteBloc.repaint();
     }
 
     private void cleartables(int i) {

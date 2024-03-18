@@ -1033,8 +1033,8 @@ public class Application_Background extends javax.swing.JPanel {
                                              
     private void jlabelBoxBGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jlabelBoxBGActionPerformed
         // TODO add your handling code here:
-        System.out.println("item Box " + origin.db.GetFeuillesByTag(jlabelBoxBG.getSelectedIndex()));
-        ArrayList<Feuille> feuilleLabel = origin.db.GetFeuillesByTag(jlabelBoxBG.getSelectedIndex());
+        System.out.println("item Box " + origin.db.GetFeuillesByTag(jlabelBoxBG.getSelectedIndex(),this.idActiveUser));
+        ArrayList<Feuille> feuilleLabel = origin.db.GetFeuillesByTag(jlabelBoxBG.getSelectedIndex(),this.idActiveUser);
         displayFeuilleByTag(feuilleLabel);
     }//GEN-LAST:event_jlabelBoxBGActionPerformed
 

@@ -225,10 +225,15 @@ public class BDDO{
         return reslist;
         }
         
-        public ArrayList<Feuille> GetFeuillesByTag(int tag){
-        String[] values = {String.valueOf(tag)};
+        public ArrayList<Feuille> GetFeuillesByTag(int tag, int iduser){
+        String[] values = {String.valueOf(tag),String.valueOf(iduser)};
             
-        ResultSet set = this.ExecuteQuery("SELECT * FROM Feuille INNER JOIN Qualifie ON Feuille.idFeuille = Qualifie.idFeuille WHERE idLabel = ?;",values);
+        ResultSet set = this.ExecuteQuery("SELECT * FROM Feuille " +
+"	INNER JOIN Qualifie ON Feuille.idFeuille = Qualifie.idFeuille " +
+"       INNER JOIN Intercalaire ON Intercalaire.idIntercalaire = Feuille.idIntercalaire " +
+"	INNER JOIN Classeur ON Classeur.idClasseur = Intercalaire.idClasseur " +
+"       INNER JOIN Utilisateur ON Utilisateur.idUtilisateur = Classeur.idUtilisateur " +
+"	WHERE idLabel = ? AND Utilisateur.idUtilisateur = ?;",values);
         
         ArrayList<Feuille> reslist = new ArrayList<Feuille>();
             try {
