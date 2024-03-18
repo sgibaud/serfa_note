@@ -112,12 +112,55 @@ public class Application_Background extends javax.swing.JPanel {
         }
         jNoteBloc.removeAll();
     }
+<<<<<<< HEAD
 
     public void fillBox(ArrayList<Label> list) {
 
         jlabelBoxBG.removeAllItems();
         System.out.println(list);
         System.out.println(jlabelBoxBG);
+=======
+    
+    private void unselect(int vaal){
+        JLabel Icon;
+        JPanel temp;
+        switch (vaal){
+            case 0:
+                for(int i = 0;i<jNoteBloc.getComponentCount();i++){
+                    temp = (JPanel)jNoteBloc.getComponent(i);
+                    Icon = (JLabel)temp.getComponent(2);
+                    Icon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/on@2x.png")));
+                }
+                jNoteBloc.revalidate();
+                jNoteBloc.repaint();
+                break;
+            case 1:
+                for(int i = 0;i<jIntercalaireBloc.getComponentCount();i++){
+                    temp = (JPanel)jIntercalaireBloc.getComponent(i);
+                    Icon = (JLabel)temp.getComponent(2);
+                    Icon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/on@2x.png")));
+                }
+                jIntercalaireBloc.revalidate();
+                jIntercalaireBloc.repaint();
+                break;
+            case 2:
+                for(int i = 0;i<JClasseurBloc.getComponentCount();i++){
+                    temp = (JPanel)JClasseurBloc.getComponent(i);
+                    Icon = (JLabel)temp.getComponent(2);
+                    Icon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/on@2x.png")));
+                }
+                JClasseurBloc.revalidate();
+                JClasseurBloc.repaint();
+                break;
+        }
+    }
+    
+   public void fillBox(ArrayList<Label> list){
+       
+    jlabelBoxBG.removeAllItems();
+    System.out.println(list);
+    System.out.println(jlabelBoxBG);
+>>>>>>> quickfixBDD
         for (int i = 0; i < list.size(); i++) {
             System.out.println(list.get(i).getLabel());
             jlabelBoxBG.addItem(list.get(i).getLabel());
@@ -867,6 +910,7 @@ public class Application_Background extends javax.swing.JPanel {
         jIconOn.addMouseListener(new java.awt.event.MouseAdapter() {
 
             public void mouseClicked(java.awt.event.MouseEvent evt) {
+                unselect(2);
                 jIconOn.setIcon(new ImageIcon(getClass().getResource("/resources/off@2x.png")));
                 setClasseur(newcla.getId());
                 String hex = Integer.toHexString(jSelectedColors.getBackground().getRGB()).substring(2);
@@ -1020,8 +1064,8 @@ public class Application_Background extends javax.swing.JPanel {
 
     private void jlabelBoxBGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jlabelBoxBGActionPerformed
         // TODO add your handling code here:
-        System.out.println("item Box " + origin.db.GetFeuillesByTag(jlabelBoxBG.getSelectedIndex()));
-        ArrayList<Feuille> feuilleLabel = origin.db.GetFeuillesByTag(jlabelBoxBG.getSelectedIndex());
+        System.out.println("item Box " + origin.db.GetFeuillesByTag(jlabelBoxBG.getSelectedIndex(),this.idActiveUser));
+        ArrayList<Feuille> feuilleLabel = origin.db.GetFeuillesByTag(jlabelBoxBG.getSelectedIndex(),this.idActiveUser);
         displayFeuilleByTag(feuilleLabel);
     }//GEN-LAST:event_jlabelBoxBGActionPerformed
 
