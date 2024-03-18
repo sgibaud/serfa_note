@@ -163,7 +163,7 @@
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="password"/>
+        <Property name="text" type="java.lang.String" value="mot de passe"/>
         <Property name="verticalAlignment" type="int" value="3"/>
         <Property name="horizontalTextPosition" type="int" value="2"/>
         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">

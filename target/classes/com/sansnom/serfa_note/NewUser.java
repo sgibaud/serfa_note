@@ -72,7 +72,7 @@ public class NewUser extends javax.swing.JPanel {
         jPasswordL.setFont(new java.awt.Font("URW Gothic", 1, 14)); // NOI18N
         jPasswordL.setForeground(new java.awt.Color(255, 255, 255));
         jPasswordL.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jPasswordL.setText("password");
+        jPasswordL.setText("mot de passe");
         jPasswordL.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         jPasswordL.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         jPasswordL.setPreferredSize(new java.awt.Dimension(51, 10));
