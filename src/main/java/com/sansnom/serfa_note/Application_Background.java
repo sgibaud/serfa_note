@@ -110,13 +110,13 @@ public class Application_Background extends javax.swing.JPanel {
     
     private void loadLabel(){
         cleartables(0);
-           ArrayList<Feuille> feuilleLabel = origin.db.GetFeuillesByTag(jlabelBoxBG.getSelectedIndex(),this.idActiveUser);
+           ArrayList<Feuille> feuilleLabel = origin.db.GetFeuillesByTag(jlabelBoxBG.getSelectedIndex()+1,this.idActiveUser);
            Feuille newf;
         Label newLab;
         for (int i = 0; i < feuilleLabel.size(); i++) {
             //System.out.println(list.get(i).getTitre());
                 newf = feuilleLabel.get(i);
-                displayFeuilleByTag(newf);
+                addFeuille(newf);
         } 
         jNoteBloc.revalidate();
         jNoteBloc.repaint();
@@ -1054,53 +1054,6 @@ public class Application_Background extends javax.swing.JPanel {
 
     }
     
-       public void displayFeuilleByTag(Feuille newf) {
-        JTextField titleNoteField = new JTextField();
-        JPanel panelBloc = new JPanel(); //not invoke "javax.swing.JButton.setBackground(java.awt.Color)" because "this.jSelectedColors" is null
-        JLabel jIconOn = new JLabel();
-        
-        titleNoteField.setBackground(new java.awt.Color(42, 70, 105));
-        titleNoteField.setFont(new java.awt.Font("URW Gothic", 0, 18)); // NOI18N
-        titleNoteField.setForeground(new java.awt.Color(255, 255, 255));
-        titleNoteField.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        titleNoteField.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        titleNoteField.setMargin(new java.awt.Insets(5, 2, 5, 2));
-        titleNoteField.setMaximumSize(new java.awt.Dimension(220, 30));
-        titleNoteField.setMinimumSize(new java.awt.Dimension(220, 30));
-        titleNoteField.setPreferredSize(new java.awt.Dimension(220, 30));
-        
-        panelBloc.setBackground(new java.awt.Color(42, 70, 105));
-        panelBloc.setMaximumSize(new Dimension(235, 40));
-        panelBloc.setMinimumSize(new java.awt.Dimension(235, 40));
-        panelBloc.setName(""); // NOI18N
-        panelBloc.setPreferredSize(new java.awt.Dimension(235, 40));
-        java.awt.FlowLayout flowLayout1 = new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 4, 0);
-        flowLayout1.setAlignOnBaseline(true);
-        panelBloc.setLayout(flowLayout1);
-        
-        
-                titleNoteField.setText(newf.getTitre());
-                panelBloc.add(titleNoteField);
-                panelBloc.add(jIconOn);  
-        
-        jIconOn.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jIconOn.setIcon(new ImageIcon(getClass().getResource("/resources/off@2x.png")));
-                origin.editor(newf.getId());
-            }
-        });
-        
-        jNoteBloc.add(panelBloc);
-        
-        jIconOn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/on@2x.png"))); // NOI18N
-        panelBloc.add(jIconOn);
-        jIconOn.getAccessibleContext().setAccessibleName("jIconOn");
-        // regénère le composant
-        panelBloc.revalidate();
-        panelBloc.repaint();
-        jNoteBloc.revalidate();
-        jNoteBloc.repaint();
-    }
        
        
 
