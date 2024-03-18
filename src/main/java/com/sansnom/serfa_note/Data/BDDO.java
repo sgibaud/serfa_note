@@ -166,7 +166,7 @@ public class BDDO{
 	public ArrayList<Intercalaire> GetIntercalaires(int classeur ){
             String[] values = {String.valueOf(classeur)};
             
-        ResultSet set = this.ExecuteQuery("SELECT * FROM Intercalaire INNER JOIN Classeur ON Classeur.idClasseur = Intercalaire.idClasseur WHERE idClasseur = ?;",values);
+        ResultSet set = this.ExecuteQuery("SELECT * FROM Intercalaire INNER JOIN Classeur ON Classeur.idClasseur = Intercalaire.idClasseur WHERE Intercalaire.idClasseur = ?;",values);
         
         ArrayList<Intercalaire> reslist = new ArrayList<Intercalaire>();
             try {
@@ -210,7 +210,7 @@ public class BDDO{
 	public ArrayList<Feuille> GetFeuilles(int intercalaire){
         String[] values = {String.valueOf(intercalaire)};
             
-        ResultSet set = this.ExecuteQuery("SELECT * FROM Feuille INNER JOIN Intercalaire ON Feuille.idIntercalaire = Intercalaire.idIntercalaire WHERE idIntercalaire = ?;",values);
+        ResultSet set = this.ExecuteQuery("SELECT * FROM Feuille INNER JOIN Intercalaire ON Feuille.idIntercalaire = Intercalaire.idIntercalaire WHERE Intercalaire.idIntercalaire = ?;",values);
         
         ArrayList<Feuille> reslist = new ArrayList<Feuille>();
             try {

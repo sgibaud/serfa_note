@@ -69,7 +69,7 @@ public class Home extends javax.swing.JFrame {
         SwingUtilities.updateComponentTreeUI(app.login);
     }
     
-    public static void editor(int idF) {
+    public void editor(int idF) {
         // FlatAnimatedLafChange.showSnapshot();
         app.editor.setIdF(idF);
         app.setContentPane(app.editor);
