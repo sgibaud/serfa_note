@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package com.sansnom.serfa_note;
+
 import com.sansnom.serfa_note.Data.Label;
 import com.sansnom.serfa_note.Data.Feuille;
 
@@ -36,11 +37,10 @@ public class Application_Background extends javax.swing.JPanel {
     private Home origin;
     private JButton jSelectedColors;
     private LabelClass labels;
-    
+
     private ArrayList<Label> listLabels;
 
     private Color SelectedColorBtn;
-
 
     /**
      * Creates new form Application_Background
@@ -75,6 +75,8 @@ public class Application_Background extends javax.swing.JPanel {
             newcla = clist.get(i);
             addClasseur(newcla);
         }
+        JClasseurBloc.revalidate();
+        JClasseurBloc.repaint();
     }
 
     private void loadIntercalaire() {
@@ -97,7 +99,8 @@ public class Application_Background extends javax.swing.JPanel {
             newf = flist.get(i);
             addFeuille(newf);
         }
-
+        jNoteBloc.revalidate();
+        jNoteBloc.repaint();
     }
 
     private void cleartables(int i) {
@@ -109,34 +112,33 @@ public class Application_Background extends javax.swing.JPanel {
         }
         jNoteBloc.removeAll();
     }
-    
-   public void fillBox(ArrayList<Label> list){
-       
-    jlabelBoxBG.removeAllItems();
-    System.out.println(list);
-    System.out.println(jlabelBoxBG);
+
+    public void fillBox(ArrayList<Label> list) {
+
+        jlabelBoxBG.removeAllItems();
+        System.out.println(list);
+        System.out.println(jlabelBoxBG);
         for (int i = 0; i < list.size(); i++) {
             System.out.println(list.get(i).getLabel());
             jlabelBoxBG.addItem(list.get(i).getLabel());
         }
-    System.out.println(jlabelBoxBG);
-    jlabelBoxBG.revalidate();
-    jlabelBoxBG.repaint();
+        System.out.println(jlabelBoxBG);
+        jlabelBoxBG.revalidate();
+        jlabelBoxBG.repaint();
     }
-   
-   public void displayFeuilleByTag(ArrayList<Feuille> list){
-       JTextField titleNoteField = new JTextField();
-       JPanel notePanel = new JPanel();
-       notePanel.setBackground(new java.awt.Color(42, 70, 105));
-       for (int i = 0; i < list.size(); i++) {
-           System.out.println(list.get(i).getTitre());
-           titleNoteField.setText(list.get(i).getTitre());
-           notePanel.add(titleNoteField);
+
+    public void displayFeuilleByTag(ArrayList<Feuille> list) {
+        JTextField titleNoteField = new JTextField();
+        JPanel notePanel = new JPanel();
+        notePanel.setBackground(new java.awt.Color(42, 70, 105));
+        for (int i = 0; i < list.size(); i++) {
+            System.out.println(list.get(i).getTitre());
+            titleNoteField.setText(list.get(i).getTitre());
+            notePanel.add(titleNoteField);
         }
-       
-       jNoteBloc.add(notePanel);
-   }
-    
+
+        jNoteBloc.add(notePanel);
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -183,15 +185,12 @@ public class Application_Background extends javax.swing.JPanel {
         Jcenter = new javax.swing.JPanel();
         JClasseur = new javax.swing.JPanel();
         JaddClasseur = new javax.swing.JButton();
-        JlabelClasseur = new javax.swing.JLabel();
         JClasseurBloc = new javax.swing.JPanel();
         JIntercalaire = new javax.swing.JPanel();
         JaddIntercalaire = new javax.swing.JButton();
-        JLabelIntercalaire = new javax.swing.JLabel();
         jIntercalaireBloc = new javax.swing.JPanel();
         Jnote = new javax.swing.JPanel();
         JaddNote = new javax.swing.JButton();
-        JlabelNote = new javax.swing.JLabel();
         jNoteBloc = new javax.swing.JPanel();
 
         JSelected.setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
@@ -245,7 +244,7 @@ public class Application_Background extends javax.swing.JPanel {
         JpaneColor.setPreferredSize(new java.awt.Dimension(100, 150));
         JpaneColor.setLayout(new java.awt.GridLayout(3, 4, 8, 8));
 
-        Jblue.setBackground(new java.awt.Color(255, 0, 0));
+        Jblue.setBackground(new java.awt.Color(0, 0, 255));
         Jblue.setAlignmentX(0.5F);
         Jblue.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         Jblue.addActionListener(new java.awt.event.ActionListener() {
@@ -264,7 +263,7 @@ public class Application_Background extends javax.swing.JPanel {
         });
         JpaneColor.add(jGreen);
 
-        jPink.setBackground(new java.awt.Color(0, 0, 255));
+        jPink.setBackground(new java.awt.Color(255, 0, 0));
         jPink.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         jPink.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -273,7 +272,7 @@ public class Application_Background extends javax.swing.JPanel {
         });
         JpaneColor.add(jPink);
 
-        jOrange.setBackground(new java.awt.Color(203, 34, 229));
+        jOrange.setBackground(new java.awt.Color(255, 3, 255));
         jOrange.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         jOrange.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -282,7 +281,7 @@ public class Application_Background extends javax.swing.JPanel {
         });
         JpaneColor.add(jOrange);
 
-        jRed.setBackground(new java.awt.Color(229, 195, 23));
+        jRed.setBackground(new java.awt.Color(255, 217, 26));
         jRed.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         jRed.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -291,7 +290,7 @@ public class Application_Background extends javax.swing.JPanel {
         });
         JpaneColor.add(jRed);
 
-        jAmbre.setBackground(new java.awt.Color(255, 122, 82));
+        jAmbre.setBackground(new java.awt.Color(255, 124, 0));
         jAmbre.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         jAmbre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -300,7 +299,7 @@ public class Application_Background extends javax.swing.JPanel {
         });
         JpaneColor.add(jAmbre);
 
-        jFog.setBackground(new java.awt.Color(20, 204, 149));
+        jFog.setBackground(new java.awt.Color(25, 255, 186));
         jFog.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         jFog.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -309,7 +308,7 @@ public class Application_Background extends javax.swing.JPanel {
         });
         JpaneColor.add(jFog);
 
-        jCanari.setBackground(new java.awt.Color(87, 110, 242));
+        jCanari.setBackground(new java.awt.Color(179, 190, 255));
         jCanari.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         jCanari.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -318,7 +317,7 @@ public class Application_Background extends javax.swing.JPanel {
         });
         JpaneColor.add(jCanari);
 
-        jMenthe.setBackground(new java.awt.Color(191, 48, 139));
+        jMenthe.setBackground(new java.awt.Color(249, 117, 255));
         jMenthe.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         jMenthe.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -327,7 +326,7 @@ public class Application_Background extends javax.swing.JPanel {
         });
         JpaneColor.add(jMenthe);
 
-        jVioloine.setBackground(new java.awt.Color(191, 201, 201));
+        jVioloine.setBackground(new java.awt.Color(217, 255, 255));
         jVioloine.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         jVioloine.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -336,7 +335,7 @@ public class Application_Background extends javax.swing.JPanel {
         });
         JpaneColor.add(jVioloine);
 
-        jChartreuse.setBackground(new java.awt.Color(102, 205, 217));
+        jChartreuse.setBackground(new java.awt.Color(117, 236, 250));
         jChartreuse.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         jChartreuse.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -345,7 +344,7 @@ public class Application_Background extends javax.swing.JPanel {
         });
         JpaneColor.add(jChartreuse);
 
-        jKing.setBackground(new java.awt.Color(51, 255, 204));
+        jKing.setBackground(new java.awt.Color(255, 50, 0));
         jKing.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         jKing.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -561,34 +560,32 @@ public class Application_Background extends javax.swing.JPanel {
 
         JClasseur.setBackground(new java.awt.Color(42, 70, 105));
         JClasseur.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(32, 46, 64), 4, true));
-        JClasseur.setMaximumSize(new java.awt.Dimension(300, 620));
-        JClasseur.setMinimumSize(new java.awt.Dimension(300, 620));
-        JClasseur.setPreferredSize(new java.awt.Dimension(300, 620));
+        JClasseur.setMaximumSize(new java.awt.Dimension(250, 620));
+        JClasseur.setMinimumSize(new java.awt.Dimension(250, 620));
+        JClasseur.setPreferredSize(new java.awt.Dimension(250, 620));
 
         JaddClasseur.setBackground(new Color(255,255,255,0));
+        JaddClasseur.setFont(new java.awt.Font("URW Gothic", 1, 18)); // NOI18N
+        JaddClasseur.setForeground(new java.awt.Color(255, 255, 255));
         JaddClasseur.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/add.png"))); // NOI18N
+        JaddClasseur.setText("  classeur");
         JaddClasseur.setAlignmentY(0.0F);
+        JaddClasseur.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         JaddClasseur.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/add_neg.png"))); // NOI18N
         JaddClasseur.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/add_roll.png"))); // NOI18N
+        JaddClasseur.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         JaddClasseur.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JaddClasseurActionPerformed(evt);
             }
         });
 
-        JlabelClasseur.setBackground(new java.awt.Color(255, 255, 255));
-        JlabelClasseur.setFont(new java.awt.Font("URW Gothic", 0, 20)); // NOI18N
-        JlabelClasseur.setForeground(new java.awt.Color(255, 255, 255));
-        JlabelClasseur.setText("nouveau classeur");
-        JlabelClasseur.setMaximumSize(new java.awt.Dimension(263, 30));
-        JlabelClasseur.setMinimumSize(new java.awt.Dimension(263, 30));
-        JlabelClasseur.setPreferredSize(new java.awt.Dimension(330, 25));
-
         JClasseurBloc.setBackground(new java.awt.Color(42, 70, 105));
+        JClasseurBloc.setAlignmentX(0.0F);
         JClasseurBloc.setAutoscrolls(true);
-        JClasseurBloc.setMaximumSize(new java.awt.Dimension(280, 540));
-        JClasseurBloc.setMinimumSize(new java.awt.Dimension(280, 540));
-        JClasseurBloc.setPreferredSize(new java.awt.Dimension(280, 540));
+        JClasseurBloc.setMaximumSize(new java.awt.Dimension(230, 540));
+        JClasseurBloc.setMinimumSize(new java.awt.Dimension(230, 540));
+        JClasseurBloc.setPreferredSize(new java.awt.Dimension(230, 540));
         JClasseurBloc.setLayout(new java.awt.GridLayout(10, 1));
 
         javax.swing.GroupLayout JClasseurLayout = new javax.swing.GroupLayout(JClasseur);
@@ -598,22 +595,20 @@ public class Application_Background extends javax.swing.JPanel {
             .addGroup(JClasseurLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(JClasseurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(JClasseurBloc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(JClasseurLayout.createSequentialGroup()
+                        .addComponent(JClasseurBloc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())
                     .addGroup(JClasseurLayout.createSequentialGroup()
                         .addComponent(JaddClasseur)
-                        .addGap(5, 5, 5)
-                        .addComponent(JlabelClasseur, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         JClasseurLayout.setVerticalGroup(
             JClasseurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(JClasseurLayout.createSequentialGroup()
                 .addGap(10, 10, 10)
-                .addGroup(JClasseurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(JlabelClasseur, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(JaddClasseur))
+                .addComponent(JaddClasseur)
                 .addGap(18, 18, 18)
-                .addComponent(JClasseurBloc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(JClasseurBloc, javax.swing.GroupLayout.DEFAULT_SIZE, 548, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -621,32 +616,31 @@ public class Application_Background extends javax.swing.JPanel {
 
         JIntercalaire.setBackground(new java.awt.Color(42, 70, 105));
         JIntercalaire.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(32, 46, 64), 4));
-        JIntercalaire.setMaximumSize(new java.awt.Dimension(300, 620));
-        JIntercalaire.setMinimumSize(new java.awt.Dimension(300, 620));
-        JIntercalaire.setPreferredSize(new java.awt.Dimension(300, 620));
+        JIntercalaire.setMaximumSize(new java.awt.Dimension(350, 620));
+        JIntercalaire.setMinimumSize(new java.awt.Dimension(350, 620));
+        JIntercalaire.setPreferredSize(new java.awt.Dimension(350, 620));
 
         JaddIntercalaire.setBackground(new Color(255,255,255,0));
+        JaddIntercalaire.setFont(new java.awt.Font("URW Gothic", 1, 18)); // NOI18N
+        JaddIntercalaire.setForeground(new java.awt.Color(255, 255, 255));
         JaddIntercalaire.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/add.png"))); // NOI18N
+        JaddIntercalaire.setText("  intercalaire");
+        JaddIntercalaire.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         JaddIntercalaire.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/add_neg.png"))); // NOI18N
         JaddIntercalaire.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/add_roll.png"))); // NOI18N
+        JaddIntercalaire.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         JaddIntercalaire.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JaddIntercalaireActionPerformed(evt);
             }
         });
 
-        JLabelIntercalaire.setFont(new java.awt.Font("URW Gothic", 0, 20)); // NOI18N
-        JLabelIntercalaire.setForeground(new java.awt.Color(255, 255, 255));
-        JLabelIntercalaire.setText("nouvelle intercalaire");
-        JLabelIntercalaire.setMaximumSize(new java.awt.Dimension(263, 30));
-        JLabelIntercalaire.setMinimumSize(new java.awt.Dimension(263, 30));
-        JLabelIntercalaire.setPreferredSize(new java.awt.Dimension(263, 25));
-
         jIntercalaireBloc.setBackground(new java.awt.Color(42, 70, 105));
+        jIntercalaireBloc.setAlignmentX(0.0F);
         jIntercalaireBloc.setAutoscrolls(true);
-        jIntercalaireBloc.setMaximumSize(new java.awt.Dimension(280, 540));
-        jIntercalaireBloc.setMinimumSize(new java.awt.Dimension(280, 540));
-        jIntercalaireBloc.setPreferredSize(new java.awt.Dimension(280, 540));
+        jIntercalaireBloc.setMaximumSize(new java.awt.Dimension(330, 540));
+        jIntercalaireBloc.setMinimumSize(new java.awt.Dimension(330, 540));
+        jIntercalaireBloc.setPreferredSize(new java.awt.Dimension(330, 540));
         jIntercalaireBloc.setLayout(new java.awt.GridLayout(10, 1));
 
         javax.swing.GroupLayout JIntercalaireLayout = new javax.swing.GroupLayout(JIntercalaire);
@@ -654,24 +648,22 @@ public class Application_Background extends javax.swing.JPanel {
         JIntercalaireLayout.setHorizontalGroup(
             JIntercalaireLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(JIntercalaireLayout.createSequentialGroup()
-                .addGap(10, 10, 10)
+                .addContainerGap()
                 .addGroup(JIntercalaireLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jIntercalaireBloc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(JIntercalaireLayout.createSequentialGroup()
+                        .addComponent(jIntercalaireBloc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())
                     .addGroup(JIntercalaireLayout.createSequentialGroup()
                         .addComponent(JaddIntercalaire)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(JLabelIntercalaire, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         JIntercalaireLayout.setVerticalGroup(
             JIntercalaireLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JIntercalaireLayout.createSequentialGroup()
                 .addGap(10, 10, 10)
-                .addGroup(JIntercalaireLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(JaddIntercalaire)
-                    .addComponent(JLabelIntercalaire, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(JaddIntercalaire)
                 .addGap(18, 18, 18)
-                .addComponent(jIntercalaireBloc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jIntercalaireBloc, javax.swing.GroupLayout.DEFAULT_SIZE, 548, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -684,20 +676,23 @@ public class Application_Background extends javax.swing.JPanel {
         Jnote.setPreferredSize(new java.awt.Dimension(380, 620));
 
         JaddNote.setBackground(new Color(255,255,255,0));
+        JaddNote.setFont(new java.awt.Font("URW Gothic", 1, 18)); // NOI18N
+        JaddNote.setForeground(new java.awt.Color(255, 255, 255));
         JaddNote.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/add.png"))); // NOI18N
+        JaddNote.setText("  note");
+        JaddNote.setToolTipText("");
+        JaddNote.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         JaddNote.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/add_neg.png"))); // NOI18N
         JaddNote.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/add_roll.png"))); // NOI18N
+        JaddNote.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         JaddNote.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JaddNoteActionPerformed(evt);
             }
         });
 
-        JlabelNote.setFont(new java.awt.Font("URW Gothic", 0, 20)); // NOI18N
-        JlabelNote.setForeground(new java.awt.Color(255, 255, 255));
-        JlabelNote.setText("nouvelle note");
-
         jNoteBloc.setBackground(new java.awt.Color(42, 70, 105));
+        jNoteBloc.setAlignmentX(0.0F);
         jNoteBloc.setAutoscrolls(true);
         jNoteBloc.setMaximumSize(new java.awt.Dimension(360, 540));
         jNoteBloc.setMinimumSize(new java.awt.Dimension(360, 540));
@@ -709,24 +704,19 @@ public class Application_Background extends javax.swing.JPanel {
         JnoteLayout.setHorizontalGroup(
             JnoteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(JnoteLayout.createSequentialGroup()
-                .addGap(10, 10, 10)
+                .addContainerGap()
                 .addGroup(JnoteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jNoteBloc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(JnoteLayout.createSequentialGroup()
-                        .addComponent(JaddNote)
-                        .addGap(5, 5, 5)
-                        .addComponent(JlabelNote)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(JaddNote))
+                .addGap(10, 10, 10))
         );
         JnoteLayout.setVerticalGroup(
             JnoteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(JnoteLayout.createSequentialGroup()
                 .addGap(10, 10, 10)
-                .addGroup(JnoteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(JlabelNote)
-                    .addComponent(JaddNote))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jNoteBloc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(JaddNote)
+                .addGap(18, 18, 18)
+                .addComponent(jNoteBloc, javax.swing.GroupLayout.DEFAULT_SIZE, 548, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -826,10 +816,11 @@ public class Application_Background extends javax.swing.JPanel {
         JLabel jIconOn = new JLabel();
 
         panelBloc.setBackground(new java.awt.Color(42, 70, 105));
-        panelBloc.setMaximumSize(new Dimension(235, 40));
-        panelBloc.setMinimumSize(new java.awt.Dimension(235, 40));
+        panelBloc.setMaximumSize(new Dimension(205, 40));
+        panelBloc.setMinimumSize(new java.awt.Dimension(205, 40));
         panelBloc.setName(""); // NOI18N
-        panelBloc.setPreferredSize(new java.awt.Dimension(235, 40));
+        panelBloc.setPreferredSize(new java.awt.Dimension(205, 40));
+        panelBloc.setAlignmentX(0.0F);
         java.awt.FlowLayout flowLayout1 = new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 4, 0);
         flowLayout1.setAlignOnBaseline(true);
         panelBloc.setLayout(flowLayout1);
@@ -845,7 +836,6 @@ public class Application_Background extends javax.swing.JPanel {
         jSelectedColors.setPreferredSize(new java.awt.Dimension(15, 30));
         jSelectedColors.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                //dialog();
                 dialog();
                 jSelectedColors.setBackground(SelectedColorBtn);
             }
@@ -860,7 +850,7 @@ public class Application_Background extends javax.swing.JPanel {
         JTextClasseur.setBackground(
                 new java.awt.Color(42, 70, 105));
         JTextClasseur.setFont(
-                new java.awt.Font("URW Gothic", 0, 18)); // NOI18N
+                new java.awt.Font("URW Gothic", 0, 16)); // NOI18N
         JTextClasseur.setForeground(
                 new java.awt.Color(255, 255, 255));
         JTextClasseur.setHorizontalAlignment(javax.swing.JTextField.LEFT);
@@ -869,11 +859,11 @@ public class Application_Background extends javax.swing.JPanel {
         JTextClasseur.setMargin(
                 new java.awt.Insets(2, 2, 2, 2));
         JTextClasseur.setMaximumSize(
-                new java.awt.Dimension(160, 20));
+                new java.awt.Dimension(155, 20));
         JTextClasseur.setMinimumSize(
-                new java.awt.Dimension(160, 20));
+                new java.awt.Dimension(155, 20));
         JTextClasseur.setPreferredSize(
-                new java.awt.Dimension(160, 20));
+                new java.awt.Dimension(155, 20));
         jIconOn.addMouseListener(new java.awt.event.MouseAdapter() {
 
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -882,8 +872,8 @@ public class Application_Background extends javax.swing.JPanel {
                 String hex = Integer.toHexString(jSelectedColors.getBackground().getRGB()).substring(2);
                 //System.out.println("contenu JTextClasseur " + JTextClasseur.getText());
                 //System.out.println("BG du bouton couleur " + hex);
-                origin.db.UpdateClasseur(JTextClasseur.getText(), hex ,newcla.getId());
-                
+                origin.db.UpdateClasseur(JTextClasseur.getText(), hex, newcla.getId());
+
             }
         });
         panelBloc.add(JTextClasseur);
@@ -901,7 +891,6 @@ public class Application_Background extends javax.swing.JPanel {
 
     }
 
-
     private void addIntercalaire(Intercalaire newIn) {
         // variables
         JPanel panelBloc = new JPanel();
@@ -909,10 +898,11 @@ public class Application_Background extends javax.swing.JPanel {
         JLabel jIconOn = new JLabel();
 
         panelBloc.setBackground(new java.awt.Color(42, 70, 105));
-        panelBloc.setMaximumSize(new Dimension(235, 40));
-        panelBloc.setMinimumSize(new java.awt.Dimension(235, 40));
+        panelBloc.setMaximumSize(new Dimension(330, 40));
+        panelBloc.setMinimumSize(new java.awt.Dimension(330, 40));
         panelBloc.setName(""); // NOI18N
-        panelBloc.setPreferredSize(new java.awt.Dimension(235, 40));
+        panelBloc.setPreferredSize(new java.awt.Dimension(330, 40));
+        panelBloc.setAlignmentX(0.0F);
         java.awt.FlowLayout flowLayout1 = new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 4, 0);
         flowLayout1.setAlignOnBaseline(true);
         panelBloc.setLayout(flowLayout1);
@@ -922,15 +912,14 @@ public class Application_Background extends javax.swing.JPanel {
         jSelectedColors.setAlignmentY(0.0F);
         jSelectedColors.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         jSelectedColors.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jSelectedColors.setMargin(new java.awt.Insets(2, 2, 2, 2));
+        jSelectedColors.setMargin(new java.awt.Insets(2, 2, 2, 0));
         jSelectedColors.setMaximumSize(new java.awt.Dimension(15, 30));
         jSelectedColors.setMinimumSize(new java.awt.Dimension(15, 30));
         jSelectedColors.setPreferredSize(new java.awt.Dimension(15, 30));
         jSelectedColors.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-
-                jSelectedColorsActionPerformed(evt);
-
+                dialog();
+                jSelectedColors.setBackground(SelectedColorBtn);
             }
         });
         panelBloc.add(jSelectedColors);
@@ -941,15 +930,15 @@ public class Application_Background extends javax.swing.JPanel {
         System.out.println(newIn.getLib());
 
         JTextIntercalaire.setBackground(new java.awt.Color(42, 70, 105));
-        JTextIntercalaire.setFont(new java.awt.Font("URW Gothic", 0, 18)); // NOI18N
+        JTextIntercalaire.setFont(new java.awt.Font("URW Gothic", 0, 16)); // NOI18N
         JTextIntercalaire.setForeground(new java.awt.Color(255, 255, 255));
         JTextIntercalaire.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         JTextIntercalaire.setText(newIn.getLib());
         JTextIntercalaire.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        JTextIntercalaire.setMargin(new java.awt.Insets(2, 2, 2, 2));
-        JTextIntercalaire.setMaximumSize(new java.awt.Dimension(160, 20));
-        JTextIntercalaire.setMinimumSize(new java.awt.Dimension(160, 20));
-        JTextIntercalaire.setPreferredSize(new java.awt.Dimension(160, 20));
+        JTextIntercalaire.setMargin(new java.awt.Insets(2, 2, 2, 0));
+        JTextIntercalaire.setMaximumSize(new java.awt.Dimension(250, 20));
+        JTextIntercalaire.setMinimumSize(new java.awt.Dimension(250, 20));
+        JTextIntercalaire.setPreferredSize(new java.awt.Dimension(250, 20));
         jIconOn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jIconOn.setIcon(new ImageIcon(getClass().getResource("/resources/off@2x.png")));
@@ -972,16 +961,17 @@ public class Application_Background extends javax.swing.JPanel {
         panelBloc.revalidate();
         panelBloc.repaint();
     }
-    
-     private void addFeuille(Feuille newf) {
+
+    private void addFeuille(Feuille newf) {
         JPanel panelBloc = new JPanel(); //not invoke "javax.swing.JButton.setBackground(java.awt.Color)" because "this.jSelectedColors" is null
         JLabel jIconOn = new JLabel();
-        
+
         panelBloc.setBackground(new java.awt.Color(42, 70, 105));
-        panelBloc.setMaximumSize(new Dimension(235, 40));
-        panelBloc.setMinimumSize(new java.awt.Dimension(235, 40));
+        panelBloc.setMaximumSize(new Dimension(360, 40));
+        panelBloc.setMinimumSize(new java.awt.Dimension(360, 40));
         panelBloc.setName(""); // NOI18N
-        panelBloc.setPreferredSize(new java.awt.Dimension(235, 40));
+        panelBloc.setPreferredSize(new java.awt.Dimension(360, 40));
+        panelBloc.setAlignmentX(0.0F);
         java.awt.FlowLayout flowLayout1 = new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 4, 0);
         flowLayout1.setAlignOnBaseline(true);
         panelBloc.setLayout(flowLayout1);
@@ -992,15 +982,15 @@ public class Application_Background extends javax.swing.JPanel {
         System.out.println("feuilles : " + newf.getTitre());
 
         JNotes.setBackground(new java.awt.Color(42, 70, 105));
-        JNotes.setFont(new java.awt.Font("URW Gothic", 0, 18)); // NOI18N
+        JNotes.setFont(new java.awt.Font("URW Gothic", 0, 16)); // NOI18N
         JNotes.setForeground(new java.awt.Color(255, 255, 255));
         JNotes.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         JNotes.setText(newf.getTitre());
         JNotes.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        JNotes.setMargin(new java.awt.Insets(5, 2, 5, 2));
-        JNotes.setMaximumSize(new java.awt.Dimension(220, 30));
-        JNotes.setMinimumSize(new java.awt.Dimension(220, 30));
-        JNotes.setPreferredSize(new java.awt.Dimension(220, 30));
+        JNotes.setMargin(new java.awt.Insets(5, 2, 0, 2));
+        JNotes.setMaximumSize(new java.awt.Dimension(310, 30));
+        JNotes.setMinimumSize(new java.awt.Dimension(310, 30));
+        JNotes.setPreferredSize(new java.awt.Dimension(310, 30));
         jIconOn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jIconOn.setIcon(new ImageIcon(getClass().getResource("/resources/off@2x.png")));
@@ -1009,7 +999,7 @@ public class Application_Background extends javax.swing.JPanel {
         });
         panelBloc.add(JNotes);
         jNoteBloc.add(panelBloc);
-        
+
         jIconOn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/on@2x.png"))); // NOI18N
         panelBloc.add(jIconOn);
         jIconOn.getAccessibleContext().setAccessibleName("jIconOn");
@@ -1027,7 +1017,7 @@ public class Application_Background extends javax.swing.JPanel {
         addFeuille(new Feuille(i, "New", "333333"));
     }//GEN-LAST:event_JaddNoteActionPerformed
 
-                                             
+
     private void jlabelBoxBGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jlabelBoxBGActionPerformed
         // TODO add your handling code here:
         System.out.println("item Box " + origin.db.GetFeuillesByTag(jlabelBoxBG.getSelectedIndex()));
@@ -1037,7 +1027,7 @@ public class Application_Background extends javax.swing.JPanel {
 
     private void JbtnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JbtnSearchActionPerformed
         // TODO add your handling code here:
-       jLabelboxPanel.setVisible(true);
+        jLabelboxPanel.setVisible(true);
     }//GEN-LAST:event_JbtnSearchActionPerformed
 
     private void jSelectedColorsActionPerformed(ActionEvent e) {
@@ -1052,188 +1042,10 @@ public class Application_Background extends javax.swing.JPanel {
         JSelected.setVisible(true);
     }
 
-    public void dialogColor() {
-        JDialog JSelected = new JDialog(home, "Select Color", true);
-        JSelected.setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
-        JSelected.setBackground(new java.awt.Color(32, 46, 64));
-        JSelected.setEnabled(false);
-        JSelected.setLocation(new java.awt.Point(0, 0));
-        JSelected.setMinimumSize(new java.awt.Dimension(270, 180));
-        JSelected.setModal(true);
-        JSelected.setName("ColorPicker"); // NOI18N
-        JSelected.setResizable(false);
-        JSelected.setSize(540, 360);
-        JSelected.setType(java.awt.Window.Type.POPUP);
-
-        jDiagPan.setBackground(new java.awt.Color(32, 46, 64));
-        jDiagPan.setMaximumSize(new java.awt.Dimension(270, 180));
-        jDiagPan.setMinimumSize(new java.awt.Dimension(270, 180));
-        jDiagPan.setNextFocusableComponent(jDiagPan);
-        jDiagPan.setPreferredSize(new java.awt.Dimension(270, 180));
-        jDiagPan.setLayout(new java.awt.BorderLayout());
-
-        JLabelPane.setBackground(new java.awt.Color(32, 46, 64));
-        JLabelPane.setMaximumSize(new java.awt.Dimension(270, 30));
-        JLabelPane.setMinimumSize(new java.awt.Dimension(270, 30));
-        JLabelPane.setPreferredSize(new java.awt.Dimension(270, 30));
-
-        jLabelColor.setFont(new java.awt.Font("URW Gothic", 1, 18)); // NOI18N
-        jLabelColor.setForeground(new java.awt.Color(255, 255, 255));
-        jLabelColor.setText("Label couleur");
-
-        javax.swing.GroupLayout JLabelPaneLayout = new javax.swing.GroupLayout(JLabelPane);
-        JLabelPane.setLayout(JLabelPaneLayout);
-        JLabelPaneLayout.setHorizontalGroup(
-                JLabelPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JLabelPaneLayout.createSequentialGroup()
-                                .addContainerGap(80, Short.MAX_VALUE)
-                                .addComponent(jLabelColor)
-                                .addGap(69, 69, 69))
-        );
-        JLabelPaneLayout.setVerticalGroup(
-                JLabelPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JLabelPaneLayout.createSequentialGroup()
-                                .addGap(0, 7, Short.MAX_VALUE)
-                                .addComponent(jLabelColor))
-        );
-
-        jDiagPan.add(JLabelPane, java.awt.BorderLayout.NORTH);
-
-        JpaneColor.setBackground(new java.awt.Color(32, 46, 64));
-        JpaneColor.setMaximumSize(new java.awt.Dimension(100, 100));
-        JpaneColor.setMinimumSize(new java.awt.Dimension(100, 100));
-        JpaneColor.setPreferredSize(new java.awt.Dimension(100, 150));
-        JpaneColor.setLayout(new java.awt.GridLayout(3, 4, 8, 8));
-
-        Jblue.setBackground(new java.awt.Color(255, 0, 0));
-        Jblue.setAlignmentX(0.5F);
-        Jblue.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        Jblue.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JblueActionPerformed(evt);
-            }
-        });
-        JpaneColor.add(Jblue);
-
-        jGreen.setBackground(new java.awt.Color(0, 255, 0));
-        jGreen.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        jGreen.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                //jGreenActionPerformed(evt);
-            }
-        });
-        JpaneColor.add(jGreen);
-
-        jPink.setBackground(new java.awt.Color(0, 0, 255));
-        jPink.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        jPink.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jPinkActionPerformed(evt);
-            }
-        });
-        JpaneColor.add(jPink);
-
-        jOrange.setBackground(new java.awt.Color(203, 34, 229));
-        jOrange.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        jOrange.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jOrangeActionPerformed(evt);
-            }
-        });
-        JpaneColor.add(jOrange);
-
-        jRed.setBackground(new java.awt.Color(229, 195, 23));
-        jRed.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        jRed.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRedActionPerformed(evt);
-            }
-        });
-        JpaneColor.add(jRed);
-
-        jAmbre.setBackground(new java.awt.Color(255, 122, 82));
-        jAmbre.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        jAmbre.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jAmbreActionPerformed(evt);
-            }
-        });
-        JpaneColor.add(jAmbre);
-
-        jFog.setBackground(new java.awt.Color(20, 204, 149));
-        jFog.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        jFog.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jFogActionPerformed(evt);
-            }
-        });
-        JpaneColor.add(jFog);
-
-        jCanari.setBackground(new java.awt.Color(87, 110, 242));
-        jCanari.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        jCanari.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCanariActionPerformed(evt);
-            }
-        });
-        JpaneColor.add(jCanari);
-
-        jMenthe.setBackground(new java.awt.Color(191, 48, 139));
-        jMenthe.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        jMenthe.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMentheActionPerformed(evt);
-            }
-        });
-        JpaneColor.add(jMenthe);
-
-        jVioloine.setBackground(new java.awt.Color(191, 201, 201));
-        jVioloine.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        jVioloine.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jVioloineActionPerformed(evt);
-            }
-        });
-        JpaneColor.add(jVioloine);
-
-        jChartreuse.setBackground(new java.awt.Color(102, 205, 217));
-        jChartreuse.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        jChartreuse.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jChartreuseActionPerformed(evt);
-            }
-        });
-        JpaneColor.add(jChartreuse);
-
-        jKing.setBackground(new java.awt.Color(178, 31, 0));
-        jKing.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        jKing.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jKingActionPerformed(evt);
-            }
-        });
-        JpaneColor.add(jKing);
-
-        jDiagPan.add(JpaneColor, java.awt.BorderLayout.SOUTH);
-
-        javax.swing.GroupLayout JSelectedLayout = new javax.swing.GroupLayout(JSelected.getContentPane());
-        JSelected.getContentPane().setLayout(JSelectedLayout);
-        JSelectedLayout.setHorizontalGroup(
-                JSelectedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jDiagPan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
-        JSelectedLayout.setVerticalGroup(
-                JSelectedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jDiagPan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
-    }
-
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel JClasseur;
     private javax.swing.JPanel JClasseurBloc;
     private javax.swing.JPanel JIntercalaire;
-    private javax.swing.JLabel JLabelIntercalaire;
     private javax.swing.JPanel JLabelPane;
     private javax.swing.JPanel JRoot;
     private javax.swing.JDialog JSelected;
@@ -1247,8 +1059,6 @@ public class Application_Background extends javax.swing.JPanel {
     private javax.swing.JPanel Jcenter;
     private javax.swing.JPanel Jcenterpanel;
     private javax.swing.JLabel JlabUser;
-    private javax.swing.JLabel JlabelClasseur;
-    private javax.swing.JLabel JlabelNote;
     private javax.swing.JLabel Jlogo;
     private javax.swing.JPanel Jmenu;
     private javax.swing.JPanel Jnote;
