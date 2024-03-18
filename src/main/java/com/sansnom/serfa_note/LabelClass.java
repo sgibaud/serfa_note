@@ -296,25 +296,19 @@ public class LabelClass extends JPanel {
         addLabelNoteButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent arg0) {
-
+                oldLabel = box.getSelectedItem().toString();
                 System.out.println(origin.editor.labelClass.cangetlabels());
                 System.out.println(origin.editor.labelClass.haslabel(listLabels.get(box.getSelectedIndex()).getId()));
                 if((origin.editor.labelClass.cangetlabels())&&!(origin.editor.labelClass.haslabel(listLabels.get(box.getSelectedIndex()).getId()))){
                     origin.db.AddLabel(listLabels.get(box.getSelectedIndex()).getId(), idF);
                     origin.editor.labelClass.setlistLabel(origin.db.GetLabels(idF));
                     labelTextField.getText();
-                    labelTextField.setText("Le label \"" + labelTextField.getText() + "\" est lié à la note.");
+                    JOptionPane.showMessageDialog(null,"Le label \"" + oldLabel + "\" est lié à la note.","",JOptionPane.PLAIN_MESSAGE);
                 }
                 else{
                     labelTextField.getText();
-                    labelTextField.setText("Le label n'a pas pu être lié a la note.");
+                    JOptionPane.showMessageDialog(null,"Le label n'a pas pu être lié a la note.","",JOptionPane.PLAIN_MESSAGE);
                 }
-
-                oldLabel = box.getSelectedItem().toString();
-                origin.db.AddLabel(listLabels.get(box.getSelectedIndex()).getId(), idF);
-                origin.editor.labelClass.setlistLabel(origin.db.GetLabels(idF));
-                labelTextField.getText();
-                JOptionPane.showMessageDialog(null,"Le label \"" + oldLabel + "\" est lié à la note.","",JOptionPane.PLAIN_MESSAGE);
 
 //Lier le label et la note labelTextField.getText(); -> INSERT idNote avec idLabel //////////////////////////////////////////////////////////////////                 
             }
