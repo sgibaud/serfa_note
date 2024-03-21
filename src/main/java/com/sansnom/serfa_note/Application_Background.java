@@ -1038,7 +1038,7 @@ public class Application_Background extends javax.swing.JPanel {
         JNotes.setPreferredSize(new java.awt.Dimension(310, 30));
         jIconOn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jIconOn.setIcon(new ImageIcon(getClass().getResource("/resources/off@2x.png")));
+                //jIconOn.setIcon(new ImageIcon(getClass().getResource("/resources/off@2x.png")));
                 origin.editor(newf.getId());
             }
         });
